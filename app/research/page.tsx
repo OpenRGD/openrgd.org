@@ -1,45 +1,43 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import { WorkStatus } from '@/components/work-page'
 
 export const metadata: Metadata = {
   title: 'Research',
-  description: 'OpenRGD research topics: Physical AI, Embodied AI, robot description and engineering notes.',
+  description: 'OpenRGD research tracks and embodiment experiments: world models, RGD Physics, Chronograf, motion, SO-101, ethics and multi-robot coordination.',
   alternates: { canonical: '/research' },
 }
 
-const topics = [
-  {
-    href: '/physical-ai',
-    eyebrow: 'PHYSICAL AI',
-    title: 'Intelligence in the physical world',
-    copy: 'Perception, reasoning, simulation, control and safety when model outputs become physical actions.',
-  },
-  {
-    href: '/embodied-ai',
-    eyebrow: 'EMBODIED AI',
-    title: 'The body as part of the intelligence problem',
-    copy: 'How morphology, sensing, actuation and environment shape perception-action loops and generalization.',
-  },
-  {
-    href: '/robot-description',
-    eyebrow: 'ROBOT DESCRIPTION',
-    title: 'From structure to machine-readable embodiment',
-    copy: 'What existing robot descriptions prove and what semantic context an AI system may still require.',
-  },
-  {
-    href: '/interoperability',
-    eyebrow: 'INTEROPERABILITY',
-    title: 'Explicit boundaries between layers',
-    copy: 'Description formats, semantic grounding, middleware, runtimes and hardware ownership.',
-  },
-  {
-    href: '/blog',
-    eyebrow: 'ENGINEERING NOTES',
-    title: 'Development and specification updates',
-    copy: 'Research notes, implementation decisions, specification changes and technical development logs.',
-  },
+const foundational = [
+  ['/physical-ai','Physical AI','RESEARCH','research','Perception, reasoning, simulation, control and safety when actions become physical.'],
+  ['/embodied-ai','Embodied AI','RESEARCH','research','How morphology, sensing and action change the intelligence problem.'],
+  ['/research/world-models','World Models / WAM','RESEARCH','research','Observed, belief, predicted and desired state as a speculative planning layer above reflex control.'],
+  ['/research/rgd-physics','RGD Physics','RESEARCH','research','Physical and causal semantics as a candidate substrate for prediction and feasibility checking.'],
+  ['/research/robot-chronograf','Robot Chronograf','FORMALIZATION CANDIDATE','candidate','Clock domains, uncertainty and anchored temporal evidence for embodied systems.'],
+  ['/research/ethics-decision-trace','Ethics & DecisionTrace','CANDIDATE','candidate','Structured policy outcomes, evidence bindings and forensic ethical artifacts.'],
 ]
+
+const experiments = [
+  ['/research/so101-embodiment-lab','SO-101 Embodiment Lab','EXPERIMENTAL','experimental','Leader/follower teleoperation, commissioning and causal-flow pressure testing on physical hardware.'],
+  ['/research/motion-quality','Motion Quality','EXPERIMENTAL','experimental','Smoothness, trajectories and motion-layer experimentation outside the canonical standard.'],
+  ['/research/rgd-mesh','RGD Mesh','RESEARCH','research','Identity, pairing, permissions and state/intent exchange for multi-robot systems.'],
+]
+
+function Cards({items}:{items:string[][]}) {
+  return (
+    <div className="work-index-grid research-work-grid">
+      {items.map(([href,title,status,tone,copy])=>(
+        <a href={href} className="work-index-card" key={href}>
+          <div><span>RESEARCH</span><WorkStatus label={status} tone={tone as 'research'|'candidate'|'experimental'} /></div>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+          <strong>Open →</strong>
+        </a>
+      ))}
+    </div>
+  )
+}
 
 export default function ResearchPage() {
   return (
@@ -50,24 +48,36 @@ export default function ResearchPage() {
         <p className="kicker">RESEARCH</p>
         <h1>Embodiment, intelligence and interoperable physical systems.</h1>
         <p>
-          Research on OpenRGD.org connects the standard to the broader problems it is intended to support:
-          Physical AI, Embodied AI, robot representations and the interfaces between cognition and machines.
+          This area separates frontier research and physical experiments from accepted architecture.
+          Every track carries its maturity explicitly so exploratory work can be documented without being mistaken for a shipped standard.
         </p>
       </section>
 
       <section className="shell content-section">
-        <div className="research-grid">
-          {topics.map((topic,index) => (
-            <a className="research-card" href={topic.href} key={topic.href}>
-              <div className="research-card-top">
-                <span>{String(index + 1).padStart(2,'0')}</span>
-                <i>{topic.eyebrow}</i>
-              </div>
-              <h2>{topic.title}</h2>
-              <p>{topic.copy}</p>
-              <strong>Explore →</strong>
-            </a>
-          ))}
+        <div className="content-section-head">
+          <p className="kicker">FOUNDATIONAL RESEARCH</p>
+          <h2>Questions that may shape future OpenRGD contracts.</h2>
+        </div>
+        <Cards items={foundational}/>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">PHYSICAL + SYSTEM EXPERIMENTS</p>
+          <h2>Pressure-test ideas against real bodies and implementation constraints.</h2>
+        </div>
+        <Cards items={experiments}/>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">PUBLIC NOTES</p>
+          <h2>From research to an auditable engineering record.</h2>
+        </div>
+        <div className="content-card-grid">
+          <a className="content-card" href="/robot-description"><h3>Robot Description</h3><p>The semantic gap between source formats and embodied AI context.</p></a>
+          <a className="content-card" href="/interoperability"><h3>Interoperability</h3><p>Explicit ownership across descriptions, semantic context, middleware and runtimes.</p></a>
+          <a className="content-card" href="/blog"><h3>Engineering Notes</h3><p>Development updates, research notes and specification changes.</p></a>
         </div>
       </section>
 

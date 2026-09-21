@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import { WorkStatus } from '@/components/work-page'
 
 export const metadata: Metadata = {
   title: 'Architecture',
-  description: 'OpenRGD architecture: authority model, seven semantic domains and cognitive-to-physical boundary.',
+  description: 'OpenRGD architecture: authority model, semantic domains, runtime boundaries, agent contracts, Synapses and temporal ownership.',
   alternates: { canonical: '/architecture' },
 }
 
@@ -20,6 +21,14 @@ const domains = [
 
 const boundary = ['CognitionProposal','ActionIntent','Somatic Translator','CapabilityPlan','Operation Safety Gate','DecisionTrace','Body Adapter','Hardware']
 
+const modules = [
+  ['/architecture/runtime-boundary','Runtime Boundary','ADOPTED','adopted','The canonical repository stops before physical embodied execution.'],
+  ['/architecture/agent-contracts','Agent Contracts','CANDIDATE','candidate','Versioned interfaces between cognition, somatic translation, Chronons, memory and DecisionTrace.'],
+  ['/architecture/somatic-translation','Somatic Translation','CANDIDATE','candidate','Hardware-agnostic translation from approved intent to typed capability plans.'],
+  ['/architecture/synapses','Synapses','IMPLEMENTED','implemented','Deterministic static interoperability exports; ROS 2 is the active reference target.'],
+  ['/architecture/time-memory','Time & Memory','CANDIDATE','candidate','Chronograf time, Chronon history and memory-as-projection ownership boundaries.'],
+]
+
 export default function ArchitecturePage() {
   return (
     <main className="content-page">
@@ -30,6 +39,23 @@ export default function ArchitecturePage() {
         <p>
           OpenRGD separates canonical source, derived artifacts, cognitive intent and physical execution so that each layer has explicit ownership.
         </p>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">ARCHITECTURE MAP</p>
+          <h2>Adopted boundaries and candidate contracts.</h2>
+        </div>
+        <div className="work-index-grid">
+          {modules.map(([href,title,status,tone,copy])=>(
+            <a href={href} className="work-index-card" key={href}>
+              <div><span>ARCHITECTURE</span><WorkStatus label={status} tone={tone as 'adopted'|'implemented'|'candidate'} /></div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <strong>Open →</strong>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="shell content-section">
