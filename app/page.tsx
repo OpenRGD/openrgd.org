@@ -45,7 +45,7 @@ function Arrow() {
 export default function HomePage() {
   return (
     <main>
-      <header className="topbar">
+      <header className="topbar intro intro-1">
         <a className="brand" href="#" aria-label="OpenRGD home">
           <span className="brand-mark">RGD</span>
           <span className="brand-name">OpenRGD</span>
@@ -65,23 +65,23 @@ export default function HomePage() {
 
       <section className="hero shell">
         <div className="hero-copy">
-          <div className="eyebrow">
+          <div className="eyebrow intro intro-2">
             <span className="pulse" />
             ROBOT GRAPH DEFINITION
           </div>
 
-          <h1>
+          <h1 className="intro intro-3">
             A machine-readable
             <span>standard for cognitive embodiment.</span>
           </h1>
 
-          <p className="hero-lead">
+          <p className="hero-lead intro intro-4">
             OpenRGD gives AI systems a structured way to understand a robot body,
             its operational limits, capabilities, lifecycle and relationships
             with other agents.
           </p>
 
-          <div className="hero-actions">
+          <div className="hero-actions intro intro-5">
             <a className="button primary" href="https://github.com/OpenRGD/openrgd/tree/main/spec" target="_blank" rel="noreferrer">
               Read the specification <span>↗</span>
             </a>
@@ -90,23 +90,24 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="principles">
+          <div className="principles intro intro-6">
             <span>OPEN STANDARD</span>
             <span>MACHINE READABLE</span>
             <span>NON-ACTUATING BY DESIGN</span>
           </div>
         </div>
 
-        <div className="hero-graph" aria-label="OpenRGD grounding graph">
+        <div className="hero-graph intro intro-5" data-tilt aria-label="OpenRGD grounding graph">
+          <div className="graph-glow" aria-hidden="true" />
           <div className="window-bar">
             <span>grounding.graph</span>
-            <span className="window-state">LIVE MODEL</span>
+            <span className="window-state"><i /> LIVE MODEL</span>
           </div>
 
           <div className="graph-grid">
             <div className="graph-axis">
               <span>COGNITION</span>
-              <div className="axis-line" />
+              <div className="axis-line"><i /></div>
               <span>BODY</span>
             </div>
 
@@ -154,7 +155,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="status-strip">
+      <section className="status-strip" data-reveal>
         <div className="shell status-grid">
           {status.map(([label, version, state]) => (
             <div className="status-item" key={label}>
@@ -167,7 +168,7 @@ export default function HomePage() {
       </section>
 
       <section className="section shell" id="architecture">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div>
             <p className="kicker">WHY OPENRGD</p>
             <h2>The missing semantic layer between AI and robots.</h2>
@@ -180,17 +181,17 @@ export default function HomePage() {
         </div>
 
         <div className="feature-grid">
-          <article className="feature">
+          <article className="feature" data-reveal>
             <span className="feature-index">01</span>
             <h3>Beyond geometry</h3>
             <p>Describe what a body is, what it can do, what constrains it and where that knowledge came from.</p>
           </article>
-          <article className="feature">
+          <article className="feature" data-reveal>
             <span className="feature-index">02</span>
             <h3>Grounded AI context</h3>
             <p>Compile robot knowledge into deterministic, machine-readable context without silently authorizing physical execution.</p>
           </article>
-          <article className="feature">
+          <article className="feature" data-reveal>
             <span className="feature-index">03</span>
             <h3>Interoperability boundary</h3>
             <p>Keep semantic description, middleware export and embodied runtime responsibilities explicit and independently verifiable.</p>
@@ -199,7 +200,7 @@ export default function HomePage() {
       </section>
 
       <section className="section shell" id="domains">
-        <div className="section-heading compact">
+        <div className="section-heading compact" data-reveal>
           <div>
             <p className="kicker">CANONICAL DOMAIN MODEL</p>
             <h2>One robot. Seven semantic domains.</h2>
@@ -210,7 +211,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="domain-stack">
+        <div className="domain-stack" data-reveal>
           {domains.map((domain) => (
             <article className="domain" key={domain.code}>
               <div className="domain-code">{domain.code}</div>
@@ -225,15 +226,15 @@ export default function HomePage() {
       </section>
 
       <section className="section shell workflow" id="workflow">
-        <div className="terminal">
+        <div className="terminal" data-reveal>
           <div className="terminal-top">
             <span>openrgd / terminal</span>
-            <span>● ● ●</span>
+            <span className="terminal-lights">● ● ●</span>
           </div>
           <pre><code>{terminalText}</code></pre>
         </div>
 
-        <div className="workflow-copy">
+        <div className="workflow-copy" data-reveal>
           <p className="kicker">EVIDENCE → CONTEXT</p>
           <h2>Import what the source proves. Invent nothing.</h2>
           <p>
@@ -256,7 +257,7 @@ export default function HomePage() {
 
       <section className="section boundary-section" id="boundary">
         <div className="shell">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
               <p className="kicker">RUNTIME BOUNDARY</p>
               <h2>Semantic intelligence stops before physical authority begins.</h2>
@@ -267,7 +268,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="boundary-flow">
+          <div className="boundary-flow" data-reveal>
             {boundary.map((item, index) => (
               <div className="boundary-step" key={item}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
@@ -281,7 +282,7 @@ export default function HomePage() {
       </section>
 
       <section className="section shell">
-        <div className="section-heading compact">
+        <div className="section-heading compact" data-reveal>
           <div>
             <p className="kicker">OPEN ECOSYSTEM</p>
             <h2>Built to connect, not to replace everything.</h2>
@@ -292,7 +293,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="ecosystem-grid">
+        <div className="ecosystem-grid" data-reveal>
           <article>
             <span>01</span>
             <h3>Robot descriptions</h3>
@@ -316,7 +317,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="cta shell">
+      <section className="cta shell" data-reveal>
         <p className="kicker">OPEN SOURCE · MIT LICENSE</p>
         <h2>Inspect the standard. Challenge the assumptions. Build on the graph.</h2>
         <div className="hero-actions centered">

@@ -564,3 +564,450 @@ a { color: inherit; text-decoration: none; }
   .footer-inner { padding-block: 28px; align-items: flex-start; flex-direction: column; gap: 18px; }
   .footer-meta { flex-wrap: wrap; gap: 10px 18px; }
 }
+
+
+/* ─────────────────────────────────────────────────────────────
+   Ambient motion layer — subtle, hardware-accelerated, optional.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --pointer-x: 72vw;
+  --pointer-y: 22vh;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body > main {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.9;
+  background:
+    radial-gradient(
+      520px circle at var(--pointer-x) var(--pointer-y),
+      rgba(121, 230, 255, 0.055),
+      rgba(121, 230, 255, 0.018) 30%,
+      transparent 70%
+    );
+  transition: opacity 500ms ease;
+}
+
+.ambient-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 0 46%, rgba(121,230,255,0.025) 49%, transparent 52% 100%);
+  background-size: 220% 220%;
+  animation: ambientSweep 18s ease-in-out infinite alternate;
+}
+
+.ambient-orbit {
+  position: absolute;
+  border: 1px solid rgba(121, 230, 255, 0.055);
+  border-radius: 999px;
+  transform: rotate(-18deg);
+  filter: blur(0.1px);
+}
+
+.orbit-one {
+  width: 760px;
+  height: 240px;
+  top: 5vh;
+  right: -270px;
+  animation: orbitDrift 18s ease-in-out infinite alternate;
+}
+
+.orbit-two {
+  width: 620px;
+  height: 190px;
+  left: -310px;
+  top: 52vh;
+  border-color: rgba(187, 165, 255, 0.04);
+  animation: orbitDrift 24s ease-in-out infinite alternate-reverse;
+}
+
+.ambient-signal {
+  position: absolute;
+  width: 1px;
+  height: 28vh;
+  right: 12vw;
+  top: -30vh;
+  background: linear-gradient(transparent, rgba(121,230,255,0.16), transparent);
+  animation: signalDrop 11s linear infinite;
+}
+
+@keyframes ambientSweep {
+  from { background-position: 10% 20%; }
+  to { background-position: 90% 70%; }
+}
+
+@keyframes orbitDrift {
+  from { transform: rotate(-18deg) translate3d(0, 0, 0); }
+  to { transform: rotate(-14deg) translate3d(-28px, 18px, 0); }
+}
+
+@keyframes signalDrop {
+  0% { transform: translateY(-18vh); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 0.7; }
+  100% { transform: translateY(140vh); opacity: 0; }
+}
+
+/* Intro sequence */
+.motion-ready .intro {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  animation: introLift 760ms cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.motion-ready .intro-1 { animation-delay: 30ms; }
+.motion-ready .intro-2 { animation-delay: 110ms; }
+.motion-ready .intro-3 { animation-delay: 180ms; }
+.motion-ready .intro-4 { animation-delay: 270ms; }
+.motion-ready .intro-5 { animation-delay: 360ms; }
+.motion-ready .intro-6 { animation-delay: 450ms; }
+
+@keyframes introLift {
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Scroll reveal. Content stays visible when JS is unavailable. */
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 820ms cubic-bezier(.16,1,.3,1),
+    transform 820ms cubic-bezier(.16,1,.3,1);
+  will-change: opacity, transform;
+}
+
+.motion-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.feature-grid [data-reveal]:nth-child(2) { transition-delay: 80ms; }
+.feature-grid [data-reveal]:nth-child(3) { transition-delay: 160ms; }
+
+/* Hero graph: soft depth + local pointer light */
+.hero-graph {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --glow-x: 68%;
+  --glow-y: 18%;
+  position: relative;
+  transform:
+    perspective(1100px)
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y))
+    translateZ(0);
+  transform-style: preserve-3d;
+  transition:
+    transform 420ms cubic-bezier(.16,1,.3,1),
+    border-color 420ms ease,
+    box-shadow 420ms ease;
+  will-change: transform;
+}
+
+.hero-graph:hover {
+  border-color: rgba(121, 230, 255, 0.34);
+  box-shadow:
+    0 38px 110px rgba(0,0,0,0.48),
+    0 0 60px rgba(121,230,255,0.045);
+}
+
+.graph-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      300px circle at var(--glow-x) var(--glow-y),
+      rgba(121,230,255,0.11),
+      transparent 68%
+    );
+  opacity: 0.75;
+  transition: opacity 400ms ease;
+}
+
+.hero-graph:hover .graph-glow { opacity: 1; }
+
+.hero-graph > *:not(.graph-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.window-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.window-state i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(126,242,178,0.85);
+  animation: livePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Data signal travelling through the semantic axis */
+.axis-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.axis-line i {
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  width: 5px;
+  height: 22px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: linear-gradient(transparent, var(--accent), transparent);
+  box-shadow: 0 0 16px rgba(121,230,255,0.55);
+  animation: axisSignal 3.8s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+
+@keyframes axisSignal {
+  0% { top: -24px; opacity: 0; }
+  10% { opacity: 1; }
+  88% { opacity: 0.9; }
+  100% { top: calc(100% + 10px); opacity: 0; }
+}
+
+.flow-arrow {
+  animation: arrowBreath 2.8s ease-in-out infinite;
+}
+
+.graph-nodes > .flow-arrow:nth-of-type(2) {
+  animation-delay: 1.35s;
+}
+
+@keyframes arrowBreath {
+  0%, 100% { color: var(--muted-2); transform: translateY(-1px); }
+  50% { color: var(--accent); transform: translateY(2px); }
+}
+
+.graph-node {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 360ms cubic-bezier(.16,1,.3,1),
+    border-color 360ms ease,
+    background 360ms ease,
+    box-shadow 360ms ease;
+}
+
+.graph-node::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.04), transparent 70%);
+  transform: translateX(-130%);
+  transition: transform 850ms cubic-bezier(.16,1,.3,1);
+}
+
+.graph-node:hover {
+  transform: translate3d(4px, 0, 8px);
+  border-color: rgba(121,230,255,0.34);
+  background: rgba(121,230,255,0.035);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.2);
+}
+
+.graph-node:hover::after { transform: translateX(130%); }
+
+.graph-node.accent {
+  animation: semanticBreath 5.4s ease-in-out infinite;
+}
+
+@keyframes semanticBreath {
+  0%, 100% { box-shadow: inset 0 0 0 rgba(121,230,255,0); }
+  50% { box-shadow: inset 0 0 38px rgba(121,230,255,0.035); }
+}
+
+.graph-domain-row span {
+  transition:
+    color 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease,
+    transform 260ms cubic-bezier(.16,1,.3,1);
+}
+
+.graph-domain-row span:hover {
+  color: var(--accent);
+  border-color: rgba(121,230,255,0.28);
+  background: rgba(121,230,255,0.045);
+  transform: translateY(-2px);
+}
+
+/* Buttons: precise, not bouncy */
+.button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 260ms cubic-bezier(.16,1,.3,1),
+    background 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.22), transparent 68%);
+  transform: translateX(-140%);
+  transition: transform 700ms cubic-bezier(.16,1,.3,1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+
+.button:hover::after { transform: translateX(140%); }
+
+/* Cards and rows gain a tiny amount of depth */
+.feature,
+.ecosystem-grid article,
+.domain,
+.status-item,
+.boundary-step {
+  transition:
+    background 320ms ease,
+    border-color 320ms ease,
+    transform 320ms cubic-bezier(.16,1,.3,1);
+}
+
+.feature:hover,
+.ecosystem-grid article:hover {
+  background: rgba(121,230,255,0.022);
+  transform: translateY(-3px);
+}
+
+.domain:hover {
+  background: linear-gradient(90deg, rgba(121,230,255,0.035), transparent 60%);
+}
+
+.domain:hover .domain-code {
+  color: var(--accent);
+}
+
+.status-item:hover {
+  background: rgba(255,255,255,0.018);
+}
+
+.boundary-step::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(121,230,255,0.45);
+  transition: right 480ms cubic-bezier(.16,1,.3,1);
+}
+
+.boundary-step:hover {
+  background: rgba(121,230,255,0.025);
+}
+
+.boundary-step:hover::after { right: 0; }
+
+.boundary-step:hover strong {
+  color: var(--accent);
+}
+
+/* Terminal has a quiet scan/reflection */
+.terminal {
+  position: relative;
+  transition:
+    transform 420ms cubic-bezier(.16,1,.3,1),
+    border-color 420ms ease,
+    box-shadow 420ms ease;
+}
+
+.terminal::after {
+  content: '';
+  position: absolute;
+  inset: 44px 0 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(121,230,255,0.018), transparent);
+  background-size: 100% 160px;
+  animation: terminalScan 8s linear infinite;
+  opacity: 0.65;
+}
+
+.terminal:hover {
+  transform: translateY(-3px);
+  border-color: rgba(121,230,255,0.26);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+}
+
+.terminal-lights {
+  letter-spacing: 4px;
+  color: var(--muted-2);
+}
+
+@keyframes terminalScan {
+  from { background-position: 0 -180px; }
+  to { background-position: 0 calc(100% + 180px); }
+}
+
+/* Keep motion gentle and accessibility-safe. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .ambient-field { display: none; }
+
+  .hero-graph {
+    transform: none !important;
+  }
+
+  [data-reveal],
+  .intro {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .ambient-field {
+    opacity: 0.58;
+  }
+
+  .hero-graph {
+    transform: none !important;
+  }
+}
