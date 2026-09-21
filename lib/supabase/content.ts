@@ -11,7 +11,8 @@ export function createContentClient() {
     process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
 
   if (!url || !secretKey) {
-    throw new Error('Missing server-side Supabase URL or secret key')
+    const missing = [!url ? 'SUPABASE_URL' : null, !secretKey ? 'SUPABASE_SECRET_KEY' : null].filter(Boolean).join(', ')
+    throw new Error('Missing server-side Supabase configuration: ' + missing)
   }
 
   return createClient(url, secretKey, {

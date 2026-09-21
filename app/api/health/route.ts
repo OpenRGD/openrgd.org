@@ -40,7 +40,8 @@ export async function GET() {
       },
       { headers: { 'Cache-Control': 'no-store' } },
     )
-  } catch {
+  } catch (error) {
+    console.error('[openrgd-health] Supabase health check failed', error instanceof Error ? error.message : 'unknown error')
     return NextResponse.json(
       {
         ok: false,
