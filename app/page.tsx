@@ -54,6 +54,8 @@ export default async function HomePage() {
           <a href="#architecture">Architecture</a>
           <a href="#domains">Domains</a>
           <a href="#knowledge">Knowledge</a>
+          <a href="#ecosystem">Ecosystem</a>
+          <a href="/blog">Blog</a>
           <a href="#workflow">Workflow</a>
           <a href="#boundary">Runtime boundary</a>
         </nav>
@@ -119,6 +121,53 @@ export default async function HomePage() {
 
       <SharedKnowledge />
 
+
+      <section className="section ecosystem-directory" id="ecosystem">
+        <div className="shell">
+          <div className="section-heading compact" data-reveal>
+            <div>
+              <p className="kicker">OPENRGD ECOSYSTEM</p>
+              <h2>One standard. Multiple specialized surfaces.</h2>
+            </div>
+            <p>
+              OpenRGD.org is the public knowledge and specification hub. Dedicated tools and services
+              live on focused subdomains so each surface can evolve independently.
+            </p>
+          </div>
+
+          <div className="subdomain-grid" data-reveal>
+            {[
+              ['docs', 'Documentation', 'Reference material, guides and technical documentation.'],
+              ['forge', 'Forge', 'Authoring and build-oriented tooling around OpenRGD artifacts.'],
+              ['sim', 'Simulation', 'Simulation-oriented tools and experiment surfaces.'],
+              ['viz', 'Visualization', 'Graph, structure and robot-state visualization.'],
+              ['api', 'API', 'Programmatic access and machine-facing interfaces.'],
+              ['civilization', 'Civilization', 'Collective, social and multi-agent experimentation.'],
+              ['studio', 'Studio', 'Authenticated engineering environment for OpenRGD projects.'],
+              ['vulnerabilities', 'Vulnerabilities', 'Security and vulnerability reporting surface.'],
+              ['plugins', 'Plugins', 'Extension and integration ecosystem.'],
+              ['physics', 'Physics', 'Physics-oriented models, tooling and experiments.'],
+              ['market', 'Market', 'Ecosystem discovery and future distribution surface.'],
+            ].map(([subdomain, title, description]) => (
+              <a
+                key={subdomain}
+                className="subdomain-card"
+                href={'https://' + subdomain + '.openrgd.org'}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="subdomain-card-top">
+                  <span>{subdomain}.openrgd.org</span>
+                  <i>↗</i>
+                </div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section shell workflow" id="workflow">
         <div className="terminal" data-reveal>
           <div className="terminal-top"><span>openrgd / terminal</span><span className="terminal-lights">● ● ●</span></div>
@@ -178,7 +227,7 @@ export default async function HomePage() {
       <footer className="footer">
         <div className="shell footer-inner">
           <div><strong>OpenRGD</strong><span>Robot Graph Definition</span></div>
-          <div className="footer-meta"><span>Open standard</span><span>MIT licensed</span><span>Human-governed</span></div>
+          <div className="footer-meta"><a href="/blog">Blog</a><a href="https://docs.openrgd.org" target="_blank" rel="noreferrer">Docs</a><a href="https://studio.openrgd.org" target="_blank" rel="noreferrer">Studio</a><span>MIT licensed</span><span>Human-governed</span></div>
         </div>
       </footer>
     </main>
