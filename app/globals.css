@@ -2157,3 +2157,153 @@ body > main {
 
   .concept-flow i { display: none; }
 }
+
+
+/* Robot description format cluster */
+.format-comparison {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.format-comparison-head,
+.format-comparison-row {
+  display: grid;
+  grid-template-columns: 110px 1.1fr 1.6fr 1.5fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.format-comparison-head {
+  min-height: 48px;
+  padding: 0 18px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.012);
+  color: var(--muted-2);
+  font: 700 8px/1 ui-monospace, monospace;
+  letter-spacing: .08em;
+}
+
+.format-comparison-row {
+  min-height: 124px;
+  padding: 22px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+  transition: background 240ms ease, transform 240ms cubic-bezier(.16,1,.3,1);
+}
+
+.format-comparison-row:last-child { border-bottom: 0; }
+
+.format-comparison-row:hover {
+  background: rgba(121,230,255,.025);
+}
+
+.format-comparison-row > strong {
+  color: var(--accent);
+  font: 700 15px/1.2 ui-monospace, monospace;
+}
+
+.format-comparison-row > span {
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.format-comparison-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.formats-home {
+  border-top: 1px solid var(--line);
+}
+
+.formats-home-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.formats-home-card {
+  min-height: 160px;
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 240ms ease, transform 240ms cubic-bezier(.16,1,.3,1);
+}
+
+.formats-home-card:last-child { border-right: 0; }
+
+.formats-home-card:hover {
+  background: rgba(121,230,255,.025);
+  transform: translateY(-2px);
+}
+
+.formats-home-card span {
+  color: var(--accent);
+  font: 700 11px/1 ui-monospace, monospace;
+}
+
+.formats-home-card strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.formats-home-link {
+  margin-top: 18px;
+  text-align: right;
+}
+
+.formats-home-link a {
+  color: var(--accent);
+  font: 650 11px/1 ui-monospace, monospace;
+}
+
+@media (max-width: 980px) {
+  .format-comparison-head { display: none; }
+
+  .format-comparison-row {
+    grid-template-columns: 100px 1fr;
+  }
+
+  .format-comparison-row p {
+    grid-column: 2;
+  }
+
+  .formats-home-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .formats-home-card:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+  .formats-home-card:first-child { border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 720px) {
+  .format-comparison-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .format-comparison-row p {
+    grid-column: auto;
+  }
+
+  .formats-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formats-home-card {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .formats-home-card:last-child { border-bottom: 0; }
+}

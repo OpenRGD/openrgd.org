@@ -132,6 +132,35 @@ export default async function HomePage() {
         </div>
       </section>
 
+
+      <section className="section shell formats-home">
+        <div className="section-heading compact" data-reveal>
+          <div>
+            <p className="kicker">DESCRIPTION FORMATS</p>
+            <h2>One robot can exist across several description layers.</h2>
+          </div>
+          <p>
+            URDF, USD, SDF and RGD overlap on physical facts, but each has a different center of responsibility.
+          </p>
+        </div>
+        <div className="formats-home-grid" data-reveal>
+          {[
+            ['/urdf', 'URDF', 'Robot structure'],
+            ['/usd', 'USD', 'Composable scenes'],
+            ['/sdf', 'SDF', 'Simulation worlds'],
+            ['/rgd', 'RGD', 'Semantic embodiment'],
+          ].map(([href, title, copy]) => (
+            <a href={href} className="formats-home-card" key={href}>
+              <span>{title}</span>
+              <strong>{copy}</strong>
+            </a>
+          ))}
+        </div>
+        <div className="formats-home-link">
+          <a href="/robot-description-formats">Compare all formats →</a>
+        </div>
+      </section>
+
       <SharedKnowledge />
 
 

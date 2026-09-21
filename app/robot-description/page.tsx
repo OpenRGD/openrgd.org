@@ -29,7 +29,7 @@ export default function RobotDescriptionPage() {
         { label: 'OpenRGD — Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
       ]}
       related={[
-        { href: '/interoperability', title: 'Interoperability', copy: 'How description formats, semantic context and runtime boundaries can coexist.' },
+        { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare URDF, USD, SDF and RGD by responsibility.' },
         { href: '/architecture', title: 'OpenRGD Architecture', copy: 'The seven domains and authority model behind the graph.' },
         { href: '/physical-ai', title: 'Physical AI', copy: 'Why autonomous systems need more context when decisions become physical.' },
       ]}

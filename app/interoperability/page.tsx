@@ -29,7 +29,7 @@ export default function InteroperabilityPage() {
         { label: 'OpenUSD — UsdPhysics schema', href: 'https://openusd.org/dev/api/usd_physics_page_front.html' },
       ]}
       related={[
-        { href: '/robot-description', title: 'Robot Description', copy: 'The source formats that provide structural and physical evidence.' },
+        { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'See how URDF, USD, SDF and RGD divide responsibility.' },
         { href: '/spec', title: 'OpenRGD Specification', copy: 'The normative model that defines semantic responsibility and maturity.' },
         { href: '/docs', title: 'Toolchain', copy: 'Import, verify, compile and export without crossing the actuation boundary.' },
       ]}
