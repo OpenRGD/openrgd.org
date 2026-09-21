@@ -104,6 +104,34 @@ export default async function HomePage() {
         </div>
       </section>
 
+
+      <section className="section shell technology-context" id="technology-context">
+        <div className="section-heading compact" data-reveal>
+          <div>
+            <p className="kicker">TECHNOLOGY CONTEXT</p>
+            <h2>OpenRGD sits inside a larger embodied systems stack.</h2>
+          </div>
+          <p>
+            These concepts explain why a machine-readable embodiment layer matters and where OpenRGD stops.
+          </p>
+        </div>
+
+        <div className="technology-context-grid" data-reveal>
+          {[
+            ['/physical-ai', 'PHYSICAL AI', 'From perception and simulation to real-world action.'],
+            ['/embodied-ai', 'EMBODIED AI', 'Why body and environment change the intelligence problem.'],
+            ['/robot-description', 'ROBOT DESCRIPTION', 'From links and joints to semantic embodiment context.'],
+            ['/interoperability', 'INTEROPERABILITY', 'Explicit contracts between descriptions, middleware, runtime and hardware.'],
+          ].map(([href, title, copy]) => (
+            <a className="technology-context-card" href={href} key={href}>
+              <span>{title}</span>
+              <p>{copy}</p>
+              <strong>Explore →</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <SharedKnowledge />
 
 
