@@ -50,6 +50,28 @@ export default function RobotDescriptionFormatsPage() {
         </div>
       </section>
 
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">DEEP COMPARISONS</p>
+          <h2>Compare RGD with each description layer directly.</h2>
+        </div>
+        <div className="comparison-link-grid">
+          {[
+            ['/urdf-vs-rgd', 'URDF vs RGD', 'Robot structure vs semantic embodiment.'],
+            ['/usd-vs-rgd', 'USD vs RGD', 'Scene composition vs semantic embodiment.'],
+            ['/sdf-vs-rgd', 'SDF vs RGD', 'Simulation description vs semantic embodiment.'],
+          ].map(([href, title, copy]) => (
+            <a href={href} key={href}>
+              <span>COMPARE</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <strong>Open comparison →</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="shell warning-panel compact-warning">
         <span>OPENRGD POSITION</span>
         <h2>Complement, do not collapse.</h2>

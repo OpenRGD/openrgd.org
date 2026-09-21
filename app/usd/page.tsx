@@ -22,7 +22,7 @@ export default function UsdPage() {
       ]}
       related={[
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare USD with URDF, SDF and RGD.' },
-        { href: '/rgd', title: 'RGD', copy: 'Semantic embodiment context that can coexist with scene description.' },
+        { href: '/usd-vs-rgd', title: 'USD vs RGD', copy: 'Compare scene composition with semantic embodiment directly.' },
         { href: '/robot-description', title: 'Robot Description', copy: 'Why structural and scene evidence are not the whole semantic story.' },
       ]}
     >

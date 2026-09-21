@@ -23,6 +23,7 @@ export default function RgdPage() {
       related={[
         { href: '/openrgd', title: 'OpenRGD', copy: 'The project, standard, toolchain and governance ecosystem around RGD.' },
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'See RGD beside URDF, USD and SDF.' },
+        { href: '/urdf-vs-rgd', title: 'URDF vs RGD', copy: 'Structural robot description compared with semantic embodiment.' },
         { href: '/architecture', title: 'Architecture', copy: 'Explore the seven semantic domains and authority model.' },
       ]}
     >

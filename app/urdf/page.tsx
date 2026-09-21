@@ -21,7 +21,7 @@ export default function UrdfPage() {
       ]}
       related={[
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare URDF with USD, SDF and RGD by responsibility.' },
-        { href: '/rgd', title: 'RGD', copy: 'How structural evidence can become part of a broader semantic embodiment graph.' },
+        { href: '/urdf-vs-rgd', title: 'URDF vs RGD', copy: 'Compare structural robot modeling with semantic embodiment directly.' },
         { href: '/interoperability', title: 'Interoperability', copy: 'Where URDF fits in a layered robotics stack.' },
       ]}
     >

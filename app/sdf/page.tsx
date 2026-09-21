@@ -21,7 +21,7 @@ export default function SdfPage() {
       ]}
       related={[
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare SDF with URDF, USD and RGD.' },
-        { href: '/rgd', title: 'RGD', copy: 'Semantic embodiment context alongside simulation-oriented description.' },
+        { href: '/sdf-vs-rgd', title: 'SDF vs RGD', copy: 'Compare simulation description with semantic embodiment directly.' },
         { href: '/interoperability', title: 'Interoperability', copy: 'How simulation descriptions coexist with semantic and runtime layers.' },
       ]}
     >
