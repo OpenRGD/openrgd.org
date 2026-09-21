@@ -1,5 +1,7 @@
 import DomainExplorer from '@/components/domain-explorer'
 import SharedKnowledge from '@/components/shared-knowledge'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 
 const domains = [
   { code: '00', name: 'Core', copy: 'Coordination, manifests and kernel metadata.', maturity: 'foundation' },
@@ -44,24 +46,7 @@ const terminalText =
 export default async function HomePage() {
   return (
     <main>
-      <header className="topbar intro intro-1">
-        <a className="brand" href="#" aria-label="OpenRGD home">
-          <span className="brand-mark">RGD</span>
-          <span className="brand-name">OpenRGD</span>
-        </a>
-
-        <nav className="nav" aria-label="Primary navigation">
-          <a href="#architecture">Architecture</a>
-          <a href="#domains">Domains</a>
-          <a href="#knowledge">Knowledge</a>
-          <a href="#ecosystem">Ecosystem</a>
-          <a href="/blog">Blog</a>
-          <a href="#workflow">Workflow</a>
-          <a href="#boundary">Runtime boundary</a>
-        </nav>
-
-        <a className="github-link" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </header>
+      <SiteHeader intro />
 
       <section className="hero shell">
         <div className="hero-copy">
@@ -224,12 +209,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="shell footer-inner">
-          <div><strong>OpenRGD</strong><span>Robot Graph Definition</span></div>
-          <div className="footer-meta"><a href="/blog">Blog</a><a href="https://docs.openrgd.org" target="_blank" rel="noreferrer">Docs</a><a href="https://studio.openrgd.org" target="_blank" rel="noreferrer">Studio</a><span>MIT licensed</span><span>Human-governed</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   )
 }

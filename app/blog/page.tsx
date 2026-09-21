@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -9,18 +11,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="blog-page">
-      <header className="topbar">
-        <a className="brand" href="/" aria-label="OpenRGD home">
-          <span className="brand-mark">RGD</span>
-          <span className="brand-name">OpenRGD</span>
-        </a>
-        <nav className="nav" aria-label="Blog navigation">
-          <a href="/">Home</a>
-          <a href="/#architecture">Architecture</a>
-          <a href="/#ecosystem">Ecosystem</a>
-        </nav>
-        <a className="github-link" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </header>
+      <SiteHeader />
 
       <section className="blog-hero shell">
         <p className="kicker">OPENRGD BLOG</p>
@@ -53,6 +44,7 @@ export default function BlogPage() {
         <span>EDITORIAL PIPELINE</span>
         <p>No filler posts. The blog will publish source-backed engineering and research updates as they are ready.</p>
       </section>
+      <SiteFooter />
     </main>
   )
 }

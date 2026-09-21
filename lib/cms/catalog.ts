@@ -28,3 +28,18 @@ export async function listCatalogEntries(kind?: CatalogEntry['entity_kind'], lim
   if (error) throw error
   return (data || []) as CatalogEntry[]
 }
+
+export async function getCatalogEntry(kind: CatalogEntry['entity_kind'], slug: string): Promise<CatalogEntry | null> {
+  const supabase = createContentClient()
+  const { data, error } = await supabase
+    .schema('cms')
+    .rpc('fn_get_catalog_entry', {
+      p_site_code: siteCode,
+      p_entity_kind: kind,
+      p_slug: slug,
+    })
+
+  if (error) throw error
+  if (!data || typeof data !== 'object') return null
+  return data as CatalogEntry
+}

@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import { listCatalogEntries } from '@/lib/cms/catalog'
+import { catalogHref } from '@/lib/site/routes'
 
 const labels: Record<string, string> = {
   organization: 'ORGANIZATION',
@@ -25,7 +27,7 @@ export default async function SharedKnowledge() {
 
       <div className="knowledge-grid" data-reveal>
         {entries.map((entry) => (
-          <article className="knowledge-card" key={entry.entry_id}>
+          <Link className="knowledge-card" href={catalogHref(entry)} key={entry.entry_id}>
             <div className="knowledge-card-top">
               <span>{labels[entry.entity_kind] || entry.entity_kind}</span>
               {entry.featured ? <i>FEATURED</i> : null}
@@ -36,7 +38,7 @@ export default async function SharedKnowledge() {
               <span>canonical entity</span>
               <strong>{entry.slug}</strong>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>
