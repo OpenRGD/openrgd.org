@@ -19,14 +19,12 @@ export default function SiteHeader({ intro = false }: SiteHeaderProps) {
         />
       </a>
 
-      <nav className="nav" aria-label="Primary navigation">
+      <nav className="nav nav-primary" aria-label="Primary navigation">
         <a href="/openrgd">OpenRGD</a>
         <a href="/architecture">Architecture</a>
-        <a href="/spec">Spec</a>
+        <a href="/standards">Standards</a>
         <a href="/robots">Robots</a>
-        <a href="/organizations">Organizations</a>
-        <a href="/blog">Blog</a>
-        <a href="/docs">Docs</a>
+        <a href="/research">Research</a>
       </nav>
 
       <a className="github-link" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">
