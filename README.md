@@ -24,14 +24,21 @@ Not shared by default:
 - navigation;
 - site-specific summaries and positioning.
 
+## Shared database safety
+
+The Supabase project is shared with other applications. This website consumes the existing multi-site layers and must not treat the database as site-owned infrastructure.
+
+See [docs/SHARED_DATABASE_BOUNDARY.md](docs/SHARED_DATABASE_BOUNDARY.md).
+
 ## Visual direction
 
-The initial frontend explores a dark, research-grade, specification-first identity:
+The frontend uses a dark, research-grade, specification-first identity:
 - graphite surfaces;
 - cyan semantic accent;
 - monospace for machine-readable/stateful information;
 - visible maturity states;
-- architecture and runtime boundaries as first-class visual elements.
+- architecture and runtime boundaries as first-class visual elements;
+- restrained motion with reduced-motion support.
 
 ## Canonical technical source
 
