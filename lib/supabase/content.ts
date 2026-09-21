@@ -6,13 +6,15 @@ export function createContentClient() {
     process.env.SUPABASE_URL?.trim() ||
     process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()
 
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
+  const secretKey =
+    process.env.SUPABASE_SECRET_KEY?.trim() ||
+    process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
 
-  if (!url || !serviceRoleKey) {
-    throw new Error('Missing server-side Supabase URL or service role key')
+  if (!url || !secretKey) {
+    throw new Error('Missing server-side Supabase URL or secret key')
   }
 
-  return createClient(url, serviceRoleKey, {
+  return createClient(url, secretKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
