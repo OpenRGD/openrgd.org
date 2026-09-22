@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   title: 'Organizations',
   description: 'Organizations represented in the OpenRGD shared robotics knowledge layer.',
   alternates: { canonical: '/organizations' },
+  openGraph: {
+    type: 'website',
+    title: 'Organizations | OpenRGD',
+    description: 'Organizations represented in the OpenRGD shared robotics knowledge layer.',
+    url: 'https://openrgd.org/organizations',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'OpenRGD Organizations' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Organizations | OpenRGD',
+    description: 'Organizations represented in the OpenRGD shared robotics knowledge layer.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function OrganizationsPage() {

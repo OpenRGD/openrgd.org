@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   title: 'Robots',
   description: 'Robot platforms in the OpenRGD shared knowledge layer.',
   alternates: { canonical: '/robots' },
+  openGraph: {
+    type: 'website',
+    title: 'Robots | OpenRGD',
+    description: 'Robot platforms in the OpenRGD shared knowledge layer.',
+    url: 'https://openrgd.org/robots',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'OpenRGD Robot Knowledge' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Robots | OpenRGD',
+    description: 'Robot platforms in the OpenRGD shared knowledge layer.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function RobotsPage() {
