@@ -25,6 +25,7 @@ export default function SiteHeader({ intro = false }: SiteHeaderProps) {
         <a href="/standards">Standards</a>
         <a href="/robots">Robots</a>
         <a href="/research">Research</a>
+        <a href="/docs">Developers</a>
       </nav>
 
       <a className="github-link" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">
