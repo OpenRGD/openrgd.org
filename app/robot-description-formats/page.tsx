@@ -1,13 +1,34 @@
 import type { Metadata } from 'next'
+import ReferenceProvenance from '@/components/reference-provenance'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON HUB',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current ROS / OpenUSD / SDFormat / MuJoCo references + OpenRGD 0.2.0',
+  evidenceBoundary: 'Responsibility map, not a ranking. The formats solve different layers and conversion can be lossy.',
+  pageUrl: 'https://openrgd.org/robot-description-formats',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+const provenanceSources = [
+  { label: 'ROS URDF', href: 'https://docs.ros.org/en/rolling/p/urdf' },
+  { label: 'OpenUSD', href: 'https://openusd.org/dev/index.html' },
+  { label: 'SDFormat', href: 'https://sdformat.org/spec' },
+  { label: 'MuJoCo MJCF', href: 'https://mujoco.readthedocs.io/en/latest/XMLreference.html' },
+  { label: 'OpenRGD Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
+]
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Robot Description Formats',
   description: 'Compare URDF, OpenUSD, SDFormat, MJCF and RGD by responsibility: robot structure, scene composition, simulation, dynamic-system modeling and semantic embodiment.',
-  alternates: { canonical: '/robot-description-formats' },
-}
+  canonicalPath: '/robot-description-formats',
+  record: citationRecord,
+})
 
 export default function RobotDescriptionFormatsPage() {
   return (
@@ -21,6 +42,13 @@ export default function RobotDescriptionFormatsPage() {
           The important question is not “which format wins?” — it is “which layer owns which responsibility?”
         </p>
       </section>
+
+      <ReferenceProvenance
+        title="Robot Description Formats"
+        description="Compare URDF, OpenUSD, SDFormat, MJCF and RGD by responsibility: robot structure, scene composition, simulation, dynamic-system modeling and semantic embodiment."
+        record={citationRecord}
+        sources={provenanceSources}
+      />
 
       <section className="shell content-section">
         <div className="content-section-head">

@@ -1,12 +1,31 @@
 import type { Metadata } from 'next'
+import ReferenceProvenance from '@/components/reference-provenance'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'STANDARD HUB · DRAFT',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenRGD standard bundle 0.2.0',
+  evidenceBoundary: 'This website is explanatory; spec/ and spec/manifest.jsonc in the canonical repository remain the normative source.',
+  pageUrl: 'https://openrgd.org/spec',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/tree/main/spec',
+}
+
+const provenanceSources = [
+  { label: 'OpenRGD spec/', href: 'https://github.com/OpenRGD/openrgd/tree/main/spec' },
+  { label: 'OpenRGD manifest', href: 'https://github.com/OpenRGD/openrgd/blob/main/spec/manifest.jsonc' },
+  { label: 'OpenRGD VERSIONING', href: 'https://github.com/OpenRGD/openrgd/blob/main/VERSIONING.md' },
+]
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Specification',
   description: 'The OpenRGD specification source, current version axes, maturity and integrity model.',
-  alternates: { canonical: '/spec' },
-}
+  canonicalPath: '/spec',
+  record: citationRecord,
+})
 
 export default function SpecPage() {
   return (
@@ -24,6 +43,13 @@ export default function SpecPage() {
           <a className="button ghost" href="https://github.com/OpenRGD/openrgd/blob/main/VERSIONING.md" target="_blank" rel="noreferrer">Versioning ↗</a>
         </div>
       </section>
+
+      <ReferenceProvenance
+        title="Specification"
+        description="The OpenRGD specification source, current version axes, maturity and integrity model."
+        record={citationRecord}
+        sources={provenanceSources}
+      />
 
       <section className="shell content-section">
         <div className="content-section-head"><p className="kicker">CURRENT AXES</p><h2>Three version lines, intentionally independent.</h2></div>

@@ -1,13 +1,32 @@
 import type { Metadata } from 'next'
+import ReferenceProvenance from '@/components/reference-provenance'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import { WorkStatus } from '@/components/work-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'ARCHITECTURE REFERENCE · MIXED MATURITY',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'STRUCTURE.md + standard bundle 0.2.0 + Agent Contracts 0.1.0 candidate',
+  evidenceBoundary: 'Architecture hub distinguishes adopted repository boundaries from candidate contracts and research work; the website is not normative.',
+  pageUrl: 'https://openrgd.org/architecture',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+}
+
+const provenanceSources = [
+  { label: 'OpenRGD STRUCTURE', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
+  { label: 'OpenRGD manifest', href: 'https://github.com/OpenRGD/openrgd/blob/main/spec/manifest.jsonc' },
+  { label: 'Agent Contracts status', href: 'https://github.com/OpenRGD/openrgd/blob/main/contracts/agent/v0.1.0/STATUS.json' },
+]
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Architecture',
   description: 'OpenRGD architecture: authority model, semantic domains, runtime boundaries, agent contracts, Synapses and temporal ownership.',
-  alternates: { canonical: '/architecture' },
-}
+  canonicalPath: '/architecture',
+  record: citationRecord,
+})
 
 const domains = [
   ['00', 'Core', 'Coordination, manifests and kernel metadata.'],
@@ -40,6 +59,13 @@ export default function ArchitecturePage() {
           OpenRGD separates canonical source, derived artifacts, cognitive intent and physical execution so that each layer has explicit ownership.
         </p>
       </section>
+
+      <ReferenceProvenance
+        title="Architecture"
+        description="OpenRGD architecture: authority model, semantic domains, runtime boundaries, agent contracts, Synapses and temporal ownership."
+        record={citationRecord}
+        sources={provenanceSources}
+      />
 
       <section className="shell content-section">
         <div className="content-section-head">

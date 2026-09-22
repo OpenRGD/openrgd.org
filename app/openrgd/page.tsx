@@ -1,13 +1,32 @@
 import type { Metadata } from 'next'
+import ReferenceProvenance from '@/components/reference-provenance'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'STANDARD BUNDLE 0.2.0 · DRAFT',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenRGD standard 0.2.0 · rgd toolchain 0.1.1 · Agent Contracts 0.1.0',
+  evidenceBoundary: 'Project and standard definition; maturity varies by artifact and domain, and the canonical repository remains non-actuating.',
+  pageUrl: 'https://openrgd.org/openrgd',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd',
+}
+
+const provenanceSources = [
+  { label: 'OpenRGD README', href: 'https://github.com/OpenRGD/openrgd' },
+  { label: 'OpenRGD STRUCTURE', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
+  { label: 'OpenRGD VERSIONING', href: 'https://github.com/OpenRGD/openrgd/blob/main/VERSIONING.md' },
+]
+
+export const metadata: Metadata = referenceMetadata({
   title: 'OpenRGD — Robot Graph Definition',
   description: 'OpenRGD defines Robot Graph Definition: an open, machine-readable semantic representation for cognitive embodiment, robot interoperability and grounded AI context.',
-  alternates: { canonical: '/openrgd' },
-}
+  canonicalPath: '/openrgd',
+  record: citationRecord,
+})
 
 const axes = [
   ['Standard bundle', '0.2.0', 'Draft'],
@@ -44,6 +63,13 @@ export default function OpenRGDPage() {
           <a className="button ghost" href="/rgd">Use the rgd toolchain</a>
         </div>
       </section>
+
+      <ReferenceProvenance
+        title="OpenRGD — Robot Graph Definition"
+        description="OpenRGD defines Robot Graph Definition: an open, machine-readable semantic representation for cognitive embodiment, robot interoperability and grounded AI context."
+        record={citationRecord}
+        sources={provenanceSources}
+      />
 
       <section className="shell content-split">
         <article>
