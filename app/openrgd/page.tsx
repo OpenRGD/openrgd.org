@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import FormatComparison from '@/components/format-comparison'
 
 export const metadata: Metadata = {
-  title: 'What is OpenRGD?',
-  description: 'OpenRGD is an open, machine-readable standard for cognitive embodiment and robot interoperability.',
+  title: 'OpenRGD — Robot Graph Definition',
+  description: 'OpenRGD defines Robot Graph Definition: an open, machine-readable semantic representation for cognitive embodiment, robot interoperability and grounded AI context.',
   alternates: { canonical: '/openrgd' },
 }
 
@@ -14,49 +15,97 @@ const axes = [
   ['Agent contracts', '0.1.0', 'Candidate'],
 ]
 
+const domains = [
+  ['00', 'Core', 'Identity, manifests, coordination and cross-domain orchestration.'],
+  ['01', 'Foundation', 'Physical body, hardware reality and source-supported evidence.'],
+  ['02', 'Operation', 'Operational constraints, safety and runtime validation context.'],
+  ['03', 'Agency', 'Capabilities, world-model context and action semantics.'],
+  ['04', 'Volition', 'Values, alignment and decision governance.'],
+  ['05', 'Evolution', 'Lifecycle, wear, adaptation and continuity.'],
+  ['06', 'Ether', 'Collective, social and inter-agent semantics.'],
+]
+
 export default function OpenRGDPage() {
   return (
     <main className="content-page">
       <SiteHeader />
+
       <section className="content-hero shell">
-        <p className="kicker">OPENRGD</p>
-        <h1>A semantic standard for cognitive embodiment.</h1>
+        <p className="kicker">OPENRGD · ROBOT GRAPH DEFINITION</p>
+        <h1>A machine-readable semantic representation for embodied systems.</h1>
         <p>
-          OpenRGD gives an AI system a structured, machine-readable description of a robot body,
-          its operational limits, capabilities, lifecycle and relationships with other agents.
+          OpenRGD is the project and open standard. Robot Graph Definition — RGD — is the modular
+          machine-readable representation it defines for describing a robot body, its constraints,
+          capabilities, provenance, lifecycle and higher-level embodiment context.
         </p>
         <div className="content-actions">
-          <a className="button primary" href="/spec">Read the spec</a>
+          <a className="button primary" href="/spec">Read the specification</a>
           <a className="button ghost" href="/architecture">Explore the architecture</a>
+          <a className="button ghost" href="/rgd">Use the rgd toolchain</a>
         </div>
       </section>
 
       <section className="shell content-split">
         <article>
-          <p className="kicker">WHAT IT IS</p>
-          <h2>A grounding layer between cognition and embodiment.</h2>
+          <p className="kicker">OPENRGD</p>
+          <h2>The standard, repository, governance and interoperability work.</h2>
           <p>
-            OpenRGD is designed to represent more than geometry. It can describe physical evidence,
-            operational constraints, declared capabilities, governance context and lifecycle state while preserving provenance.
+            OpenRGD owns the canonical specification source, authority model, maturity language,
+            cross-component contracts, reference tooling and the governance process around Robot Graph Definition.
           </p>
         </article>
         <article>
-          <p className="kicker">WHAT IT IS NOT</p>
-          <h2>Not a physical runtime. Not actuation permission.</h2>
+          <p className="kicker">RGD</p>
+          <h2>The machine-readable graph/profile representation.</h2>
           <p>
-            The canonical repository is deliberately non-actuating. A valid OpenRGD profile or a successful
-            <code> rgd boot </code> does not prove hardware readiness, safety or permission to move a robot.
+            An RGD profile can represent physical evidence, operational constraints, declared capabilities,
+            governance context and lifecycle state while preserving explicit boundaries between evidence,
+            enrichment and downstream physical execution.
           </p>
         </article>
       </section>
 
       <section className="shell content-section">
         <div className="content-section-head">
+          <p className="kicker">WHAT RGD ADDS</p>
+          <h2>Robot structure is evidence. Embodiment context goes further.</h2>
+        </div>
+        <div className="content-card-grid">
+          {[
+            ['Identity', 'Profile identity, manifests and integrity commitments.'],
+            ['Evidence', 'Physical facts can be imported while preserving source provenance.'],
+            ['Operation', 'Constraints and safety context stay explicit instead of hiding in runtime code.'],
+            ['Capabilities', 'Agency can declare what an embodiment can do and how actions are represented.'],
+            ['Lifecycle', 'Wear, adaptation and continuity can evolve without rewriting historical evidence.'],
+            ['Boundaries', 'Semantic context stops before hardware-specific execution authority begins.'],
+          ].map(([title,copy])=>(
+            <article className="content-card" key={title}><h3>{title}</h3><p>{copy}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">SEVEN DOMAINS</p>
+          <h2>One embodiment, decomposed into explicit semantic responsibility.</h2>
+        </div>
+        <div className="domain-stack">
+          {domains.map(([code,name,copy])=>(
+            <article className="domain" key={code}>
+              <div className="domain-code">{code}</div>
+              <div className="domain-body"><h3>{name}</h3><p>{copy}</p></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
           <p className="kicker">CURRENT ARTIFACT AXES</p>
-          <h2>Versioned independently by design.</h2>
+          <h2>Standard, toolchain and contracts are versioned independently.</h2>
         </div>
         <div className="data-list">
-          {axes.map(([artifact, version, status]) => (
+          {axes.map(([artifact,version,status])=>(
             <div className="data-row" key={artifact}>
               <span>{artifact}</span>
               <strong>{version}</strong>
@@ -65,37 +114,39 @@ export default function OpenRGDPage() {
           ))}
         </div>
         <p className="content-note">
-          Standard, toolchain and contract versions are separate. Matching numbers do not imply compatibility or equivalent maturity.
+          Matching version numbers never imply equivalent maturity or compatibility.
+          The standard bundle, Python toolchain and agent contracts remain separate release axes.
         </p>
       </section>
 
       <section className="shell content-section">
         <div className="content-section-head">
-          <p className="kicker">CANONICAL RESPONSIBILITY</p>
-          <h2>Source, contracts and tooling — with explicit boundaries.</h2>
+          <p className="kicker">COMPLEMENTARY LAYERS</p>
+          <h2>RGD is designed to sit beside established robot-description technologies.</h2>
         </div>
-        <div className="content-card-grid">
-          {[
-            ['Specification', 'Normative modular JSONC source under spec/.'],
-            ['Integrity', 'Canonical hashing and deterministic compilation.'],
-            ['Import', 'Evidence-only extraction from supported robot descriptions.'],
-            ['Interop', 'Static exporters and explicit cross-component contracts.'],
-            ['Governance', 'Human accountability, maturity and release rules.'],
-            ['History', 'Preserved evidence without rewriting the past to fit current decisions.'],
-          ].map(([title, copy]) => (
-            <article className="content-card" key={title}><h3>{title}</h3><p>{copy}</p></article>
-          ))}
-        </div>
+        <FormatComparison />
+      </section>
+
+      <section className="shell warning-panel">
+        <span>NON-ACTUATING BOUNDARY</span>
+        <h2>A valid RGD profile is context, not permission to move a robot.</h2>
+        <p>
+          The canonical repository does not ship a physical embodied runtime or Body Adapter.
+          Validation, compilation and grounding context do not prove hardware compatibility,
+          operational safety or execution authorization.
+        </p>
       </section>
 
       <section className="shell content-cta">
         <p className="kicker">NEXT</p>
-        <h2>Understand how the graph is structured.</h2>
+        <h2>Understand the standard, then use the reference tooling against real robot evidence.</h2>
         <div className="content-actions">
-          <a className="button primary" href="/architecture">Architecture →</a>
+          <a className="button primary" href="/spec">Specification →</a>
+          <a className="button ghost" href="/docs">Developers →</a>
           <a className="button ghost" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">Canonical repository ↗</a>
         </div>
       </section>
+
       <SiteFooter />
     </main>
   )

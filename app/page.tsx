@@ -140,7 +140,7 @@ export default async function HomePage() {
             <h2>One robot can exist across several description layers.</h2>
           </div>
           <p>
-            URDF, USD, SDF and RGD overlap on physical facts, but each has a different center of responsibility.
+            URDF, USD, SDF, MJCF and RGD overlap on physical facts, but each has a different center of responsibility.
           </p>
         </div>
         <div className="formats-home-grid" data-reveal>
@@ -148,7 +148,7 @@ export default async function HomePage() {
             ['/urdf', 'URDF', 'Robot structure'],
             ['/usd', 'USD', 'Composable scenes'],
             ['/sdf', 'SDF', 'Simulation worlds'],
-            ['/rgd', 'RGD', 'Semantic embodiment'],
+            ['/openrgd', 'RGD', 'Semantic embodiment'],
           ].map(([href, title, copy]) => (
             <a href={href} className="formats-home-card" key={href}>
               <span>{title}</span>

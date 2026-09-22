@@ -41,7 +41,7 @@ export default function RobotDescriptionFormatsPage() {
             ['USD', 'Strong for scalable scenegraphs, composition and rich scene/physics data.', '/usd'],
             ['SDF', 'Strong for simulation-oriented robots, models, sensors and whole environments.', '/sdf'],
             ['MJCF', 'MuJoCo-native dynamic modeling with rich simulator-specific bodies, actuators, tendons and sensors.', '/mjcf'],
-            ['RGD', 'Focused on semantic embodiment, provenance, operational context and machine-readable grounding.', '/rgd'],
+            ['RGD', 'Focused on semantic embodiment, provenance, operational context and machine-readable grounding.', '/openrgd'],
           ].map(([title, copy, href]) => (
             <a className="content-card" href={href} key={title}>
               <h3>{title}</h3>

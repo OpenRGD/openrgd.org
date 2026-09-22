@@ -42,8 +42,8 @@ export default function DocsPage() {
           verifies profile integrity, builds deterministic non-actuating context and generates static interoperability artifacts.
         </p>
         <div className="content-actions">
-          <a className="button primary" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">Open repository ↗</a>
-          <a className="button ghost" href="https://github.com/OpenRGD/openrgd/blob/main/CLI_GUIDE.md" target="_blank" rel="noreferrer">CLI reference ↗</a>
+          <a className="button primary" href="/rgd">Explore the rgd toolchain</a>
+          <a className="button ghost" href="https://github.com/OpenRGD/openrgd" target="_blank" rel="noreferrer">Open repository ↗</a>
         </div>
       </section>
 

@@ -1,70 +1,133 @@
 import type { Metadata } from 'next'
-import { ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
-import FormatComparison from '@/components/format-comparison'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'RGD — Robot Graph Definition',
-  description: 'RGD is the modular semantic embodiment representation defined by OpenRGD, complementing structural and simulation-oriented robot description formats.',
+  title: 'rgd CLI & Toolchain',
+  description: 'The rgd Python toolchain validates OpenRGD profiles, imports source-supported robot evidence, builds deterministic non-actuating context and generates static interoperability artifacts.',
   alternates: { canonical: '/rgd' },
 }
 
-export default function RgdPage() {
+const commands = [
+  ['init','rgd init Robot','Materialize a project from the packaged default profile and recalculate its source-tree commitment.'],
+  ['import','rgd import robot.urdf --out partial-robot','Extract source-supported Foundation evidence from URDF or the supported USDA subset.'],
+  ['hash','rgd hash','Verify OPENRGD_SOURCE_TREE_SHA256_V1 or intentionally update it with --write.'],
+  ['check','rgd check --output json','Validate canonical structure, source integrity and selected JSONC modules.'],
+  ['boot','rgd boot --output json','Build OPENRGD_NON_ACTUATING_GROUNDING_CONTEXT.'],
+  ['compile','rgd compile-spec','Generate one deterministic machine bundle from the verified source tree.'],
+  ['export','rgd export ros2 --out export/ros2','Generate deterministic, static ROS 2 interoperability artifacts.'],
+]
+
+export default function RgdToolchainPage() {
   return (
-    <ConceptPage
-      eyebrow="RGD"
-      title="Robot Graph Definition: semantic embodiment as machine-readable context."
-      lead="RGD is the modular representation defined by OpenRGD for describing a robot body, its operational limits, capabilities, provenance, lifecycle and higher-level semantic context."
-      sources={[
-        { label: 'OpenRGD — README', href: 'https://github.com/OpenRGD/openrgd' },
-        { label: 'OpenRGD — Canonical structure', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
-        { label: 'OpenRGD — Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
-        { label: 'OpenRGD — Versioning', href: 'https://github.com/OpenRGD/openrgd/blob/main/VERSIONING.md' },
-      ]}
-      related={[
-        { href: '/openrgd', title: 'OpenRGD', copy: 'The project, standard, toolchain and governance ecosystem around RGD.' },
-        { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'See RGD beside URDF, USD and SDF.' },
-        { href: '/urdf-vs-rgd', title: 'URDF vs RGD', copy: 'Structural robot description compared with semantic embodiment.' },
-        { href: '/architecture', title: 'Architecture', copy: 'Explore the seven semantic domains and authority model.' },
-      ]}
-    >
-      <ConceptSection kicker="RGD VS OPENRGD" title="The representation and the ecosystem are related, but not identical.">
+    <main className="content-page">
+      <SiteHeader />
+
+      <section className="content-hero shell">
+        <div className="developer-meta">
+          <p className="kicker">RGD TOOLCHAIN</p>
+          <span>PYTHON 0.1.1 · WORKING ALPHA</span>
+        </div>
+        <h1>The reference CLI for working with OpenRGD profiles.</h1>
         <p>
-          OpenRGD is the open standard, canonical repository, tooling, governance model and interoperability work.
-          RGD — Robot Graph Definition — is the machine-readable graph/profile representation that the standard defines.
+          <code>rgd</code> is the Python toolchain shipped by the canonical OpenRGD repository.
+          It manages profile materialization, integrity verification, evidence import,
+          deterministic compilation and static interoperability generation.
         </p>
-      </ConceptSection>
+        <div className="content-actions">
+          <a className="button primary" href="/docs">Developer guides</a>
+          <a className="button ghost" href="https://github.com/OpenRGD/openrgd/blob/main/CLI_GUIDE.md" target="_blank" rel="noreferrer">CLI reference ↗</a>
+        </div>
+      </section>
 
-      <ConceptSection kicker="SEMANTIC SCOPE" title="RGD starts where a conventional robot description often stops.">
-        <ConceptGrid
-          items={[
-            { label: '00', title: 'Core', copy: 'Identity, coordination, manifests and kernel metadata.' },
-            { label: '01', title: 'Foundation', copy: 'Physical body, structure, hardware and source-supported evidence.' },
-            { label: '02', title: 'Operation', copy: 'Operational limits, runtime constraints and safety context.' },
-            { label: '03', title: 'Agency', copy: 'Declared capabilities, world-model context and action semantics.' },
-            { label: '04', title: 'Volition', copy: 'Values, alignment and decision-governance context.' },
-            { label: '05–06', title: 'Evolution + Ether', copy: 'Lifecycle, adaptation, continuity and collective/inter-agent semantics.' },
-          ]}
-        />
-      </ConceptSection>
+      <section className="shell content-split">
+        <article>
+          <p className="kicker">RGD REPRESENTATION</p>
+          <h2>Defined by OpenRGD.</h2>
+          <p>
+            Robot Graph Definition is the semantic profile/graph representation defined by the standard.
+            Read the conceptual and standard-level definition on <a href="/openrgd">/openrgd</a>.
+          </p>
+        </article>
+        <article>
+          <p className="kicker">rgd TOOLCHAIN</p>
+          <h2>Implemented as reference Python tooling.</h2>
+          <p>
+            The lowercase <code>rgd</code> command works with OpenRGD source trees and derived artifacts.
+            Toolchain versioning is independent from the standard bundle and candidate contracts.
+          </p>
+        </article>
+      </section>
 
-      <ConceptSection kicker="SOURCE EVIDENCE" title="RGD can ingest evidence without pretending the source knows more than it does.">
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">COMMAND SURFACE</p>
+          <h2>One toolchain, explicit guarantees for each operation.</h2>
+        </div>
+        <div className="toolchain-command-list">
+          {commands.map(([name,command,copy])=>(
+            <article key={name}>
+              <span>{name}</span>
+              <code>{command}</code>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">VERIFIED LIFECYCLE</p>
+          <h2>The current CI exercises a non-actuating end-to-end path.</h2>
+        </div>
+        <div className="developer-lifecycle">
+          {[
+            ['01','Import','URDF / USDA'],
+            ['02','Enrich','explicit seed'],
+            ['03','Hash','source integrity'],
+            ['04','Check','profile validation'],
+            ['05','Boot','grounding context'],
+            ['06','Compile','machine bundle'],
+            ['07','Export','static ROS 2'],
+          ].map(([n,title,value])=>(
+            <div key={n}><span>{n}</span><strong>{title}</strong><code>{value}</code></div>
+          ))}
+        </div>
+      </section>
+
+      <section className="shell warning-panel">
+        <span>TOOLCHAIN BOUNDARY</span>
+        <h2>The CLI is deliberately non-actuating.</h2>
         <p>
-          The current OpenRGD toolchain can import supported evidence from URDF and a narrow USDA subset into partial Foundation modules.
-          Identity, safety, governance, cognition and hardware authorization are not inferred from those files.
+          <code>rgd check</code> does not assess hardware readiness or operational safety.
+          <code>rgd boot</code> explicitly records physical execution as not assessed and not authorized.
+          Static ROS 2 export does not launch middleware or issue actuator commands.
         </p>
-      </ConceptSection>
+      </section>
 
-      <ConceptSection kicker="NON-ACTUATING" title="A valid graph is context, not motion authority.">
-        <p>
-          The canonical repository deliberately does not ship a physical runtime.
-          Integrity checks, compilation and boot produce validated context and derived artifacts,
-          but physical execution remains the responsibility of downstream runtimes and body adapters.
-        </p>
-      </ConceptSection>
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">IMPLEMENTED GUIDES</p>
+          <h2>Use the tooling against real source evidence.</h2>
+        </div>
+        <div className="developer-guide-grid">
+          {[
+            ['/docs/import-urdf','Import URDF','Extract supported robot evidence without inventing missing knowledge.'],
+            ['/docs/import-usd','Import USD / USDA','Use the auditable text USDA / UsdPhysics subset.'],
+            ['/docs/validation','Validation','Understand hash, check and non-actuating boot.'],
+            ['/docs/export-ros2','Export ROS 2','Generate deterministic static interoperability artifacts.'],
+          ].map(([href,title,copy],index)=>(
+            <a href={href} key={href}>
+              <span>{String(index+1).padStart(2,'0')}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <strong>Read guide →</strong>
+            </a>
+          ))}
+        </div>
+      </section>
 
-      <ConceptSection kicker="COMPARE" title="RGD is designed to sit beside, not erase, established description formats.">
-        <FormatComparison />
-      </ConceptSection>
-    </ConceptPage>
+      <SiteFooter />
+    </main>
   )
 }

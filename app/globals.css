@@ -3339,3 +3339,43 @@ body > main {
     gap: 8px;
   }
 }
+
+
+/* rgd toolchain page */
+.toolchain-command-list {
+  border-top: 1px solid var(--line);
+}
+
+.toolchain-command-list article {
+  min-height: 94px;
+  display: grid;
+  grid-template-columns: 100px minmax(240px,.9fr) 1.4fr;
+  gap: 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.toolchain-command-list span {
+  color: var(--accent);
+  font: 700 9px/1 ui-monospace, monospace;
+}
+
+.toolchain-command-list code {
+  color: #c3ced8;
+  font: 600 11px/1.5 ui-monospace, monospace;
+}
+
+.toolchain-command-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .toolchain-command-list article {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-block: 18px;
+  }
+}

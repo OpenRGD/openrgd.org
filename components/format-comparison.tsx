@@ -29,7 +29,7 @@ const rows = [
   },
   {
     format: 'RGD',
-    href: '/rgd',
+    href: '/openrgd',
     responsibility: 'Semantic embodiment graph',
     strength: 'Identity, physical evidence, operational constraints, capability semantics, provenance and lifecycle context.',
     boundary: 'Does not replace scene composition, a physics engine, middleware or a physical runtime.',

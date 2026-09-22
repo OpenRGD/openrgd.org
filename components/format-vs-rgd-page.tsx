@@ -47,7 +47,7 @@ export function FormatVsRgdPage({
         <div className="comparison-pair">
           <a href={formatHref}>{formatName}</a>
           <span>+</span>
-          <a href="/rgd">RGD</a>
+          <a href="/openrgd">RGD</a>
         </div>
       </section>
 
@@ -135,7 +135,7 @@ export function FormatVsRgdPage({
 
       <section className="shell comparison-nav">
         <a href="/robot-description-formats">← All description formats</a>
-        <a href="/rgd">RGD reference →</a>
+        <a href="/openrgd">RGD reference →</a>
       </section>
 
       <SiteFooter />

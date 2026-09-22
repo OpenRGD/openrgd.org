@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 const groups = [
   {
     eyebrow: 'OPENRGD STANDARD',
-    title: 'RGD and the canonical specification',
+    title: 'OpenRGD and the canonical specification',
     copy: 'The normative source, versioning model and machine-readable semantic embodiment representation.',
     links: [
+      ['/openrgd', 'OpenRGD / Robot Graph Definition'],
       ['/spec', 'Specification'],
-      ['/rgd', 'RGD'],
-      ['/docs', 'Getting started'],
+      ['/architecture', 'Architecture'],
     ],
   },
   {
