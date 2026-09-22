@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import CitationRecord, { type CitationRecordData } from '@/components/citation-record'
 
 type Source = {
   label: string
@@ -21,6 +22,7 @@ export function ConceptPage({
   sources,
   related,
   jsonLd,
+  citationRecord,
 }: {
   eyebrow: string
   title: string
@@ -29,6 +31,7 @@ export function ConceptPage({
   sources: Source[]
   related: Related[]
   jsonLd?: Record<string, unknown>
+  citationRecord?: CitationRecordData
 }) {
   return (
     <main className="content-page concept-page">
@@ -45,6 +48,8 @@ export function ConceptPage({
         <h1>{title}</h1>
         <p>{lead}</p>
       </section>
+
+      {citationRecord ? <CitationRecord record={citationRecord} /> : null}
 
       <article className="shell concept-article">
         {children}

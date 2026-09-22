@@ -78,3 +78,46 @@ export async function listRobotAssertions(robotModelId: string, limit = 100): Pr
   if (error) throw error
   return (data || []) as RobotAssertion[]
 }
+
+
+export type CatalogSiteMetadata = {
+  metadata_jsonb: Record<string, unknown>
+  updated_at: string | null
+}
+
+export async function getCatalogSiteMetadata(
+  kind: CatalogEntry['entity_kind'],
+  slug: string
+): Promise<CatalogSiteMetadata | null> {
+  const supabase = createContentClient()
+
+  const { data: site, error: siteError } = await supabase
+    .schema('cms')
+    .from('sites')
+    .select('id')
+    .eq('code', siteCode)
+    .maybeSingle()
+
+  if (siteError) throw siteError
+  if (!site?.id) return null
+
+  const { data, error } = await supabase
+    .schema('catalog')
+    .from('site_entries')
+    .select('metadata_jsonb,updated_at')
+    .eq('site_id', site.id)
+    .eq('entity_kind', kind)
+    .eq('slug', slug)
+    .maybeSingle()
+
+  if (error) throw error
+  if (!data) return null
+
+  return {
+    metadata_jsonb:
+      data.metadata_jsonb && typeof data.metadata_jsonb === 'object' && !Array.isArray(data.metadata_jsonb)
+        ? data.metadata_jsonb as Record<string, unknown>
+        : {},
+    updated_at: typeof data.updated_at === 'string' ? data.updated_at : null,
+  }
+}

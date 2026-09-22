@@ -23,6 +23,13 @@ export default function RobotIdentityProvenancePage() {
       title="A robot claim is useful only when you know which robot it describes and where the claim came from."
       lead="Identity answers what entity or configuration is being described. Provenance records the source, evidence path, verification state and derivation behind the claims attached to that identity."
       jsonLd={jsonLd}
+      citationRecord={{
+        maturity:'REFERENCE EXPLAINER + IMPLEMENTED SITE EVIDENCE MODEL',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'OpenRGD 0.2.0 integrity model + catalog assertion evidence model',
+        evidenceBoundary:'Source review, normalization and independent testing remain distinct evidence states.',
+        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/docs/reconciliation/EVIDENCE_SCOPE.md',
+      }}
       sources={[
         {label:'W3C — PROV-O: The PROV Ontology',href:'https://www.w3.org/TR/prov-o/'},
         {label:'OpenRGD — Canonical README',href:'https://github.com/OpenRGD/openrgd'},

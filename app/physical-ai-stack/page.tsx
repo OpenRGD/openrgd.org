@@ -23,6 +23,13 @@ export default function PhysicalAIStackPage() {
       title="Physical AI is a stack, not a single model."
       lead="A useful Physical AI architecture connects data, simulation, world understanding, robot policies, embodiment context, safety, control and hardware while keeping their responsibilities explicit."
       jsonLd={jsonLd}
+      citationRecord={{
+        maturity:'AUTHORITY EXPLAINER',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'Current NVIDIA / DeepMind public stack material + OpenRGD 0.2.0',
+        evidenceBoundary:'Vendor-neutral synthesis; not an industry-standard stack definition.',
+        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+      }}
       sources={[
         {label:'NVIDIA — Robotics Platform',href:'https://www.nvidia.com/en-us/industries/robotics/'},
         {label:'NVIDIA — Physical AI Learning',href:'https://docs.nvidia.com/learning/physical-ai/'},

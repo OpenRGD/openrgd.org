@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import RobotEvidencePanel from '@/components/robot-evidence-panel'
-import { getCatalogEntry, listRobotAssertions } from '@/lib/cms/catalog'
+import RobotDeveloperAssets from '@/components/robot-developer-assets'
+import { getCatalogEntry, getCatalogSiteMetadata, listRobotAssertions } from '@/lib/cms/catalog'
 
 export const dynamic = 'force-dynamic'
 
@@ -30,7 +31,10 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
   const row=await getCatalogEntry('robot_model',slug).catch(()=>null)
   if(!row) notFound()
 
-  const assertions=await listRobotAssertions(row.entity_id).catch(()=>[])
+  const [assertions,sitePublication]=await Promise.all([
+    listRobotAssertions(row.entity_id).catch(()=>[]),
+    getCatalogSiteMetadata('robot_model',slug).catch(()=>null),
+  ])
   const data=row.entity_data || {}
   const specs=(data.specs_jsonb && typeof data.specs_jsonb==='object' && !Array.isArray(data.specs_jsonb))
     ? data.specs_jsonb as Record<string,unknown> : {}
@@ -76,6 +80,10 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
         metadata={metadata}
         modelUpdatedAt={typeof data.updated_at === 'string' ? data.updated_at : null}
       />
+
+      {sitePublication ? (
+        <RobotDeveloperAssets metadata={sitePublication.metadata_jsonb} />
+      ) : null}
 
       <section className="shell warning-panel compact-warning">
         <span>OPENRGD CONTEXT</span>

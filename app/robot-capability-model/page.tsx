@@ -13,6 +13,13 @@ export default function RobotCapabilityModelPage() {
       eyebrow="ROBOT CAPABILITY MODEL"
       title="A body description says what exists. A capability model says what the embodiment can do."
       lead="Capability modeling bridges physical resources and task semantics: actions should be grounded in required sensors, actuators, preconditions, constraints and expected effects."
+      citationRecord={{
+        maturity:'MIXED — EXPERIMENTAL + CANDIDATE',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'Agency skill schema + CapabilityPlan / Somatic Contract 0.1.0',
+        evidenceBoundary:'Capability primitives exist at mixed maturity; no universal OpenRGD capability ontology is claimed stable.',
+        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/contracts/agent/v0.1.0/contracts/02_SOMATIC_TRANSLATION_CONTRACT.md',
+      }}
       sources={[
         {label:'IEEE 1872.1-2024 — Robot Task Representation',href:'https://standards.ieee.org/ieee/1872.1/6993/'},
         {label:'KnowRob — Semantic Robot Description Language',href:'https://knowrob.org/doc/srdl2_tutorial'},

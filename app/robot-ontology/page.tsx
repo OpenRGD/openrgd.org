@@ -13,6 +13,12 @@ export default function RobotOntologyPage() {
       eyebrow="ROBOT ONTOLOGY"
       title="A shared vocabulary is the first layer of semantic interoperability."
       lead="A robot ontology defines concepts, relations and axioms so robots, software and humans can refer to the same domain knowledge with less ambiguity."
+      citationRecord={{
+        maturity:'REFERENCE EXPLAINER',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'IEEE 1872 family + current P1872 project',
+        evidenceBoundary:'Explains existing ontology work and OpenRGD positioning; does not claim OpenRGD replaces IEEE ontology standards.',
+      }}
       sources={[
         {label:'IEEE 1872-2015 — Ontologies for Robotics and Automation',href:'https://standards.ieee.org/ieee/1872/5354/'},
         {label:'IEEE P1872 — Draft Ontologies for Robotics and Automation',href:'https://standards.ieee.org/ieee/1872/12250/'},

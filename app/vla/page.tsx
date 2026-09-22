@@ -23,6 +23,13 @@ export default function VlaPage() {
       title="A VLA turns multimodal context into robot action."
       lead="Vision-Language-Action models extend multimodal AI toward physical control: they consume visual and language context and produce actions or motor-control outputs for embodied systems."
       jsonLd={jsonLd}
+      citationRecord={{
+        maturity:'AUTHORITY EXPLAINER + OPENRGD CANDIDATE BOUNDARY',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'Current Gemini Robotics / GR00T public materials + Agent Contracts 0.1.0',
+        evidenceBoundary:'VLA is a model-family term; the OpenRGD ActionIntent boundary is candidate and non-normative.',
+        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/contracts/agent/v0.1.0/contracts/01_COGNITION_CONTRACT.md',
+      }}
       sources={[
         {label:'Google DeepMind — Gemini Robotics 2',href:'https://deepmind.google/models/gemini-robotics/vla/'},
         {label:'Google DeepMind — Gemini Robotics 2 release',href:'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/'},

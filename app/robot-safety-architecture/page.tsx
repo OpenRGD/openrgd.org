@@ -23,6 +23,13 @@ export default function RobotSafetyArchitecturePage() {
       title="Safety is a system property, not a model checkbox."
       lead="A robot safety architecture spans machine design, application integration, environment, semantic action validation, runtime constraints, control, fallback and evidence. No single AI model or semantic graph replaces those responsibilities."
       jsonLd={jsonLd}
+      citationRecord={{
+        maturity:'AUTHORITY EXPLAINER',
+        lastVerified:'22 Sep 2026',
+        sourceVersion:'ISO 10218-1:2025 / ISO 10218-2:2025 + Agent Contracts 0.1.0',
+        evidenceBoundary:'Architecture explainer only; not certification, conformity assessment or a replacement for applicable safety standards.',
+        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/docs/reconciliation/RUNTIME_BOUNDARY.md',
+      }}
       sources={[
         {label:'ISO 10218-1:2025 — Industrial robots',href:'https://www.iso.org/standard/73933.html'},
         {label:'ISO 10218-2:2025 — Industrial robot applications and cells',href:'https://www.iso.org/standard/73934.html'},
