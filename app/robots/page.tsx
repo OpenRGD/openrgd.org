@@ -13,10 +13,25 @@ export const metadata: Metadata = {
 
 export default async function RobotsPage() {
   const robots = await listCatalogEntries('robot_model', 100).catch(() => [])
+  const itemListJsonLd={
+    '@context':'https://schema.org',
+    '@type':'ItemList',
+    name:'OpenRGD Robot Knowledge',
+    itemListElement:robots.map((robot,index)=>({
+      '@type':'ListItem',
+      position:index+1,
+      name:robot.title,
+      url:'https://openrgd.org/robots/'+robot.slug,
+    })),
+  }
 
   return (
     <main className="content-page">
       <SiteHeader />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <section className="content-hero shell">
         <p className="kicker">ROBOT KNOWLEDGE</p>
         <h1>Embodiments, not marketing cards.</h1>

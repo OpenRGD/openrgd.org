@@ -13,10 +13,25 @@ export const metadata: Metadata = {
 
 export default async function OrganizationsPage() {
   const organizations = await listCatalogEntries('organization', 100).catch(() => [])
+  const itemListJsonLd={
+    '@context':'https://schema.org',
+    '@type':'ItemList',
+    name:'OpenRGD Organizations',
+    itemListElement:organizations.map((org,index)=>({
+      '@type':'ListItem',
+      position:index+1,
+      name:org.title,
+      url:'https://openrgd.org/organizations/'+org.slug,
+    })),
+  }
 
   return (
     <main className="content-page">
       <SiteHeader />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <section className="content-hero shell">
         <p className="kicker">ORGANIZATIONS</p>
         <h1>The companies and teams behind physical systems.</h1>

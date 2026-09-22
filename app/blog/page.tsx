@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Blog',
   description: 'Engineering notes, research updates, specification changes and development logs from OpenRGD.',
   alternates: { canonical: '/blog' },
+  robots: { index: false, follow: true },
 }
 
 export default function BlogPage() {
