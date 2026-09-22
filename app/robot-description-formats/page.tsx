@@ -76,6 +76,29 @@ export default function RobotDescriptionFormatsPage() {
         </div>
       </section>
 
+
+      <section className="shell content-section semantic-bridge">
+        <div className="content-section-head">
+          <p className="kicker">FORMATS → SEMANTICS</p>
+          <h2>A robot file tells you about structure. Semantic layers tell you what those facts mean together.</h2>
+        </div>
+        <div className="semantic-chain">
+          {[
+            ['/robot-description-formats','Description formats','Structure / scene / simulation evidence'],
+            ['/robot-ontology','Robot ontology','Shared concepts and relations'],
+            ['/robot-knowledge-graph','Knowledge graph','Concrete entities, assertions and provenance'],
+            ['/robot-capability-model','Capability model','What an embodiment can do under constraints'],
+          ].map(([href,title,copy],index)=>(
+            <a href={href} key={href}>
+              <span>{String(index+1).padStart(2,'0')}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <strong>→</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="shell warning-panel compact-warning">
         <span>OPENRGD POSITION</span>
         <h2>Complement, do not collapse.</h2>

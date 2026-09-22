@@ -32,6 +32,17 @@ const groups = [
     ],
   },
   {
+    eyebrow: 'SEMANTIC INTEROPERABILITY',
+    title: 'From description to machine-understandable embodiment',
+    copy: 'Ontology, knowledge graphs and capability models connect physical robot descriptions to higher-level reasoning and heterogeneous embodied systems.',
+    links: [
+      ['/robot-ontology', 'Robot Ontology'],
+      ['/robot-knowledge-graph', 'Robot Knowledge Graph'],
+      ['/robot-capability-model', 'Robot Capability Model'],
+      ['/interoperability', 'Robot Interoperability'],
+    ],
+  },
+  {
     eyebrow: 'COMPARISONS',
     title: 'Where RGD fits',
     copy: 'Direct comparisons that separate complementary responsibilities instead of forcing one format to own the entire stack.',

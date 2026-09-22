@@ -3018,3 +3018,68 @@ body > main {
   font-size: 13px;
   line-height: 1.7;
 }
+
+
+/* Semantic moat */
+.semantic-chain {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.semantic-chain a {
+  min-height: 230px;
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+  transition: background 240ms ease, transform 240ms cubic-bezier(.16,1,.3,1);
+}
+
+.semantic-chain a:last-child { border-right: 0; }
+
+.semantic-chain a:hover {
+  background: rgba(121,230,255,.025);
+  transform: translateY(-2px);
+}
+
+.semantic-chain span {
+  color: var(--accent);
+  font: 700 8px/1 ui-monospace, monospace;
+}
+
+.semantic-chain h3 {
+  margin: 56px 0 0;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.semantic-chain p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.semantic-chain strong {
+  margin-top: auto;
+  color: var(--accent);
+  font: 700 10px/1 ui-monospace, monospace;
+}
+
+@media (max-width: 980px) {
+  .semantic-chain { grid-template-columns: repeat(2,1fr); }
+  .semantic-chain a:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+  .semantic-chain a:first-child { border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 720px) {
+  .semantic-chain { grid-template-columns: 1fr; }
+  .semantic-chain a {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line);
+  }
+  .semantic-chain a:last-child { border-bottom: 0; }
+}

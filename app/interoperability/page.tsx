@@ -30,7 +30,8 @@ export default function InteroperabilityPage() {
       ]}
       related={[
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'See how URDF, USD, SDF and RGD divide responsibility.' },
-        { href: '/spec', title: 'OpenRGD Specification', copy: 'The normative model that defines semantic responsibility and maturity.' },
+        { href: '/robot-ontology', title: 'Robot Ontology', copy: 'Shared concepts and relations for semantic interoperability.' },
+        { href: '/robot-capability-model', title: 'Robot Capability Model', copy: 'Ground actions in body resources, prerequisites and constraints.' },
         { href: '/docs', title: 'Toolchain', copy: 'Import, verify, compile and export without crossing the actuation boundary.' },
       ]}
     >
