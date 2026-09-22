@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'KnowRob + IEEE 1872 family + OpenRGD.org evidence model',
+  evidenceBoundary: 'Reference synthesis; the OpenRGD.org site knowledge graph is editorial infrastructure and is not automatically normative OpenRGD specification.',
+  pageUrl: 'https://openrgd.org/robot-knowledge-graph',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Robot Knowledge Graph',
   description: 'A robot knowledge graph connects concrete robots, components, capabilities, tasks, evidence, provenance and environments using explicit relationships.',
-  alternates: { canonical: '/robot-knowledge-graph' },
-}
+  canonicalPath: '/robot-knowledge-graph',
+  record: citationRecord,
+})
 
 export default function RobotKnowledgeGraphPage() {
   return (
@@ -13,6 +25,7 @@ export default function RobotKnowledgeGraphPage() {
       eyebrow="ROBOT KNOWLEDGE GRAPH"
       title="Turn robot facts into connected, queryable evidence."
       lead="A robot knowledge graph instantiates concrete entities and relationships: which robot has which body, sensors, capabilities, source evidence, software, tasks and operational constraints."
+      citationRecord={citationRecord}
       sources={[
         {label:'KnowRob — Knowledge processing for robots',href:'https://www.knowrob.org/knowrob'},
         {label:'KnowRob — Important concepts',href:'https://knowrob.org/doc/important_concepts'},

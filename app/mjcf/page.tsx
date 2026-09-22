@@ -1,12 +1,24 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current MuJoCo modeling and MJCF XML documentation',
+  evidenceBoundary: 'Reference explainer; MJCF remains MuJoCo-native dynamic-system modeling and is not an OpenRGD semantic layer.',
+  pageUrl: 'https://openrgd.org/mjcf',
+  canonicalSource: 'https://mujoco.readthedocs.io/en/latest/XMLreference.html',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'MJCF — MuJoCo Modeling Format',
   description: 'MJCF is MuJoCo’s native XML modeling language for complex dynamical systems, simulation models, bodies, joints, actuators, sensors and physics.',
-  alternates: { canonical: '/mjcf' },
-}
+  canonicalPath: '/mjcf',
+  record: citationRecord,
+})
 
 export default function MjcfPage() {
   return (
@@ -14,6 +26,7 @@ export default function MjcfPage() {
       eyebrow="MJCF"
       title="MuJoCo’s native language for dynamic models."
       lead="MJCF is MuJoCo’s native XML-based modeling language. It is designed to describe complex dynamical systems and expose MuJoCo’s rich modeling features directly."
+      citationRecord={citationRecord}
       sources={[
         { label: 'MuJoCo — Modeling', href: 'https://mujoco.readthedocs.io/en/latest/modeling.html' },
         { label: 'MuJoCo — MJCF XML Reference', href: 'https://mujoco.readthedocs.io/en/latest/XMLreference.html' },

@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'AUTHORITY EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenRGD Static Export Guide + ros2_control + OpenUSD',
+  evidenceBoundary: 'Architecture explainer; description, semantic grounding, middleware, runtime and hardware remain independently owned layers.',
+  pageUrl: 'https://openrgd.org/interoperability',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_EXPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Interoperability',
   description: 'OpenRGD interoperability separates robot descriptions, semantic grounding, static exports, middleware, runtimes and hardware ownership.',
-  alternates: { canonical: '/interoperability' },
-}
+  canonicalPath: '/interoperability',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -23,6 +35,7 @@ export default function InteroperabilityPage() {
       title="Interoperability is not one universal file format."
       lead="A robust robotics stack needs explicit contracts between description, semantics, middleware, runtime execution and physical hardware. OpenRGD targets the semantic layer between them."
       jsonLd={jsonLd}
+      citationRecord={citationRecord}
       sources={[
         { label: 'OpenRGD — Static Export Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_EXPORT.md' },
         { label: 'ros2_control — Hardware Components', href: 'https://control.ros.org/kilted/doc/ros2_control/hardware_interface/doc/hardware_components_userdoc.html' },

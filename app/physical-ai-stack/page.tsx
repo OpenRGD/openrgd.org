@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'AUTHORITY EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current NVIDIA / DeepMind public stack material + OpenRGD 0.2.0',
+  evidenceBoundary: 'Vendor-neutral synthesis; not an industry-standard stack definition.',
+  pageUrl: 'https://openrgd.org/physical-ai-stack',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Physical AI Stack',
   description: 'A vendor-neutral Physical AI stack from data, simulation and models through embodiment grounding, runtime safety, control and hardware.',
-  alternates: { canonical: '/physical-ai-stack' },
-}
+  canonicalPath: '/physical-ai-stack',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -23,13 +35,7 @@ export default function PhysicalAIStackPage() {
       title="Physical AI is a stack, not a single model."
       lead="A useful Physical AI architecture connects data, simulation, world understanding, robot policies, embodiment context, safety, control and hardware while keeping their responsibilities explicit."
       jsonLd={jsonLd}
-      citationRecord={{
-        maturity:'AUTHORITY EXPLAINER',
-        lastVerified:'22 Sep 2026',
-        sourceVersion:'Current NVIDIA / DeepMind public stack material + OpenRGD 0.2.0',
-        evidenceBoundary:'Vendor-neutral synthesis; not an industry-standard stack definition.',
-        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
-      }}
+      citationRecord={citationRecord}
       sources={[
         {label:'NVIDIA — Robotics Platform',href:'https://www.nvidia.com/en-us/industries/robotics/'},
         {label:'NVIDIA — Physical AI Learning',href:'https://docs.nvidia.com/learning/physical-ai/'},

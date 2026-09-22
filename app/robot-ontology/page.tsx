@@ -1,11 +1,22 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'IEEE 1872 family + current P1872 project',
+  evidenceBoundary: 'Explains existing ontology work and OpenRGD positioning; does not claim OpenRGD replaces IEEE ontology standards.',
+  pageUrl: 'https://openrgd.org/robot-ontology',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Robot Ontology',
   description: 'Robot ontologies provide formal vocabularies for representing robots, autonomous systems, tasks, relations and reasoning across heterogeneous robotics systems.',
-  alternates: { canonical: '/robot-ontology' },
-}
+  canonicalPath: '/robot-ontology',
+  record: citationRecord,
+})
 
 export default function RobotOntologyPage() {
   return (
@@ -13,12 +24,7 @@ export default function RobotOntologyPage() {
       eyebrow="ROBOT ONTOLOGY"
       title="A shared vocabulary is the first layer of semantic interoperability."
       lead="A robot ontology defines concepts, relations and axioms so robots, software and humans can refer to the same domain knowledge with less ambiguity."
-      citationRecord={{
-        maturity:'REFERENCE EXPLAINER',
-        lastVerified:'22 Sep 2026',
-        sourceVersion:'IEEE 1872 family + current P1872 project',
-        evidenceBoundary:'Explains existing ontology work and OpenRGD positioning; does not claim OpenRGD replaces IEEE ontology standards.',
-      }}
+      citationRecord={citationRecord}
       sources={[
         {label:'IEEE 1872-2015 — Ontologies for Robotics and Automation',href:'https://standards.ieee.org/ieee/1872/5354/'},
         {label:'IEEE P1872 — Draft Ontologies for Robotics and Automation',href:'https://standards.ieee.org/ieee/1872/12250/'},

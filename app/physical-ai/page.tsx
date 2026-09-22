@@ -1,14 +1,26 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import { getCatalogEntry } from '@/lib/cms/catalog'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'AUTHORITY EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current NVIDIA Physical AI materials + OpenRGD architecture',
+  evidenceBoundary: 'Vendor-neutral concept explainer; OpenRGD does not claim ownership of the Physical AI category or replace models, simulators or controllers.',
+  pageUrl: 'https://openrgd.org/physical-ai',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Physical AI',
   description: 'Physical AI connects perception, reasoning, simulation, control and safety so autonomous machines can act in the physical world.',
-  alternates: { canonical: '/physical-ai' },
-}
+  canonicalPath: '/physical-ai',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -28,6 +40,7 @@ export default async function PhysicalAIPage() {
       title="Intelligence becomes physical when actions have consequences."
       lead={entry?.summary || 'AI systems that perceive, reason and act in the physical world through autonomous machines and robots.'}
       jsonLd={jsonLd}
+      citationRecord={citationRecord}
       sources={[
         { label: 'NVIDIA — What is Physical AI?', href: 'https://www.nvidia.com/en-gb/glossary/generative-physical-ai/' },
         { label: 'NVIDIA Robotics Platform', href: 'https://www.nvidia.com/en-us/industries/robotics/' },

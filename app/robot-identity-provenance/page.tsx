@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER + IMPLEMENTED SITE EVIDENCE MODEL',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenRGD 0.2.0 integrity model + catalog assertion evidence model',
+  evidenceBoundary: 'Source review, normalization and independent testing remain distinct evidence states.',
+  pageUrl: 'https://openrgd.org/robot-identity-provenance',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/docs/reconciliation/EVIDENCE_SCOPE.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Robot Identity & Provenance',
   description: 'Robot identity and provenance separate the entity being described from configuration identity, source evidence, verification state and derived interpretation.',
-  alternates: { canonical: '/robot-identity-provenance' },
-}
+  canonicalPath: '/robot-identity-provenance',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context':'https://schema.org',
@@ -23,13 +35,7 @@ export default function RobotIdentityProvenancePage() {
       title="A robot claim is useful only when you know which robot it describes and where the claim came from."
       lead="Identity answers what entity or configuration is being described. Provenance records the source, evidence path, verification state and derivation behind the claims attached to that identity."
       jsonLd={jsonLd}
-      citationRecord={{
-        maturity:'REFERENCE EXPLAINER + IMPLEMENTED SITE EVIDENCE MODEL',
-        lastVerified:'22 Sep 2026',
-        sourceVersion:'OpenRGD 0.2.0 integrity model + catalog assertion evidence model',
-        evidenceBoundary:'Source review, normalization and independent testing remain distinct evidence states.',
-        canonicalSource:'https://github.com/OpenRGD/openrgd/blob/main/docs/reconciliation/EVIDENCE_SCOPE.md',
-      }}
+      citationRecord={citationRecord}
       sources={[
         {label:'W3C — PROV-O: The PROV Ontology',href:'https://www.w3.org/TR/prov-o/'},
         {label:'OpenRGD — Canonical README',href:'https://github.com/OpenRGD/openrgd'},

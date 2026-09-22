@@ -1,12 +1,24 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current SDFormat project and specification documentation',
+  evidenceBoundary: 'Reference explainer; SDFormat is described in its simulation-oriented scope and is not presented as an OpenRGD implementation.',
+  pageUrl: 'https://openrgd.org/sdf',
+  canonicalSource: 'https://sdformat.org/spec',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'SDF / SDFormat',
   description: 'SDFormat is an XML format for describing robots, models, sensors, physics and full simulation environments.',
-  alternates: { canonical: '/sdf' },
-}
+  canonicalPath: '/sdf',
+  record: citationRecord,
+})
 
 export default function SdfPage() {
   return (
@@ -14,6 +26,7 @@ export default function SdfPage() {
       eyebrow="SDF / SDFORMAT"
       title="A simulation-oriented description of robots and worlds."
       lead="SDFormat is an XML format created for robot simulation, visualization and control contexts. It can describe robots, static and dynamic objects, sensors, lighting, terrain, physics and complete worlds."
+      citationRecord={citationRecord}
       sources={[
         { label: 'SDFormat — What is SDFormat?', href: 'https://sdformat.org/' },
         { label: 'SDFormat — Specification', href: 'https://sdformat.org/spec' },

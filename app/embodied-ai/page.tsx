@@ -1,14 +1,26 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import { getCatalogEntry } from '@/lib/cms/catalog'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'AUTHORITY EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'Current Google DeepMind robotics materials + OpenRGD architecture',
+  evidenceBoundary: 'Concept explainer; OpenRGD describes embodiment context and does not claim that the graph itself performs embodied reasoning.',
+  pageUrl: 'https://openrgd.org/embodied-ai',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Embodied AI',
   description: 'Embodied AI studies agents whose perception, reasoning and learning are coupled to a body interacting with an environment.',
-  alternates: { canonical: '/embodied-ai' },
-}
+  canonicalPath: '/embodied-ai',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -28,6 +40,7 @@ export default async function EmbodiedAIPage() {
       title="The body is part of the intelligence problem."
       lead={entry?.summary || 'AI systems that perceive, reason, learn and act through an embodiment interacting with an environment.'}
       jsonLd={jsonLd}
+      citationRecord={citationRecord}
       sources={[
         { label: 'Google DeepMind — Gemini Robotics', href: 'https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/' },
         { label: 'Google DeepMind — Gemini Robotics-ER 1.6', href: 'https://deepmind.google/blog/gemini-robotics-er-1-6/' },

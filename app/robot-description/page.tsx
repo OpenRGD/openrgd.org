@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptFlow, ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE SYNTHESIS',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS URDF + OpenUSD / UsdPhysics + OpenRGD import boundary',
+  evidenceBoundary: 'Concept synthesis; source description is treated as evidence and never as implicit runtime or actuation authorization.',
+  pageUrl: 'https://openrgd.org/robot-description',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'Robot Description',
   description: 'Robot description formats represent physical structure and simulation state. OpenRGD adds semantic grounding, provenance and explicit operational context.',
-  alternates: { canonical: '/robot-description' },
-}
+  canonicalPath: '/robot-description',
+  record: citationRecord,
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -23,6 +35,7 @@ export default function RobotDescriptionPage() {
       title="Describing a robot is not the same as describing its embodiment."
       lead="Traditional robot descriptions are excellent at representing structure, geometry and simulation-relevant properties. An AI system also needs explicit semantics about capability, limits, provenance and operational context."
       jsonLd={jsonLd}
+      citationRecord={citationRecord}
       sources={[
         { label: 'ROS — URDF documentation', href: 'https://docs.ros.org/en/rolling/p/urdf/' },
         { label: 'OpenUSD — UsdPhysics schema', href: 'https://openusd.org/dev/api/usd_physics_page_front.html' },

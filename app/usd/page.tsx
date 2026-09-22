@@ -1,12 +1,24 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenUSD documentation + UsdPhysics + OpenRGD Import Guide',
+  evidenceBoundary: 'Reference explainer; the current OpenRGD importer supports a narrow text USDA subset and is not a full OpenUSD composition engine.',
+  pageUrl: 'https://openrgd.org/usd',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'USD / OpenUSD',
   description: 'OpenUSD is a scalable scene-description and composition system; UsdPhysics extends it with rigid bodies, joints and simulation-oriented physics schemas.',
-  alternates: { canonical: '/usd' },
-}
+  canonicalPath: '/usd',
+  record: citationRecord,
+})
 
 export default function UsdPage() {
   return (
@@ -14,6 +26,7 @@ export default function UsdPage() {
       eyebrow="USD / OPENUSD"
       title="A composable scene description system, not just another robot file."
       lead="Universal Scene Description is designed to interchange, compose and non-destructively augment complex scene description. In robotics, UsdPhysics adds rigid-body and joint semantics useful for simulation and digital-world pipelines."
+      citationRecord={citationRecord}
       sources={[
         { label: 'OpenUSD — Introduction to USD', href: 'https://openusd.org/24.08/intro.html' },
         { label: 'OpenUSD — USD FAQ and file formats', href: 'https://openusd.org/dev/usdfaq.html' },

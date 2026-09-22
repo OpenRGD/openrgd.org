@@ -1,12 +1,24 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { ConceptGrid, ConceptPage, ConceptSection } from '@/components/concept-page'
 import FormatComparison from '@/components/format-comparison'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE EXPLAINER',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS 2 Rolling URDF documentation + OpenRGD Import Guide',
+  evidenceBoundary: 'Reference explainer; OpenRGD imports only source-supported URDF evidence and does not infer identity, safety, cognition or hardware authorization.',
+  pageUrl: 'https://openrgd.org/urdf',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'URDF',
   description: 'URDF is an XML format for representing robot models in ROS, centered on links, joints, geometry and physical properties.',
-  alternates: { canonical: '/urdf' },
-}
+  canonicalPath: '/urdf',
+  record: citationRecord,
+})
 
 export default function UrdfPage() {
   return (
@@ -14,6 +26,7 @@ export default function UrdfPage() {
       eyebrow="URDF"
       title="A compact structural model for robots."
       lead="URDF — Unified Robot Description Format — is an XML format used in ROS to represent a robot model, including its links, joints, geometry and selected physical properties."
+      citationRecord={citationRecord}
       sources={[
         { label: 'ROS 2 — URDF documentation', href: 'https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html' },
         { label: 'ROS — urdf package documentation', href: 'https://docs.ros.org/en/rolling/p/urdf' },
