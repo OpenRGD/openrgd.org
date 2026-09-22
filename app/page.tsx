@@ -1,7 +1,13 @@
+import type { Metadata } from 'next'
 import DomainExplorer from '@/components/domain-explorer'
 import SharedKnowledge from '@/components/shared-knowledge'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: { url: 'https://openrgd.org' },
+}
 
 const domains = [
   { code: '00', name: 'Core', copy: 'Coordination, manifests and kernel metadata.', maturity: 'foundation' },

@@ -12,6 +12,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.openrgd.org' }],
+        destination: 'https://openrgd.org/:path*',
+        permanent: true,
+      },
+      {
         source: '/blog',
         has: [{ type: 'host', value: 'blog.openrgd.org' }],
         destination: 'https://openrgd.org/blog',
