@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
-import CitationRecord, { type CitationRecordData } from '@/components/citation-record'
+import CitationRecord from '@/components/citation-record'
+import { buildReferenceJsonLd, type CitationRecordData } from '@/lib/seo/provenance'
 
 type Source = {
   label: string
@@ -33,13 +34,23 @@ export function ConceptPage({
   jsonLd?: Record<string, unknown>
   citationRecord?: CitationRecordData
 }) {
+  const structuredData = citationRecord
+    ? buildReferenceJsonLd({
+        title,
+        description: lead,
+        record: citationRecord,
+        sources,
+        base: jsonLd,
+      })
+    : jsonLd
+
   return (
     <main className="content-page concept-page">
       <SiteHeader />
-      {jsonLd ? (
+      {structuredData ? (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       ) : null}
 

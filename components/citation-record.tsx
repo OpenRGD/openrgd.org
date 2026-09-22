@@ -1,10 +1,6 @@
-export type CitationRecordData = {
-  maturity: string
-  lastVerified: string
-  sourceVersion: string
-  evidenceBoundary: string
-  canonicalSource?: string
-}
+import type { CitationRecordData } from '@/lib/seo/provenance'
+
+export type { CitationRecordData } from '@/lib/seo/provenance'
 
 export default function CitationRecord({ record }: { record: CitationRecordData }) {
   const rows = [
