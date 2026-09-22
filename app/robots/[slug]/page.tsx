@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
-import { getCatalogEntry } from '@/lib/cms/catalog'
+import RobotEvidencePanel from '@/components/robot-evidence-panel'
+import { getCatalogEntry, listRobotAssertions } from '@/lib/cms/catalog'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,9 +30,12 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
   const row=await getCatalogEntry('robot_model',slug).catch(()=>null)
   if(!row) notFound()
 
+  const assertions=await listRobotAssertions(row.entity_id).catch(()=>[])
   const data=row.entity_data || {}
   const specs=(data.specs_jsonb && typeof data.specs_jsonb==='object' && !Array.isArray(data.specs_jsonb))
     ? data.specs_jsonb as Record<string,unknown> : {}
+  const metadata=(data.metadata_jsonb && typeof data.metadata_jsonb==='object' && !Array.isArray(data.metadata_jsonb))
+    ? data.metadata_jsonb as Record<string,unknown> : {}
 
   const core=['model_code','category','status','height_mm','weight_kg','payload_kg','dof','battery_runtime_minutes','price_from']
     .filter((key)=>data[key]!==null && data[key]!==undefined)
@@ -40,7 +44,10 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
     <main className="content-page">
       <SiteHeader />
       <section className="entity-hero shell">
-        <p className="kicker">ROBOT</p>
+        <div className="entity-kicker-row">
+          <p className="kicker">ROBOT</p>
+          {data.is_verified === true ? <span className="entity-evidence-badge">SOURCE-VERIFIED PROFILE</span> : null}
+        </div>
         <h1>{row.title}</h1>
         <p>{row.summary}</p>
       </section>
@@ -64,9 +71,18 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
         </div>
       </section>
 
+      <RobotEvidencePanel
+        assertions={assertions}
+        metadata={metadata}
+        modelUpdatedAt={typeof data.updated_at === 'string' ? data.updated_at : null}
+      />
+
       <section className="shell warning-panel compact-warning">
         <span>OPENRGD CONTEXT</span>
-        <p>This page reuses canonical robot facts. OpenRGD-specific interpretation, interoperability notes and RGD projections will evolve independently from the shared master record.</p>
+        <p>
+          Canonical robot facts, assertion-level evidence and OpenRGD interpretation are separate layers.
+          A reviewed manufacturer claim is not automatically an independent test, and this page does not imply physical validation or RGD compatibility.
+        </p>
       </section>
       <SiteFooter />
     </main>

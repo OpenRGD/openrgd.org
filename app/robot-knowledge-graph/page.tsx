@@ -22,6 +22,7 @@ export default function RobotKnowledgeGraphPage() {
       related={[
         {href:'/robot-ontology',title:'Robot Ontology',copy:'The vocabulary and conceptual model behind graph semantics.'},
         {href:'/robot-capability-model',title:'Robot Capability Model',copy:'A focused model for capability, skill, action and prerequisites.'},
+        {href:'/robot-identity-provenance',title:'Robot Identity & Provenance',copy:'Keep entity identity, evidence, verification and derived interpretation distinct.'},
         {href:'/robots',title:'Robot Knowledge',copy:'Concrete robot entities already represented by OpenRGD.org.'},
       ]}
     >

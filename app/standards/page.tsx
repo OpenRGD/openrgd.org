@@ -39,6 +39,7 @@ const groups = [
       ['/robot-ontology', 'Robot Ontology'],
       ['/robot-knowledge-graph', 'Robot Knowledge Graph'],
       ['/robot-capability-model', 'Robot Capability Model'],
+      ['/robot-identity-provenance', 'Robot Identity & Provenance'],
       ['/interoperability', 'Robot Interoperability'],
     ],
   },
