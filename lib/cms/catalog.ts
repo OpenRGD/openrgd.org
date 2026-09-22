@@ -86,28 +86,15 @@ export type CatalogSiteMetadata = {
 }
 
 export async function getCatalogSiteMetadata(
-  kind: CatalogEntry['entity_kind'],
-  slug: string
+  entryId: string
 ): Promise<CatalogSiteMetadata | null> {
   const supabase = createContentClient()
-
-  const { data: site, error: siteError } = await supabase
-    .schema('cms')
-    .from('sites')
-    .select('id')
-    .eq('code', siteCode)
-    .maybeSingle()
-
-  if (siteError) throw siteError
-  if (!site?.id) return null
 
   const { data, error } = await supabase
     .schema('catalog')
     .from('site_entries')
     .select('metadata_jsonb,updated_at')
-    .eq('site_id', site.id)
-    .eq('entity_kind', kind)
-    .eq('slug', slug)
+    .eq('id', entryId)
     .maybeSingle()
 
   if (error) throw error

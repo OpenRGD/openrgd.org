@@ -3735,3 +3735,11 @@ body > main {
     flex-wrap: wrap;
   }
 }
+
+
+.developer-asset-note {
+  margin-top: 10px;
+  color: var(--muted-2);
+  font-size: 10px;
+  line-height: 1.55;
+}

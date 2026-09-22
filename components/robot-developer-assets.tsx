@@ -6,6 +6,7 @@ type DeveloperAsset = {
   source_owner?: string
   source_ref?: string
   status?: string
+  notes?: string
 }
 
 function humanize(value: string): string {
@@ -39,7 +40,7 @@ export default function RobotDeveloperAssets({
         <p className="kicker">DEVELOPER ASSETS</p>
         <h2>Official integration surfaces for this robot.</h2>
         <p className="content-note">
-          Only official manufacturer-owned or manufacturer-published resources are listed in this block.
+          Only official manufacturer-owned or manufacturer-published resources are listed. Availability and developer access may be variant-specific; an official repository is not evidence that every commercial configuration exposes the same development surface.
         </p>
       </div>
 
@@ -57,6 +58,7 @@ export default function RobotDeveloperAssets({
             </div>
             <h3>{asset.label || 'Developer asset'}</h3>
             <p>{asset.format || 'Official resource'}</p>
+            {asset.notes ? <small className="developer-asset-note">{asset.notes}</small> : null}
             <div className="developer-asset-meta">
               {asset.source_owner ? <small>{asset.source_owner}</small> : null}
               {asset.source_ref ? <code>{asset.source_ref.slice(0,12)}</code> : null}

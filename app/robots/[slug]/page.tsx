@@ -33,7 +33,7 @@ export default async function RobotDetailPage({params}:{params:Promise<{slug:str
 
   const [assertions,sitePublication]=await Promise.all([
     listRobotAssertions(row.entity_id).catch(()=>[]),
-    getCatalogSiteMetadata('robot_model',slug).catch(()=>null),
+    getCatalogSiteMetadata(row.entry_id).catch(()=>null),
   ])
   const data=row.entity_data || {}
   const specs=(data.specs_jsonb && typeof data.specs_jsonb==='object' && !Array.isArray(data.specs_jsonb))
