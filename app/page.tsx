@@ -119,9 +119,9 @@ export default async function HomePage() {
         <div className="technology-context-grid" data-reveal>
           {[
             ['/physical-ai', 'PHYSICAL AI', 'From perception and simulation to real-world action.'],
-            ['/embodied-ai', 'EMBODIED AI', 'Why body and environment change the intelligence problem.'],
-            ['/robot-description', 'ROBOT DESCRIPTION', 'From links and joints to semantic embodiment context.'],
-            ['/interoperability', 'INTEROPERABILITY', 'Explicit contracts between descriptions, middleware, runtime and hardware.'],
+            ['/physical-ai-stack', 'PHYSICAL AI STACK', 'Models, embodiment, safety, runtime and hardware as explicit layers.'],
+            ['/vla', 'VLA', 'From multimodal perception and language to robot actions.'],
+            ['/robot-safety-architecture', 'ROBOT SAFETY', 'Why safe physical execution is a multilayer systems problem.'],
           ].map(([href, title, copy]) => (
             <a className="technology-context-card" href={href} key={href}>
               <span>{title}</span>

@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 
 const foundational = [
   ['/physical-ai','Physical AI','RESEARCH','research','Perception, reasoning, simulation, control and safety when actions become physical.'],
+  ['/physical-ai-stack','Physical AI Stack','AUTHORITY','research','A vendor-neutral map from data and simulation through models, embodiment, safety and hardware.'],
   ['/embodied-ai','Embodied AI','RESEARCH','research','How morphology, sensing and action change the intelligence problem.'],
+  ['/vla','Vision-Language-Action','AUTHORITY','research','How multimodal models become robot actions and what changes across embodiments.'],
   ['/research/world-models','World Models / WAM','RESEARCH','research','Observed, belief, predicted and desired state as a speculative planning layer above reflex control.'],
   ['/research/rgd-physics','RGD Physics','RESEARCH','research','Physical and causal semantics as a candidate substrate for prediction and feasibility checking.'],
   ['/research/robot-chronograf','Robot Chronograf','FORMALIZATION CANDIDATE','candidate','Clock domains, uncertainty and anchored temporal evidence for embodied systems.'],

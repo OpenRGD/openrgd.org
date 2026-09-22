@@ -34,9 +34,9 @@ export default async function EmbodiedAIPage() {
         { label: 'OpenRGD — Canonical architecture', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
       ]}
       related={[
-        { href: '/physical-ai', title: 'Physical AI', copy: 'The broader stack required to deploy intelligent autonomous machines.' },
-        { href: '/robot-description', title: 'Robot Description', copy: 'How embodiment becomes explicit enough for software and AI systems to consume.' },
-        { href: '/robots', title: 'Robot Knowledge', copy: 'Concrete embodiments represented in the shared knowledge layer.' },
+        { href: '/physical-ai-stack', title: 'Physical AI Stack', copy: 'The broader architecture required to move from models to physical execution.' },
+        { href: '/vla', title: 'Vision-Language-Action Models', copy: 'Why generalist policies increase the importance of explicit embodiment context.' },
+        { href: '/robot-capability-model', title: 'Robot Capability Model', copy: 'Ground shared task semantics in body-specific resources and constraints.' },
       ]}
     >
       <ConceptSection kicker="EMBODIED REASONING" title="Perception and action form a closed loop.">

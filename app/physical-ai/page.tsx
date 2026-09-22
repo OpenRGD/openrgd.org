@@ -34,9 +34,9 @@ export default async function PhysicalAIPage() {
         { label: 'OpenRGD — Canonical architecture', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
       ]}
       related={[
-        { href: '/embodied-ai', title: 'Embodied AI', copy: 'Why cognition changes when an agent has a body and acts through it.' },
-        { href: '/robot-description', title: 'Robot Description', copy: 'What a machine must know about the body it is controlling.' },
-        { href: '/interoperability', title: 'Interoperability', copy: 'How semantic grounding fits beside descriptions, middleware and runtimes.' },
+        { href: '/physical-ai-stack', title: 'Physical AI Stack', copy: 'Map training, simulation, VLA, embodiment, safety, runtime and hardware responsibilities.' },
+        { href: '/vla', title: 'Vision-Language-Action Models', copy: 'Understand the model layer that connects multimodal context to physical action.' },
+        { href: '/robot-safety-architecture', title: 'Robot Safety Architecture', copy: 'See why safe physical execution spans more than the AI model.' },
       ]}
     >
       <ConceptSection kicker="FROM MODEL TO MACHINE" title="The loop is no longer purely informational.">

@@ -3379,3 +3379,17 @@ body > main {
     padding-block: 18px;
   }
 }
+
+
+/* Step 3: Physical AI / VLA / Safety authority cluster */
+.concept-page code {
+  padding: 0 .18em;
+  color: #c4d0dc;
+  font-family: ui-monospace, monospace;
+}
+
+@media (min-width: 981px) {
+  .technology-context-grid {
+    grid-template-columns: repeat(4,1fr);
+  }
+}
