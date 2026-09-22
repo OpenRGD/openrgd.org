@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import CitationRecord from '@/components/citation-record'
+import { buildReferenceJsonLd, type CitationRecordData } from '@/lib/seo/provenance'
 
 type Source = { label: string; href: string }
 type MatrixRow = { dimension: string; left: string; rgd: string }
@@ -20,6 +22,7 @@ export function FormatVsRgdPage({
   flow,
   sources,
   children,
+  citationRecord,
 }: {
   formatName: string
   formatHref: string
@@ -35,10 +38,22 @@ export function FormatVsRgdPage({
   flow: string[]
   sources: Source[]
   children?: ReactNode
+  citationRecord: CitationRecordData
 }) {
+  const structuredData=buildReferenceJsonLd({
+    title,
+    description: lead,
+    record: citationRecord,
+    sources,
+  })
+
   return (
     <main className="content-page comparison-page">
       <SiteHeader />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
       <section className="content-hero shell comparison-hero">
         <p className="kicker">{eyebrow}</p>
@@ -50,6 +65,8 @@ export function FormatVsRgdPage({
           <a href="/openrgd">RGD</a>
         </div>
       </section>
+
+      <CitationRecord record={citationRecord} />
 
       <section className="shell content-section">
         <div className="content-section-head">

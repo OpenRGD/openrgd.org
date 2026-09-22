@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { FormatVsRgdPage } from '@/components/format-vs-rgd-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'SDFormat specification + OpenRGD architecture',
+  evidenceBoundary: 'Complementary-layer comparison; OpenRGD does not replace SDF worlds, simulator configuration or plugins.',
+  pageUrl: 'https://openrgd.org/sdf-vs-rgd',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'SDF vs RGD',
   description: 'SDFormat and RGD address different layers: simulation-oriented robot/world description versus semantic embodiment and operational context.',
-  alternates: { canonical: '/sdf-vs-rgd' },
-}
+  canonicalPath: '/sdf-vs-rgd',
+  record: citationRecord,
+})
 
 export default function SdfVsRgdPage() {
   return (
@@ -62,6 +74,7 @@ export default function SdfVsRgdPage() {
         { label: 'SDFormat — Model kinematics', href: 'https://sdformat.org/tutorials/specification/spec_model_kinematics/' },
         { label: 'OpenRGD — Architecture', href: 'https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md' },
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

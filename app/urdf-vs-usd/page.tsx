@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import FormatVsFormatPage from '@/components/format-vs-format-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS URDF + current OpenUSD documentation',
+  evidenceBoundary: 'Responsibility comparison between robot-model and scene-composition layers; conversion is not semantic enrichment.',
+  pageUrl: 'https://openrgd.org/urdf-vs-usd',
+  canonicalSource: 'https://openusd.org/dev/index.html',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'URDF vs USD',
   description: 'Compare URDF and OpenUSD for robotics: robot-model structure versus scalable scene description, composition and physics schemas.',
-  alternates: { canonical: '/urdf-vs-usd' },
-}
+  canonicalPath: '/urdf-vs-usd',
+  record: citationRecord,
+})
 
 export default function UrdfVsUsdPage() {
   return (
@@ -47,6 +59,7 @@ export default function UrdfVsUsdPage() {
         {label:'OpenUSD — Documentation',href:'https://openusd.org/dev/index.html'},
         {label:'OpenUSD — Quickstart concepts',href:'https://openusd.org/files/USD_Quickstart_Guide.pdf'},
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

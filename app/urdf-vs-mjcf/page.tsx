@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import FormatVsFormatPage from '@/components/format-vs-format-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS URDF + current MuJoCo MJCF documentation',
+  evidenceBoundary: 'Responsibility comparison between portable ROS robot modeling and MuJoCo-native dynamics; no universal winner is asserted.',
+  pageUrl: 'https://openrgd.org/urdf-vs-mjcf',
+  canonicalSource: 'https://mujoco.readthedocs.io/en/latest/XMLreference.html',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'URDF vs MJCF',
   description: 'Compare URDF and MJCF: ROS-oriented robot description versus MuJoCo-native dynamic-system modeling.',
-  alternates: { canonical: '/urdf-vs-mjcf' },
-}
+  canonicalPath: '/urdf-vs-mjcf',
+  record: citationRecord,
+})
 
 export default function UrdfVsMjcfPage() {
   return (
@@ -47,6 +59,7 @@ export default function UrdfVsMjcfPage() {
         {label:'MuJoCo — XML Reference',href:'https://mujoco.readthedocs.io/en/latest/XMLreference.html'},
         {label:'ROS — URDF documentation',href:'https://docs.ros.org/en/rolling/p/urdf'},
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

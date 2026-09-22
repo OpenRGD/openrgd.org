@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { FormatVsRgdPage } from '@/components/format-vs-rgd-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS URDF documentation + OpenRGD Import Guide / Runtime Boundary',
+  evidenceBoundary: 'Complementary-layer comparison; not a winner/loser ranking and not a claim that RGD replaces URDF.',
+  pageUrl: 'https://openrgd.org/urdf-vs-rgd',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'URDF vs RGD',
   description: 'URDF and RGD solve different layers of robot description: structural robot modeling versus semantic embodiment and operational context.',
-  alternates: { canonical: '/urdf-vs-rgd' },
-}
+  canonicalPath: '/urdf-vs-rgd',
+  record: citationRecord,
+})
 
 export default function UrdfVsRgdPage() {
   return (
@@ -62,6 +74,7 @@ export default function UrdfVsRgdPage() {
         { label: 'OpenRGD — Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
         { label: 'OpenRGD — Runtime Boundary', href: 'https://github.com/OpenRGD/openrgd/blob/main/docs/reconciliation/RUNTIME_BOUNDARY.md' },
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

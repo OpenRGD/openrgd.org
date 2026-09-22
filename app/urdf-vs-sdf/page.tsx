@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import FormatVsFormatPage from '@/components/format-vs-format-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'ROS URDF + current SDFormat documentation',
+  evidenceBoundary: 'Responsibility comparison for developer choice; conversion may be lossy and no universal winner is asserted.',
+  pageUrl: 'https://openrgd.org/urdf-vs-sdf',
+  canonicalSource: 'https://sdformat.org/spec',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'URDF vs SDF',
   description: 'Compare URDF and SDFormat: robot model structure versus simulation-oriented models, sensors, physics and worlds.',
-  alternates: { canonical: '/urdf-vs-sdf' },
-}
+  canonicalPath: '/urdf-vs-sdf',
+  record: citationRecord,
+})
 
 export default function UrdfVsSdfPage() {
   return (
@@ -48,6 +60,7 @@ export default function UrdfVsSdfPage() {
         {label:'SDFormat — Project',href:'https://sdformat.org/'},
         {label:'SDFormat — Specification',href:'https://sdformat.org/spec'},
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

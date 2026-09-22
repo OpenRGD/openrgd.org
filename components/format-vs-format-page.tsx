@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import CitationRecord from '@/components/citation-record'
+import { buildReferenceJsonLd, type CitationRecordData } from '@/lib/seo/provenance'
 
 type Row = {
   dimension: string
@@ -24,6 +26,7 @@ export default function FormatVsFormatPage({
   useBoth,
   sources,
   children,
+  citationRecord,
 }: {
   eyebrow: string
   title: string
@@ -38,10 +41,22 @@ export default function FormatVsFormatPage({
   useBoth: string[]
   sources: Source[]
   children?: ReactNode
+  citationRecord: CitationRecordData
 }) {
+  const structuredData=buildReferenceJsonLd({
+    title,
+    description: lead,
+    record: citationRecord,
+    sources,
+  })
+
   return (
     <main className="content-page comparison-page">
       <SiteHeader />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
       <section className="content-hero shell comparison-hero">
         <p className="kicker">{eyebrow}</p>
@@ -53,6 +68,8 @@ export default function FormatVsFormatPage({
           <a href={rightHref}>{rightName}</a>
         </div>
       </section>
+
+      <CitationRecord record={citationRecord} />
 
       <section className="shell content-section">
         <div className="content-section-head">

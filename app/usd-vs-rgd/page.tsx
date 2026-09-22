@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import { referenceMetadata, type CitationRecordData } from '@/lib/seo/provenance'
 import { FormatVsRgdPage } from '@/components/format-vs-rgd-page'
 
-export const metadata: Metadata = {
+const citationRecord: CitationRecordData = {
+  maturity: 'REFERENCE COMPARISON',
+  lastVerified: '22 Sep 2026',
+  lastVerifiedIso: '2026-09-22',
+  sourceVersion: 'OpenUSD / UsdPhysics documentation + OpenRGD Import Guide',
+  evidenceBoundary: 'Complementary-layer comparison; OpenRGD does not replace OpenUSD composition or UsdPhysics.',
+  pageUrl: 'https://openrgd.org/usd-vs-rgd',
+  canonicalSource: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md',
+}
+
+export const metadata: Metadata = referenceMetadata({
   title: 'USD vs RGD',
   description: 'OpenUSD and RGD address different responsibilities: composed scene description and physics versus semantic embodiment, provenance and operational context.',
-  alternates: { canonical: '/usd-vs-rgd' },
-}
+  canonicalPath: '/usd-vs-rgd',
+  record: citationRecord,
+})
 
 export default function UsdVsRgdPage() {
   return (
@@ -62,6 +74,7 @@ export default function UsdVsRgdPage() {
         { label: 'OpenUSD — UsdPhysics', href: 'https://openusd.org/dev/api/usd_physics_page_front.html' },
         { label: 'OpenRGD — Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
       ]}
+      citationRecord={citationRecord}
     />
   )
 }

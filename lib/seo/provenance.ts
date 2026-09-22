@@ -59,7 +59,10 @@ export function buildReferenceJsonLd({
   sources: SourceRef[]
   base?: Record<string, unknown>
 }): Record<string, unknown> {
-  const sourceUrls = Array.from(new Set(sources.map((source) => source.href)))
+  const sourceUrls = Array.from(new Set([
+    ...sources.map((source) => source.href),
+    ...(record.canonicalSource ? [record.canonicalSource] : []),
+  ]))
 
   return {
     '@context': 'https://schema.org',
