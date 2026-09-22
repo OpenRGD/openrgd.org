@@ -2991,3 +2991,30 @@ body > main {
   .work-flow > div:last-child { border-bottom: 0; }
   .work-flow i { display: none; }
 }
+
+
+/* Demand-capture format comparisons */
+.use-both-list {
+  border-top: 1px solid var(--line);
+}
+
+.use-both-list > div {
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.use-both-list span {
+  color: var(--accent);
+  font: 700 8px/1 ui-monospace, monospace;
+}
+
+.use-both-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}

@@ -5,7 +5,7 @@ import FormatComparison from '@/components/format-comparison'
 
 export const metadata: Metadata = {
   title: 'Robot Description Formats',
-  description: 'Compare URDF, OpenUSD, SDFormat and RGD by responsibility: robot structure, scene composition, simulation and semantic embodiment.',
+  description: 'Compare URDF, OpenUSD, SDFormat, MJCF and RGD by responsibility: robot structure, scene composition, simulation, dynamic-system modeling and semantic embodiment.',
   alternates: { canonical: '/robot-description-formats' },
 }
 
@@ -17,7 +17,7 @@ export default function RobotDescriptionFormatsPage() {
         <p className="kicker">ROBOT DESCRIPTION FORMATS</p>
         <h1>Structure, scenes, simulation and semantic embodiment are different jobs.</h1>
         <p>
-          URDF, USD, SDFormat and RGD overlap in useful ways, but they are not interchangeable.
+          URDF, USD, SDFormat, MJCF and RGD overlap in useful ways, but they are not interchangeable.
           The important question is not “which format wins?” — it is “which layer owns which responsibility?”
         </p>
       </section>
@@ -25,7 +25,7 @@ export default function RobotDescriptionFormatsPage() {
       <section className="shell content-section">
         <div className="content-section-head">
           <p className="kicker">RESPONSIBILITY MAP</p>
-          <h2>Four formats, four different centers of gravity.</h2>
+          <h2>Five formats, five different centers of gravity.</h2>
         </div>
         <FormatComparison />
       </section>
@@ -40,6 +40,7 @@ export default function RobotDescriptionFormatsPage() {
             ['URDF', 'Excellent for robot kinematic structure and common ROS robot-model workflows.', '/urdf'],
             ['USD', 'Strong for scalable scenegraphs, composition and rich scene/physics data.', '/usd'],
             ['SDF', 'Strong for simulation-oriented robots, models, sensors and whole environments.', '/sdf'],
+            ['MJCF', 'MuJoCo-native dynamic modeling with rich simulator-specific bodies, actuators, tendons and sensors.', '/mjcf'],
             ['RGD', 'Focused on semantic embodiment, provenance, operational context and machine-readable grounding.', '/rgd'],
           ].map(([title, copy, href]) => (
             <a className="content-card" href={href} key={title}>
@@ -54,10 +55,13 @@ export default function RobotDescriptionFormatsPage() {
       <section className="shell content-section">
         <div className="content-section-head">
           <p className="kicker">DEEP COMPARISONS</p>
-          <h2>Compare RGD with each description layer directly.</h2>
+          <h2>Compare the layers directly — including the choices developers actually make.</h2>
         </div>
         <div className="comparison-link-grid">
           {[
+            ['/urdf-vs-sdf', 'URDF vs SDF', 'ROS robot model vs simulation-oriented model/world.'],
+            ['/urdf-vs-usd', 'URDF vs USD', 'Robot model vs composable scenegraph.'],
+            ['/urdf-vs-mjcf', 'URDF vs MJCF', 'Portable robot structure vs MuJoCo-native modeling.'],
             ['/urdf-vs-rgd', 'URDF vs RGD', 'Robot structure vs semantic embodiment.'],
             ['/usd-vs-rgd', 'USD vs RGD', 'Scene composition vs semantic embodiment.'],
             ['/sdf-vs-rgd', 'SDF vs RGD', 'Simulation description vs semantic embodiment.'],

@@ -28,6 +28,7 @@ const groups = [
       ['/urdf', 'URDF'],
       ['/usd', 'USD / OpenUSD'],
       ['/sdf', 'SDF / SDFormat'],
+      ['/mjcf', 'MJCF / MuJoCo'],
     ],
   },
   {
@@ -35,6 +36,9 @@ const groups = [
     title: 'Where RGD fits',
     copy: 'Direct comparisons that separate complementary responsibilities instead of forcing one format to own the entire stack.',
     links: [
+      ['/urdf-vs-sdf', 'URDF vs SDF'],
+      ['/urdf-vs-usd', 'URDF vs USD'],
+      ['/urdf-vs-mjcf', 'URDF vs MJCF'],
       ['/urdf-vs-rgd', 'URDF vs RGD'],
       ['/usd-vs-rgd', 'USD vs RGD'],
       ['/sdf-vs-rgd', 'SDF vs RGD'],

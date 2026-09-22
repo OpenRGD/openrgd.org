@@ -21,7 +21,9 @@ export default function UrdfPage() {
       ]}
       related={[
         { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare URDF with USD, SDF and RGD by responsibility.' },
-        { href: '/urdf-vs-rgd', title: 'URDF vs RGD', copy: 'Compare structural robot modeling with semantic embodiment directly.' },
+        { href: '/urdf-vs-sdf', title: 'URDF vs SDF', copy: 'Robot-model structure versus simulation-oriented model and world description.' },
+        { href: '/urdf-vs-usd', title: 'URDF vs USD', copy: 'Robot-model structure versus scalable scene composition.' },
+        { href: '/urdf-vs-mjcf', title: 'URDF vs MJCF', copy: 'Portable robot modeling versus MuJoCo-native dynamics.' },
         { href: '/interoperability', title: 'Interoperability', copy: 'Where URDF fits in a layered robotics stack.' },
       ]}
     >

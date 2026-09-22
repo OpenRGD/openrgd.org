@@ -21,6 +21,13 @@ const rows = [
     boundary: 'Not designed as a general AI embodiment-governance or provenance graph.',
   },
   {
+    format: 'MJCF',
+    href: '/mjcf',
+    responsibility: 'MuJoCo-native dynamic-system model',
+    strength: 'Nested bodies, joints, actuators, tendons, sensors, defaults and simulator-native dynamic modeling.',
+    boundary: 'Optimized for MuJoCo rather than cross-stack semantic embodiment.',
+  },
+  {
     format: 'RGD',
     href: '/rgd',
     responsibility: 'Semantic embodiment graph',
