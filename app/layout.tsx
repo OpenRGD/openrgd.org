@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import AmbientMotion from '../components/ambient-motion'
 import './globals.css'
 
@@ -83,10 +82,8 @@ const globalJsonLd = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
-        <Script
-          id="ecm-consent-defaults"
-          strategy="beforeInteractive"
+      <head>
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.__ECM_CONFIG__ = {
@@ -108,13 +105,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             `,
           }}
         />
-        <Script
-          id="ecm-cookie-consent"
+        <script
           src={ecmApiBase + '/ecm.js'}
           data-ecm-site={ecmSiteId}
           data-ecm-api={ecmApiBase}
-          strategy="beforeInteractive"
+          defer
         />
+      </head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
