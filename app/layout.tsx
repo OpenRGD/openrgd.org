@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import AmbientMotion from '../components/ambient-motion'
 import './globals.css'
 
 const siteDescription='An open, machine-readable standard for cognitive embodiment and robot interoperability.'
+const ecmSiteId='114323a5-7925-4ad1-ad91-65a46440c6b9'
+const ecmApiBase='https://www.ecm.plus'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://openrgd.org'),
@@ -81,6 +84,37 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <Script
+          id="ecm-consent-defaults"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.__ECM_CONFIG__ = {
+                siteId: "${ecmSiteId}",
+                apiBase: "${ecmApiBase}"
+              };
+
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+              gtag("consent", "default", {
+                analytics_storage: "denied",
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                functionality_storage: "granted",
+                security_storage: "granted",
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
+        <Script
+          id="ecm-cookie-consent"
+          src={ecmApiBase + '/ecm.js'}
+          data-ecm-site={ecmSiteId}
+          data-ecm-api={ecmApiBase}
+          strategy="beforeInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
