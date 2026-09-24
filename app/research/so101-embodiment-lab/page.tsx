@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkFlow, WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'SO-101 Embodiment Lab',
   description: 'OpenRGD physical embodiment experiments using SO-101 leader/follower teleoperation and commissioning.',
-  alternates: { canonical: '/research/so101-embodiment-lab' },
-}
+  canonicalPath: '/research/so101-embodiment-lab',
+})
 
 export default function So101LabPage() {
   return (

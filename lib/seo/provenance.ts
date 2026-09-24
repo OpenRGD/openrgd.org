@@ -15,6 +15,51 @@ export type CitationRecordData = {
   canonicalSource?: string
 }
 
+const socialImage = {
+  url: '/opengraph-image',
+  width: 1200,
+  height: 630,
+  alt: 'OpenRGD — Robot Graph Definition',
+}
+
+export function standardMetadata({
+  title,
+  description,
+  canonicalPath,
+  robots,
+}: {
+  title: string
+  description: string
+  canonicalPath: string
+  robots?: Metadata['robots']
+}): Metadata {
+  const url = canonicalPath === '/'
+    ? 'https://openrgd.org'
+    : 'https://openrgd.org' + canonicalPath
+
+  return {
+    title,
+    description,
+    alternates: { canonical: canonicalPath },
+    robots,
+    openGraph: {
+      type: 'website',
+      siteName: 'OpenRGD',
+      locale: 'en_US',
+      title,
+      description,
+      url,
+      images: [socialImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/opengraph-image'],
+    },
+  }
+}
+
 export function referenceMetadata({
   title,
   description,
@@ -26,16 +71,25 @@ export function referenceMetadata({
   canonicalPath: string
   record: CitationRecordData
 }): Metadata {
+  const base=standardMetadata({ title, description, canonicalPath })
+
   return {
-    title,
-    description,
-    alternates: { canonical: canonicalPath },
+    ...base,
     openGraph: {
       type: 'article',
+      siteName: 'OpenRGD',
+      locale: 'en_US',
       title,
       description,
       url: record.pageUrl,
       modifiedTime: record.lastVerifiedIso,
+      images: [socialImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/opengraph-image'],
     },
     other: {
       'openrgd:maturity': record.maturity,

@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Motion Quality',
   description: 'OpenRGD experiments on smooth robot movement, trajectory quality and clean separation between motion algorithms and interoperability layers.',
-  alternates: { canonical: '/research/motion-quality' },
-}
+  canonicalPath: '/research/motion-quality',
+})
 
 export default function MotionQualityPage() {
   return (

@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Robot Chronograf',
   description: 'Research and candidate formalization for clock domains, uncertainty and temporal anchoring in OpenRGD embodied systems.',
-  alternates: { canonical: '/research/robot-chronograf' },
-}
+  canonicalPath: '/research/robot-chronograf',
+})
 
 export default function RobotChronografPage() {
   return (

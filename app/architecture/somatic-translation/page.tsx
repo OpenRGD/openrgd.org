@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkFlow, WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Somatic Translation',
   description: 'The OpenRGD candidate boundary between approved ActionIntent and hardware-agnostic CapabilityPlan.',
-  alternates: { canonical: '/architecture/somatic-translation' },
-}
+  canonicalPath: '/architecture/somatic-translation',
+})
 
 export default function SomaticTranslationPage() {
   return (

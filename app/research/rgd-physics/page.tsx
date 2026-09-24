@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'RGD Physics',
   description: 'OpenRGD research into physical and causal semantics as a substrate for world modeling and embodied feasibility checks.',
-  alternates: { canonical: '/research/rgd-physics' },
-}
+  canonicalPath: '/research/rgd-physics',
+})
 
 export default function RgdPhysicsPage() {
   return (

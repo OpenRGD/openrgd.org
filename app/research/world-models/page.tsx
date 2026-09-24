@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkFlow, WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'World Models and WAM',
   description: 'OpenRGD research into world-model-agnostic speculative planning, state hypotheses and evidence-driven action.',
-  alternates: { canonical: '/research/world-models' },
-}
+  canonicalPath: '/research/world-models',
+})
 
 export default function WorldModelsPage() {
   return (

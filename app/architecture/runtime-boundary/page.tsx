@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkFlow, WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Runtime Boundary',
   description: 'The adopted OpenRGD boundary between canonical semantic tooling and physical embodied execution.',
-  alternates: { canonical: '/architecture/runtime-boundary' },
-}
+  canonicalPath: '/architecture/runtime-boundary',
+})
 
 export default function RuntimeBoundaryPage() {
   return (
