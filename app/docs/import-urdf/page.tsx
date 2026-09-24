@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import DeveloperDocPage, { CommandBlock, DevGrid, DevSection } from '@/components/developer-doc-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Import URDF',
   description: 'Import URDF into OpenRGD as partial, source-supported Foundation evidence without inventing safety, identity, cognition or hardware bindings.',
-  alternates: { canonical: '/docs/import-urdf' },
-}
+  canonicalPath: '/docs/import-urdf',
+})
 
 export default function ImportUrdfPage() {
   return (

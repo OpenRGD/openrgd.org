@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Developers',
   description: 'Build with the OpenRGD toolchain: import robot evidence, validate profiles, create non-actuating grounding context and export deterministic ROS 2 configuration.',
-  alternates: { canonical: '/docs' },
-}
+  canonicalPath: '/docs',
+})
 
 const lifecycle = [
   ['01','Initialize','rgd init Robot'],

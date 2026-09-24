@@ -1,13 +1,13 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Blog',
   description: 'Engineering notes, research updates, specification changes and development logs from OpenRGD.',
-  alternates: { canonical: '/blog' },
+  canonicalPath: '/blog',
   robots: { index: false, follow: true },
-}
+})
 
 export default function BlogPage() {
   return (

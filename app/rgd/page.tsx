@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'rgd CLI & Toolchain',
   description: 'The rgd Python toolchain validates OpenRGD profiles, imports source-supported robot evidence, builds deterministic non-actuating context and generates static interoperability artifacts.',
-  alternates: { canonical: '/rgd' },
-}
+  canonicalPath: '/rgd',
+})
 
 const commands = [
   ['init','rgd init Robot','Materialize a project from the packaged default profile and recalculate its source-tree commitment.'],

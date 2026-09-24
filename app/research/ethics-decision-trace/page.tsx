@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import WorkPage, { WorkFlow, WorkGrid, WorkSection } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Ethics and DecisionTrace',
   description: 'OpenRGD candidate research on policy evaluation, DecisionTrace and separate forensic Ethos artifacts.',
-  alternates: { canonical: '/research/ethics-decision-trace' },
-}
+  canonicalPath: '/research/ethics-decision-trace',
+})
 
 export default function EthicsDecisionTracePage() {
   return (

@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import DeveloperDocPage, { CommandBlock, DevGrid, DevSection } from '@/components/developer-doc-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Validation',
   description: 'Validate OpenRGD source integrity and selected modules with rgd hash, rgd check and deterministic non-actuating rgd boot.',
-  alternates: { canonical: '/docs/validation' },
-}
+  canonicalPath: '/docs/validation',
+})
 
 export default function ValidationPage() {
   return (

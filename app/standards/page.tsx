@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Standards',
   description: 'OpenRGD standards, robot description formats, specification and interoperability comparisons.',
-  alternates: { canonical: '/standards' },
-}
+  canonicalPath: '/standards',
+})
 
 const groups = [
   {

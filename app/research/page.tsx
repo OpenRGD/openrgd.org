@@ -1,13 +1,13 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import { WorkStatus } from '@/components/work-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Research',
   description: 'OpenRGD research tracks and embodiment experiments: world models, RGD Physics, Chronograf, motion, SO-101, ethics and multi-robot coordination.',
-  alternates: { canonical: '/research' },
-}
+  canonicalPath: '/research',
+})
 
 const foundational = [
   ['/physical-ai','Physical AI','RESEARCH','research','Perception, reasoning, simulation, control and safety when actions become physical.'],

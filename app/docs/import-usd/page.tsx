@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import DeveloperDocPage, { CommandBlock, DevGrid, DevSection } from '@/components/developer-doc-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Import USD / USDA',
   description: 'Import the current auditable OpenRGD text USDA / UsdPhysics subset while preserving units, provenance and explicit parser limitations.',
-  alternates: { canonical: '/docs/import-usd' },
-}
+  canonicalPath: '/docs/import-usd',
+})
 
 export default function ImportUsdPage() {
   return (

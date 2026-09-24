@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { standardMetadata } from '@/lib/seo/provenance'
 import DeveloperDocPage, { CommandBlock, DevGrid, DevSection } from '@/components/developer-doc-page'
 
-export const metadata: Metadata = {
+export const metadata = standardMetadata({
   title: 'Export ROS 2',
   description: 'Generate deterministic, non-actuating ROS 2 configuration from a verified OpenRGD machine bundle.',
-  alternates: { canonical: '/docs/export-ros2' },
-}
+  canonicalPath: '/docs/export-ros2',
+})
 
 export default function ExportRos2Page() {
   return (
