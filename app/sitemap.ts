@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { listCatalogEntries } from '@/lib/cms/catalog'
 import { canonicalUrl, indexableStaticRoutes } from '@/lib/seo/routes'
+import { blogPosts } from '@/lib/blog/posts'
 
 export const revalidate = 3600
 
@@ -22,6 +23,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url:canonicalUrl(pathname),
   }))
 
+  const blogEntries: MetadataRoute.Sitemap=blogPosts.map((post)=>({
+    url:canonicalUrl('/blog/'+post.slug),
+    lastModified:new Date(post.modifiedAt+'T00:00:00Z'),
+  }))
+
   const robotEntries: MetadataRoute.Sitemap=robots.map((entry)=>({
     url:canonicalUrl('/robots/'+entry.slug),
     lastModified:entityLastModified(entry.entity_data),
@@ -34,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticEntries,
+    ...blogEntries,
     ...robotEntries,
     ...organizationEntries,
   ]

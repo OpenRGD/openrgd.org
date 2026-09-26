@@ -49,6 +49,7 @@ export const indexableStaticRoutes = [
   '/robot-knowledge-graph',
   '/robot-capability-model',
   '/robot-identity-provenance',
+  '/blog',
 ] as const
 
 export function canonicalUrl(pathname: string): string {
