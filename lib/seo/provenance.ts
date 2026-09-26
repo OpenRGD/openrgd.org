@@ -60,6 +60,47 @@ export function standardMetadata({
   }
 }
 
+export function articleMetadata({
+  title,
+  description,
+  canonicalPath,
+  publishedTime,
+  modifiedTime,
+}: {
+  title: string
+  description: string
+  canonicalPath: string
+  publishedTime: string
+  modifiedTime?: string
+}): Metadata {
+  const url = canonicalPath === '/'
+    ? 'https://openrgd.org'
+    : 'https://openrgd.org' + canonicalPath
+
+  const base = standardMetadata({ title, description, canonicalPath })
+
+  return {
+    ...base,
+    openGraph: {
+      type: 'article',
+      siteName: 'OpenRGD',
+      locale: 'en_US',
+      title,
+      description,
+      url,
+      publishedTime,
+      modifiedTime: modifiedTime || publishedTime,
+      images: [socialImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/opengraph-image'],
+    },
+  }
+}
+
 export function referenceMetadata({
   title,
   description,
