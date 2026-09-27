@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-27",
+  "scope": "openrgd.org VLA authority",
+  "statuses": [
+    "PUBLISHED",
+    "SIGNAL",
+    "RESEARCH_READY",
+    "NEEDS_OWN_DATA",
+    "RUNNING",
+    "EVIDENCE_READY",
+    "REVIEW",
+    "REFRESH_DUE",
+    "PARKED"
+  ],
+  "publication_gates": {
+    "reference": [
+      "distinct_intent",
+      "primary_sources",
+      "last_verified",
+      "evidence_boundary",
+      "internal_links",
+      "canonical_metadata",
+      "structured_data",
+      "non_duplicate_depth"
+    ],
+    "experiment": [
+      "protocol_before_interpretation",
+      "versioned_hardware_software",
+      "dataset_revision",
+      "raw_or_reproducible_trials",
+      "matched_conditions",
+      "report_failures",
+      "default_20_trials_per_condition_for_success_claims_or_justify",
+      "bounded_generalization"
+    ]
+  },
+  "items": [
+    {
+      "id": "VLA-001",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla",
+      "status": "PUBLISHED",
+      "intent": "vision language action model; vla model"
+    },
+    {
+      "id": "VLA-002",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/models",
+      "status": "PUBLISHED",
+      "intent": "vla models"
+    },
+    {
+      "id": "VLA-003",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/how-vla-models-work",
+      "status": "PUBLISHED",
+      "intent": "how vla models work"
+    },
+    {
+      "id": "VLA-004",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/action-representation",
+      "status": "PUBLISHED",
+      "intent": "vla action representation"
+    },
+    {
+      "id": "VLA-005",
+      "lane": "comparison",
+      "priority": "P0",
+      "surface": "/vla/vla-vs-vlm",
+      "status": "PUBLISHED",
+      "intent": "vla vs vlm"
+    },
+    {
+      "id": "VLA-006",
+      "lane": "comparison",
+      "priority": "P0",
+      "surface": "/vla/vla-vs-world-model",
+      "status": "PUBLISHED",
+      "intent": "vla vs world model"
+    },
+    {
+      "id": "VLA-010",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/datasets",
+      "status": "RESEARCH_READY",
+      "intent": "vla datasets"
+    },
+    {
+      "id": "VLA-011",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/benchmarks",
+      "status": "RESEARCH_READY",
+      "intent": "vla benchmarks"
+    },
+    {
+      "id": "VLA-012",
+      "lane": "reference+experiment",
+      "priority": "P0",
+      "surface": "/vla/inference-latency",
+      "status": "NEEDS_OWN_DATA",
+      "intent": "vla inference latency"
+    },
+    {
+      "id": "VLA-013",
+      "lane": "reference",
+      "priority": "P0",
+      "surface": "/vla/embodiment",
+      "status": "RESEARCH_READY",
+      "intent": "vla embodiment; multi-embodiment"
+    },
+    {
+      "id": "VLA-015",
+      "lane": "reference",
+      "priority": "P1",
+      "surface": "/vla/evaluation",
+      "status": "RESEARCH_READY",
+      "intent": "vla evaluation"
+    },
+    {
+      "id": "VLA-E20",
+      "lane": "entity",
+      "priority": "P0",
+      "surface": "/vla/models/smolvla",
+      "status": "RESEARCH_READY"
+    },
+    {
+      "id": "VLA-E21",
+      "lane": "entity",
+      "priority": "P1",
+      "surface": "/vla/models/openvla",
+      "status": "RESEARCH_READY"
+    },
+    {
+      "id": "VLA-E22",
+      "lane": "entity",
+      "priority": "P1",
+      "surface": "/vla/models/gemini-robotics",
+      "status": "RESEARCH_READY"
+    },
+    {
+      "id": "VLA-E23",
+      "lane": "entity",
+      "priority": "P1",
+      "surface": "/vla/models/gr00t",
+      "status": "RESEARCH_READY"
+    },
+    {
+      "id": "VLA-E24",
+      "lane": "entity",
+      "priority": "P1",
+      "surface": "/vla/models/pi0",
+      "status": "RESEARCH_READY"
+    },
+    {
+      "id": "VLA-X100",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "SmolVLA + SO-101 reproducible baseline",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X101",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "SO-101 VLA dataset capture/data card",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X102",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "Synchronous vs asynchronous SmolVLA inference",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X103",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "End-to-end VLA latency decomposition",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X107",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "VLA physical failure taxonomy",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X108",
+      "lane": "experiment",
+      "priority": "P0",
+      "title": "VLA output to OpenRGD ActionIntent mapping",
+      "status": "NEEDS_OWN_DATA"
+    },
+    {
+      "id": "VLA-X109",
+      "lane": "experiment",
+      "priority": "P1",
+      "title": "SmolVLA vs ACT matched protocol",
+      "status": "NEEDS_OWN_DATA"
+    }
+  ]
+}
