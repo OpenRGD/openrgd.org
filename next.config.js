@@ -54,6 +54,21 @@ const nextConfig = {
         destination: 'https://openrgd.org/.well-known/security.txt',
         permanent: true,
       },
+      {
+        source: '/versions',
+        destination: 'https://openrgd.org/releases',
+        permanent: true,
+      },
+      {
+        source: '/citation',
+        destination: 'https://openrgd.org/cite',
+        permanent: true,
+      },
+      {
+        source: '/contribute',
+        destination: 'https://openrgd.org/contributing',
+        permanent: true,
+      },
     ]
   },
 }

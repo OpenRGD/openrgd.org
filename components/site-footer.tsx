@@ -17,6 +17,11 @@ export default function SiteFooter() {
           <a href="/about">About</a>
           <a href="/governance">Governance</a>
           <a href="/security">Security</a>
+          <a href="/community">Community</a>
+          <a href="/contributing">Contributing</a>
+          <a href="/releases">Releases</a>
+          <a href="/cite">Cite</a>
+          <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>
           <a href="/cookies">Cookies</a>
         </div>

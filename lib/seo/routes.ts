@@ -58,6 +58,10 @@ export const indexableStaticRoutes = [
   '/about',
   '/governance',
   '/security',
+  '/community',
+  '/contributing',
+  '/releases',
+  '/cite',
 ] as const
 
 export function canonicalUrl(pathname: string): string {

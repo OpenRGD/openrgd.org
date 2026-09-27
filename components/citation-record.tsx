@@ -14,9 +14,12 @@ export default function CitationRecord({ record }: { record: CitationRecordData 
     <section className="shell citation-record" aria-label="Citation record">
       <div className="citation-record-head">
         <span>CITATION RECORD</span>
-        {record.canonicalSource ? (
-          <a href={record.canonicalSource} target="_blank" rel="noreferrer">Canonical source ↗</a>
-        ) : null}
+        <div className="citation-record-actions">
+          {record.canonicalSource ? (
+            <a href={record.canonicalSource} target="_blank" rel="noreferrer">Canonical source ↗</a>
+          ) : null}
+          <a href="/cite">Citation guide →</a>
+        </div>
       </div>
       <div className="citation-record-grid">
         {rows.map(([label,value])=>(
