@@ -14,6 +14,9 @@ export default function SiteFooter() {
           <a href="/research">Research</a>
           <a href="/docs">Developers</a>
           <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/governance">Governance</a>
+          <a href="/security">Security</a>
           <a href="https://studio.openrgd.org" target="_blank" rel="noreferrer">Studio</a>
         </div>
       </div>
