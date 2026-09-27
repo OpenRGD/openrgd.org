@@ -174,42 +174,37 @@ export default async function HomePage() {
         <div className="shell">
           <div className="section-heading compact" data-reveal>
             <div>
-              <p className="kicker">OPENRGD ECOSYSTEM</p>
-              <h2>One standard. Multiple specialized surfaces.</h2>
+              <p className="kicker">OFFICIAL SURFACES</p>
+              <h2>Only live OpenRGD surfaces are linked from the public hub.</h2>
             </div>
             <p>
-              OpenRGD.org is the public knowledge and specification hub. Dedicated tools and services
-              live on focused subdomains so each surface can evolve independently.
+              Experimental and future services stay out of the public directory until they are reachable,
+              maintained and ready to represent the project.
             </p>
           </div>
 
           <div className="subdomain-grid" data-reveal>
             {[
-              ['docs', 'Documentation', 'Reference material, guides and technical documentation.'],
-              ['forge', 'Forge', 'Authoring and build-oriented tooling around OpenRGD artifacts.'],
-              ['sim', 'Simulation', 'Simulation-oriented tools and experiment surfaces.'],
-              ['viz', 'Visualization', 'Graph, structure and robot-state visualization.'],
-              ['api', 'API', 'Programmatic access and machine-facing interfaces.'],
-              ['civilization', 'Civilization', 'Collective, social and multi-agent experimentation.'],
-              ['studio', 'Studio', 'Authenticated engineering environment for OpenRGD projects.'],
-              ['vulnerabilities', 'Vulnerabilities', 'Security and vulnerability reporting surface.'],
-              ['plugins', 'Plugins', 'Extension and integration ecosystem.'],
-              ['physics', 'Physics', 'Physics-oriented models, tooling and experiments.'],
-              ['market', 'Market', 'Ecosystem discovery and future distribution surface.'],
-            ].map(([subdomain, title, description]) => (
+              { href: '/docs', label: 'openrgd.org/docs', title: 'Developers', description: 'Reference material, import/export guides and validation workflows.' },
+              { href: '/blog', label: 'openrgd.org/blog', title: 'Engineering Journal', description: 'Source-backed architecture notes, experiments and project decisions.' },
+              { href: '/robots', label: 'openrgd.org/robots', title: 'Robot Knowledge', description: 'Robot profiles and source-backed embodiment records.' },
+              { href: '/research', label: 'openrgd.org/research', title: 'Research', description: 'World models, motion, ethics, timing and physical experiments.' },
+              { href: '/governance', label: 'openrgd.org/governance', title: 'Governance', description: 'Maturity, normative change, RFC and release decision rules.' },
+              { href: 'https://github.com/OpenRGD/openrgd', label: 'github.com/OpenRGD/openrgd', title: 'Canonical Repository', description: 'Normative source, contracts, governance, security policy and toolchain.', external: true },
+            ].map((item) => (
               <a
-                key={subdomain}
+                key={item.href}
                 className="subdomain-card"
-                href={'https://' + subdomain + '.openrgd.org'}
-                target="_blank"
-                rel="noreferrer"
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noreferrer' : undefined}
               >
                 <div className="subdomain-card-top">
-                  <span>{subdomain}.openrgd.org</span>
-                  <i>↗</i>
+                  <span>{item.label}</span>
+                  <i>{item.external ? '↗' : '→'}</i>
                 </div>
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </a>
             ))}
           </div>

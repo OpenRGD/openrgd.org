@@ -57,13 +57,17 @@ export default function SecurityPage() {
 
       <section className="shell warning-panel">
         <span>DO NOT DISCLOSE EXPLOITABLE DETAILS PUBLICLY</span>
-        <h2>Use GitHub private vulnerability reporting when it is enabled.</h2>
+        <h2>Use a private GitHub security advisory when available.</h2>
         <p>
-          If private reporting is unavailable, the canonical policy asks for a minimal public
-          issue containing only <strong>[SECURITY CONTACT REQUEST]</strong> and a request for a
-          private disclosure channel. Do not include proof-of-concept code, secrets, device
-          addresses or exploitation details in that public issue.
+          If private vulnerability reporting is unavailable, open only a minimal public issue
+          containing <strong>[SECURITY CONTACT REQUEST]</strong> and ask for a private disclosure
+          channel. Do not include proof-of-concept code, secrets, device addresses or exploitation details.
         </p>
+        <div className="content-actions">
+          <a className="button primary" href="https://github.com/OpenRGD/openrgd/security/advisories/new" target="_blank" rel="noreferrer">Private vulnerability report ↗</a>
+          <a className="button ghost" href="https://github.com/OpenRGD/openrgd/issues/new?title=%5BSECURITY%20CONTACT%20REQUEST%5D" target="_blank" rel="noreferrer">Request private contact ↗</a>
+          <a className="button ghost" href="/.well-known/security.txt">security.txt →</a>
+        </div>
       </section>
 
       <section className="shell content-section">

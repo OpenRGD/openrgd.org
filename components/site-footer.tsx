@@ -17,7 +17,8 @@ export default function SiteFooter() {
           <a href="/about">About</a>
           <a href="/governance">Governance</a>
           <a href="/security">Security</a>
-          <a href="https://studio.openrgd.org" target="_blank" rel="noreferrer">Studio</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/cookies">Cookies</a>
         </div>
       </div>
     </footer>
