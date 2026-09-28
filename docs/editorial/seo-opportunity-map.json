@@ -1,0 +1,312 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-28",
+  "indexable_baseline": 73,
+  "scoring_note": "Qualitative opportunity scoring, not keyword-volume estimates.",
+  "opportunity_classes": [
+    "reference",
+    "entity_data",
+    "tool",
+    "experiment",
+    "journal"
+  ],
+  "clusters": [
+    {
+      "id": "SEO-01",
+      "name": "Vision-Language-Action models",
+      "priority": "P0",
+      "status": "ACTIVE",
+      "search_potential": "VERY_HIGH",
+      "competition": "HIGH",
+      "openrgd_fit": 5,
+      "evidence_advantage": 5,
+      "next": [
+        "vla datasets",
+        "vla benchmarks",
+        "vla evaluation",
+        "vla embodiment",
+        "vla inference latency",
+        "VLA model entities"
+      ]
+    },
+    {
+      "id": "SEO-02",
+      "name": "LeRobot + SO-101 + real-world robot learning",
+      "priority": "P0",
+      "status": "EXPAND",
+      "search_potential": "HIGH",
+      "competition": "MEDIUM",
+      "openrgd_fit": 5,
+      "evidence_advantage": 5,
+      "next": [
+        "SO-101 reproducible baseline",
+        "LeRobot dataset data card",
+        "async inference",
+        "latency decomposition",
+        "failure taxonomy",
+        "ACT vs SmolVLA"
+      ]
+    },
+    {
+      "id": "SEO-03",
+      "name": "Robot description formats + loss-aware interoperability",
+      "priority": "P0",
+      "status": "EXPAND",
+      "search_potential": "VERY_HIGH",
+      "competition": "MEDIUM_HIGH",
+      "openrgd_fit": 5,
+      "evidence_advantage": 4,
+      "next": [
+        "Xacro",
+        "URDF limitations",
+        "master comparison",
+        "URDF to MJCF",
+        "URDF to USD",
+        "URDF to SDF",
+        "format-loss matrix",
+        "loss-aware inspector"
+      ]
+    },
+    {
+      "id": "SEO-04",
+      "name": "Robot entities + developer assets",
+      "priority": "P0_P1",
+      "status": "EXPAND",
+      "search_potential": "HIGH_LONG_TAIL",
+      "competition": "MEDIUM",
+      "openrgd_fit": 5,
+      "evidence_advantage": 5,
+      "next": [
+        "Unitree G1 developer assets",
+        "SO-101",
+        "Franka FR3",
+        "ALOHA",
+        "UR5e",
+        "Panda"
+      ]
+    },
+    {
+      "id": "SEO-05",
+      "name": "Robot ontology + task representation + capability semantics",
+      "priority": "P1",
+      "status": "EXPAND",
+      "search_potential": "MEDIUM",
+      "competition": "LOW_MEDIUM",
+      "openrgd_fit": 5,
+      "evidence_advantage": 4,
+      "next": [
+        "IEEE 1872 family map",
+        "robot task representation",
+        "robot capability ontology",
+        "capability vs skill vs task vs action vs affordance",
+        "advertised vs operational capability"
+      ]
+    },
+    {
+      "id": "SEO-06",
+      "name": "Robot knowledge graphs",
+      "priority": "P1",
+      "status": "EXPAND",
+      "search_potential": "MEDIUM_EMERGING",
+      "competition": "LOW_MEDIUM",
+      "openrgd_fit": 5,
+      "evidence_advantage": 5,
+      "next": [
+        "public graph explorer",
+        "robot capability task graph",
+        "dataset policy paper graph",
+        "downloadable graph snapshot"
+      ]
+    },
+    {
+      "id": "SEO-07",
+      "name": "World models for robotics",
+      "priority": "P1",
+      "status": "EXPAND",
+      "search_potential": "HIGH",
+      "competition": "HIGH",
+      "openrgd_fit": 4,
+      "evidence_advantage": 3,
+      "next": [
+        "world models for robotics",
+        "action-conditioned world models",
+        "WAM",
+        "world model vs simulator",
+        "uncertainty",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "SEO-08",
+      "name": "Physical AI + Embodied AI",
+      "priority": "P1",
+      "status": "UMBRELLA",
+      "search_potential": "VERY_HIGH",
+      "competition": "VERY_HIGH",
+      "openrgd_fit": 4,
+      "evidence_advantage": 3,
+      "next": [
+        "Physical AI vs Embodied AI",
+        "embodiment grounding",
+        "Physical AI evaluation",
+        "policy to hardware authority"
+      ]
+    },
+    {
+      "id": "SEO-09",
+      "name": "Robot safety architecture + AI robot security",
+      "priority": "P1",
+      "status": "EXPAND",
+      "search_potential": "MEDIUM_HIGH",
+      "competition": "MEDIUM_HIGH",
+      "openrgd_fit": 5,
+      "evidence_advantage": 4,
+      "next": [
+        "semantic vs functional safety",
+        "VLA safety boundary",
+        "model confidence vs operational safety",
+        "AI robot attack surface",
+        "standards map"
+      ]
+    },
+    {
+      "id": "SEO-10",
+      "name": "Robot identity + provenance + digital passport",
+      "priority": "P1_P2",
+      "status": "EXPAND",
+      "search_potential": "MEDIUM_STRATEGIC",
+      "competition": "LOW",
+      "openrgd_fit": 5,
+      "evidence_advantage": 5,
+      "next": [
+        "robot digital identity",
+        "robot provenance",
+        "model vs variant vs instance",
+        "evidence levels",
+        "robot passport vs EU DPP"
+      ]
+    },
+    {
+      "id": "SEO-11",
+      "name": "Robotics standards + semantic interoperability",
+      "priority": "P2",
+      "status": "BUILD_REFERENCE",
+      "search_potential": "MEDIUM",
+      "competition": "MEDIUM_INSTITUTIONAL",
+      "openrgd_fit": 5,
+      "evidence_advantage": 4,
+      "next": [
+        "IEEE standards map",
+        "description vs ontology vs task standards",
+        "OpenUSD/SDFormat/ROS references"
+      ]
+    },
+    {
+      "id": "SEO-12",
+      "name": "ROS 2 + OpenRGD developer interoperability",
+      "priority": "P2",
+      "status": "EXPAND_SELECTIVELY",
+      "search_potential": "MEDIUM",
+      "competition": "HIGH_GENERIC",
+      "openrgd_fit": 4,
+      "evidence_advantage": 4,
+      "next": [
+        "OpenRGD + ROS2",
+        "ros2_control mapping",
+        "hardware binding completeness",
+        "static export validation"
+      ]
+    },
+    {
+      "id": "SEO-13",
+      "name": "Robot datasets + evaluation infrastructure",
+      "priority": "P1_P2",
+      "status": "EMERGE_FROM_GRAPH",
+      "search_potential": "HIGH",
+      "competition": "MEDIUM_HIGH",
+      "openrgd_fit": 4,
+      "evidence_advantage": 5,
+      "next": [
+        "robot dataset graph",
+        "benchmark evidence model",
+        "VLA/LeRobot first"
+      ]
+    },
+    {
+      "id": "SEO-14",
+      "name": "Multi-robot + RGD Mesh + temporal semantics",
+      "priority": "P3",
+      "status": "WAIT_FOR_EVIDENCE",
+      "search_potential": "LOW_MEDIUM",
+      "competition": "LOW",
+      "openrgd_fit": 5,
+      "evidence_advantage": 4
+    },
+    {
+      "id": "SEO-15",
+      "name": "DecisionTrace + ethics semantics",
+      "priority": "P3",
+      "status": "WAIT_FOR_SIGNAL",
+      "search_potential": "LOW",
+      "competition": "LOW_MEDIUM",
+      "openrgd_fit": 4,
+      "evidence_advantage": 3
+    }
+  ],
+  "product_opportunities": [
+    {
+      "name": "Loss-aware robot-description inspector",
+      "priority": "P0"
+    },
+    {
+      "name": "Robot developer-asset index",
+      "priority": "P0_P1"
+    },
+    {
+      "name": "Robot knowledge graph explorer",
+      "priority": "P1"
+    },
+    {
+      "name": "Evidence-aware comparison engine",
+      "priority": "P1"
+    }
+  ],
+  "recommended_waves": [
+    {
+      "wave": "A",
+      "name": "Robot Description Authority",
+      "priority": "NEXT"
+    },
+    {
+      "wave": "B",
+      "name": "LeRobot / SO-101 Evidence",
+      "priority": "PARALLEL"
+    },
+    {
+      "wave": "C",
+      "name": "Semantic Robotics Authority",
+      "priority": "AFTER_A"
+    },
+    {
+      "wave": "D",
+      "name": "Robot Entity Expansion",
+      "priority": "AFTER_OR_PARALLEL"
+    },
+    {
+      "wave": "E",
+      "name": "World Models + Physical AI bridge",
+      "priority": "LATER"
+    }
+  ],
+  "avoid": [
+    "generic robotics news",
+    "best robots listicles",
+    "generic AI glossary",
+    "mass-generated manufacturer pages without evidence",
+    "keyword-variant duplicate pages",
+    "rewritten vendor product pages",
+    "generic Physical AI trends without OpenRGD-specific architecture",
+    "safety certification implications",
+    "regulatory DPP equivalence claims without basis"
+  ]
+}
