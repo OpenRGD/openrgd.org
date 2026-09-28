@@ -1,4 +1,21 @@
 /** @type {import('next').NextConfig} */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.ecm.plus https://ecm.plus https://*.ecm.plus",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://www.ecm.plus https://ecm.plus https://*.ecm.plus",
+  "media-src 'self'",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "upgrade-insecure-requests",
+].join('; ')
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -18,6 +35,7 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          { key: 'Content-Security-Policy', value: contentSecurityPolicy },
         ],
       },
     ]
@@ -67,6 +85,21 @@ const nextConfig = {
       {
         source: '/contribute',
         destination: 'https://openrgd.org/contributing',
+        permanent: true,
+      },
+      {
+        source: '/rss.xml',
+        destination: 'https://openrgd.org/feed.xml',
+        permanent: true,
+      },
+      {
+        source: '/rss',
+        destination: 'https://openrgd.org/feed.xml',
+        permanent: true,
+      },
+      {
+        source: '/feed',
+        destination: 'https://openrgd.org/feed.xml',
         permanent: true,
       },
     ]

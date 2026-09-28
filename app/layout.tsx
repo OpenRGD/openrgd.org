@@ -105,6 +105,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             `,
           }}
         />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="OpenRGD Engineering Journal RSS"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title="OpenRGD Engineering Journal JSON Feed"
+          href="/feed.json"
+        />
         <script
           src={ecmApiBase + '/ecm.js'}
           data-ecm-site={ecmSiteId}
@@ -113,12 +125,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
         />
         <AmbientMotion />
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
       </body>
     </html>
   )

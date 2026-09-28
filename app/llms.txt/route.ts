@@ -1,0 +1,69 @@
+import { canonicalState } from '@/lib/project/canonical-state'
+
+export const dynamic = 'force-static'
+
+export async function GET() {
+  const base = 'https://openrgd.org'
+  const lines = [
+    '# OpenRGD',
+    '',
+    '> OpenRGD is an open, machine-readable standard for cognitive embodiment and robot interoperability.',
+    '',
+    'OpenRGD.org is the public knowledge and specification hub. The canonical repository remains the authority for normative source, contracts, governance and version state.',
+    '',
+    '## Canonical authority',
+    '',
+    '- Repository: https://github.com/OpenRGD/openrgd',
+    '- Citation snapshot: https://github.com/OpenRGD/openrgd/tree/' + canonicalState.snapshotSha,
+    '- Standard bundle: ' + canonicalState.standard.version + ' (' + canonicalState.standard.maturity + ')',
+    '- Toolchain: ' + canonicalState.toolchain.version + ' (' + canonicalState.toolchain.maturity + ')',
+    '- Agent Contracts: ' + canonicalState.agentContracts.version + ' (' + canonicalState.agentContracts.maturity + ', non-normative)',
+    '',
+    '## Start here',
+    '',
+    '- Project overview: ' + base + '/openrgd',
+    '- Specification: ' + base + '/spec',
+    '- Architecture: ' + base + '/architecture',
+    '- Governance: ' + base + '/governance',
+    '- Releases and versions: ' + base + '/releases',
+    '- Citation guide: ' + base + '/cite',
+    '- Developer documentation: ' + base + '/docs',
+    '- Research: ' + base + '/research',
+    '- Engineering journal: ' + base + '/blog',
+    '',
+    '## Major technical topics',
+    '',
+    '- Physical AI: ' + base + '/physical-ai',
+    '- Physical AI stack: ' + base + '/physical-ai-stack',
+    '- Vision-Language-Action models: ' + base + '/vla',
+    '- Robot description: ' + base + '/robot-description',
+    '- Robot ontology: ' + base + '/robot-ontology',
+    '- Robot knowledge graph: ' + base + '/robot-knowledge-graph',
+    '- Robot capability model: ' + base + '/robot-capability-model',
+    '- Robot identity and provenance: ' + base + '/robot-identity-provenance',
+    '- Runtime boundary: ' + base + '/architecture/runtime-boundary',
+    '',
+    '## Machine-readable discovery',
+    '',
+    '- Sitemap: ' + base + '/sitemap.xml',
+    '- RSS: ' + base + '/feed.xml',
+    '- JSON Feed: ' + base + '/feed.json',
+    '- Security policy: ' + base + '/.well-known/security.txt',
+    '',
+    '## Interpretation boundaries',
+    '',
+    '- Website explainers are informative and source-backed but do not override canonical repository authority.',
+    '- Candidate, experimental, accepted, deprecated and historical material must remain distinguishable.',
+    '- A valid OpenRGD profile is semantic context, not permission to actuate hardware.',
+    '- Source-tree hashes prove content identity under the declared profile; they do not prove authorship, review, compatibility or physical safety.',
+    '',
+  ]
+
+  return new Response(lines.join('\n'), {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+    },
+  })
+}

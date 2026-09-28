@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 type DomainKey = 'core' | 'foundation' | 'operation' | 'agency' | 'volition' | 'evolution' | 'ether'
 
@@ -80,10 +80,40 @@ const domains: Array<{
 
 export default function DomainExplorer() {
   const [activeKey, setActiveKey] = useState<DomainKey>('foundation')
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
   const active = useMemo(() => domains.find((domain) => domain.key === activeKey) || domains[1], [activeKey])
+  const activeIndex = domains.findIndex((domain) => domain.key === active.key)
+
+  const activateIndex = (index: number) => {
+    const safeIndex = (index + domains.length) % domains.length
+    setActiveKey(domains[safeIndex].key)
+    tabRefs.current[safeIndex]?.focus()
+  }
+
+  const onTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      event.preventDefault()
+      activateIndex(index + 1)
+      return
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      activateIndex(index - 1)
+      return
+    }
+    if (event.key === 'Home') {
+      event.preventDefault()
+      activateIndex(0)
+      return
+    }
+    if (event.key === 'End') {
+      event.preventDefault()
+      activateIndex(domains.length - 1)
+    }
+  }
 
   return (
-    <div className="hero-graph explorer intro intro-5" data-tilt aria-label="Interactive OpenRGD domain explorer">
+    <div className="hero-graph explorer intro intro-5" data-tilt role="region" aria-label="Interactive OpenRGD domain explorer">
       <div className="graph-glow" aria-hidden="true" />
       <div className="window-bar">
         <span>openrgd.graph / domains</span>
@@ -95,11 +125,16 @@ export default function DomainExplorer() {
           {domains.map((domain) => (
             <button
               key={domain.key}
+              ref={(node) => { tabRefs.current[domains.findIndex((item) => item.key === domain.key)] = node }}
+              id={'domain-tab-' + domain.key}
               type="button"
               role="tab"
               aria-selected={activeKey === domain.key}
+              aria-controls={'domain-panel-' + domain.key}
+              tabIndex={activeKey === domain.key ? 0 : -1}
               className={'explorer-tab ' + (activeKey === domain.key ? 'active' : '')}
               onClick={() => setActiveKey(domain.key)}
+              onKeyDown={(event) => onTabKeyDown(event, domains.findIndex((item) => item.key === domain.key))}
             >
               <span>{domain.code}</span>
               <strong>{domain.label}</strong>
@@ -107,7 +142,14 @@ export default function DomainExplorer() {
           ))}
         </div>
 
-        <div className="explorer-detail" role="tabpanel">
+        <div
+          className="explorer-detail"
+          role="tabpanel"
+          id={'domain-panel-' + active.key}
+          aria-labelledby={'domain-tab-' + active.key}
+          tabIndex={0}
+          data-active-index={activeIndex}
+        >
           <div className="explorer-detail-head">
             <div>
               <span className="explorer-code">{active.code}</span>
