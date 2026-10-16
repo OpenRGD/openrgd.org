@@ -76,8 +76,8 @@ export default function BlogPage() {
       <section className="shell blog-index-section">
         <div className="blog-index-heading">
           <div>
-            <p className="kicker">FIRST PUBLICATION WAVE</p>
-            <h2>Six notes from the current OpenRGD boundary.</h2>
+            <p className="kicker">ENGINEERING NOTES</p>
+            <h2>Published architecture, methodology and bounded field evidence.</h2>
           </div>
           <span>{String(blogPosts.length).padStart(2, '0')} ARTICLES</span>
         </div>

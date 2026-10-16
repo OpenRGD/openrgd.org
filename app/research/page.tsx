@@ -21,7 +21,8 @@ const foundational = [
 ]
 
 const experiments = [
-  ['/research/so101-embodiment-lab','SO-101 Embodiment Lab','EXPERIMENTAL','experimental','Leader/follower teleoperation, commissioning and causal-flow pressure testing on physical hardware.'],
+  ['/research/so101-embodiment-lab','SO-101 Embodiment Lab','EXPERIMENTAL','experimental','Operator-confirmed teleoperation and smoke replay, machine-readable evidence and repeatable lab protocol.'],
+  ['/lerobot','LeRobot + SO-101','EVIDENCE REFERENCE','experimental','Calibration, teleoperation, dataset provenance, ACT / SmolVLA evaluation and latency methodology.'],
   ['/research/motion-quality','Motion Quality','EXPERIMENTAL','experimental','Smoothness, trajectories and motion-layer experimentation outside the canonical standard.'],
   ['/research/rgd-mesh','RGD Mesh','RESEARCH','research','Identity, pairing, permissions and state/intent exchange for multi-robot systems.'],
 ]

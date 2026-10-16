@@ -57,6 +57,7 @@ export default function VlaPage() {
         {href:'/vla/action-representation',title:'VLA Action Representation',copy:'Understand action tokens, continuous actions, flow matching and action chunks.'},
         {href:'/vla/vla-vs-vlm',title:'VLA vs VLM',copy:'See why visual-language understanding is not the same problem as action generation.'},
         {href:'/vla/vla-vs-world-model',title:'VLA vs World Model',copy:'Separate action policies from predictive models of how the world may evolve.'},
+        {href:'/lerobot/so101-smolvla',title:'SmolVLA on SO-101',copy:'Follow an experimental VLA workflow grounded in actual robot evidence.'},
         {href:'/architecture/runtime-boundary',title:'Runtime Boundary',copy:'See where model proposals stop and downstream physical execution responsibility begins.'},
       ]}
     >

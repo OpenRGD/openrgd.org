@@ -26,5 +26,8 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Validate SO-101 evidence boundaries
+        run: npm run validate:so101
+
       - name: Build
         run: npm run build

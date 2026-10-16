@@ -39,6 +39,7 @@ export default function VlaModelsPage() {
         {href:'/vla',title:'Vision-Language-Action Models',copy:'Return to the VLA pillar and core definition.'},
         {href:'/vla/action-representation',title:'Action Representation',copy:'Compare discrete tokens, continuous actions, flow matching and chunks.'},
         {href:'/vla/how-vla-models-work',title:'How VLA Models Work',copy:'Follow the inference path from observations to robot control.'},
+        {href:'/lerobot/so101-evaluation',title:'ACT vs SmolVLA on SO-101',copy:'A common protocol for a future measured real-robot comparison.'},
       ]}
     >
       <ConceptSection kicker="HOW TO COMPARE" title="Model size alone is a poor way to compare VLA systems.">

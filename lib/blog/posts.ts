@@ -617,6 +617,98 @@ export const blogPosts: BlogPost[] = [
         "href": "/robot-safety-architecture"
       }
     ]
+  },
+  {
+    "slug": "so101-teleoperation-record-replay-evidence-boundary",
+    "title": "SO-101 field note: teleoperation, one local episode, and what replay does not prove",
+    "description": "A bounded OpenRGD SO-101 field note: operator-confirmed leader/follower teleoperation, one no-video 448-sample smoke episode, replay and the missing public evidence required for policy benchmarks.",
+    "category": "Field Note",
+    "publishedAt": "2026-10-16",
+    "modifiedAt": "2026-10-16",
+    "readTime": "7 min",
+    "lead": "An operator-confirmed robot smoke test is worth reporting, provided it is not mistaken for a published benchmark. Our SO-101 leader/follower work established a native LeRobot record/replay path; the next job is to archive the evidence that makes it reproducible.",
+    "sections": [
+      {
+        "id": "actual-sessions",
+        "title": "What was actually reported on the physical SO-101.",
+        "paragraphs": [
+          "On 30 August 2026, OpenRGD work sessions reported the SO-101 black leader moving the white follower after configuring and calibrating the twelve servos. Persistent calibration identities were openrgd_leader and openrgd_follower. Teleoperation was confirmed working again on 16 September after troubleshooting.",
+          "These results come from operator work-session notes, not from an independently reviewed public hardware trace. That distinction matters: the operator may truthfully report a working bench setup without claiming that its quantitative tracking, latency or safety properties have been measured."
+        ]
+      },
+      {
+        "id": "record-replay",
+        "title": "The smoke episode was small, local and did not contain video.",
+        "paragraphs": [
+          "The operator also reported one local recording labelled openrgd/so101-smoke: episode 0, 448 recorded samples and a nominal 15-second capture window, without camera video. Replay of the local episode was reported to execute correctly.",
+          "The dataset is not a public Hugging Face Hub asset in this record. There is no public SHA-256 of the raw data, no calibration file digest, no synchronized video, and no replay trajectory error distribution. Reporting the number of samples does not establish precise actual FPS."
+        ],
+        "bullets": [
+          "One episode does not demonstrate training-set sufficiency.",
+          "An action replay is not a learned-policy rollout.",
+          "Visual teleoperation success does not establish an OpenRGD physical-runtime sign-off."
+        ]
+      },
+      {
+        "id": "why-provenance",
+        "title": "A stronger result needs both an experiment and an evidence chain.",
+        "paragraphs": [
+          "LeRobotDataset v3 separates Parquet sensorimotor time series, MP4 video shards and episode/task metadata. It can represent future synchronized training data, but the source of every row still needs calibration, task, camera and model provenance.",
+          "The next OpenRGD protocol requires exact code revisions, calibration hashes, trial-level outcomes, timebase information and failure/abort recording. Until those artifacts exist, policy success and latency metrics remain absent rather than guessed."
+        ]
+      },
+      {
+        "id": "next-gate",
+        "title": "The next publication gate is a controlled real-robot experiment.",
+        "paragraphs": [
+          "We have defined a bounded object-transfer task and future conditions for human teleoperation, ACT, SmolVLA synchronous inference and the same SmolVLA checkpoint with asynchronous inference. The protocol calls for at least twenty matched trials per condition as an operational floor, not a guarantee of statistical significance.",
+          "The SO-101 lab now exposes its evidence ledger, protocol and a header-only trial template. Future successful and unsuccessful trials can enter the same record without rewriting these earlier operator observations."
+        ]
+      },
+      {
+        "id": "architecture",
+        "title": "Robot learning and execution authority remain separate responsibilities.",
+        "paragraphs": [
+          "LeRobot supplies native robot control interfaces, demonstration recording, training and inference. The OpenRGD candidate runtime design adds an explicit semantic boundary for action intent, body grounding and execution authority. A good policy score will not certify physical safety, and the canonical OpenRGD standard remains non-actuating."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "SO-101 lab and evidence state",
+        "href": "/research/so101-embodiment-lab"
+      },
+      {
+        "label": "Machine-readable operator evidence ledger",
+        "href": "/research/so101-embodiment-lab/evidence.json"
+      },
+      {
+        "label": "SO-101 evaluation protocol",
+        "href": "/research/so101-embodiment-lab/protocol.json"
+      },
+      {
+        "label": "LeRobot real-world robotics documentation",
+        "href": "https://huggingface.co/docs/lerobot/il_robots"
+      },
+      {
+        "label": "LeRobotDataset v3 documentation",
+        "href": "https://huggingface.co/docs/lerobot/lerobot-dataset-v3"
+      }
+    ],
+    "related": [
+      {
+        "label": "SO-101 Teleoperation",
+        "href": "/lerobot/so101-teleoperation"
+      },
+      {
+        "label": "SO-101 Dataset",
+        "href": "/lerobot/so101-dataset"
+      },
+      {
+        "label": "ACT vs SmolVLA Evaluation",
+        "href": "/lerobot/so101-evaluation"
+      }
+    ]
   }
 ]
 
