@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "OPENRGD-SO101-EVAL-V1",
+  "status": "protocol_ready_no_measured_results",
+  "updated_at": "2026-10-16",
+  "normative": false,
+  "goal": "Provide a repeatable, bounded real-robot evaluation of SO-101 data capture, imitation policies and inference timing without claiming OpenRGD hardware safety certification.",
+  "required_preflight": [
+    "Confirm leader/follower identity, exact robot/config revisions and USB device mapping for this session.",
+    "Inspect mechanical workspace, electrical supply, pinch hazards and an operator-reachable safe-stop/torque-disable procedure; stop if not validated.",
+    "Verify calibration correspondence under supervision and log calibration hash or explicitly mark unavailable.",
+    "Fix camera positions, frame resolution and FPS; measure video/state timestamp synchronization or record as unknown.",
+    "Record LeRobot, Python, driver, policy/model and adapter Git commits plus sensor/joint order and action units.",
+    "Predeclare task success definition, reset procedure, exclusion criteria, time limit and safe abort triggers."
+  ],
+  "task_definition": {
+    "task_id": "so101-object-transfer-v1",
+    "status": "proposed_not_performed",
+    "description": "Pick up one lightweight object and place it entirely in a marked target area within a defined reachable workspace.",
+    "success_condition": "Object fully released inside marked target zone before task timeout, without operator intervention or a safety abort.",
+    "failure_condition": "Timeout, failed grasp, off-target release, loss of object, excessive deviation, human intervention or safety abort.",
+    "setup_requirements": [
+      "Recorded object geometry/mass",
+      "Fixed marked start/target regions",
+      "Consistent tabletop and camera setup",
+      "Explicit safe motion envelope"
+    ],
+    "time_limit_s": null,
+    "time_limit_note": "Set and freeze the time limit before collecting comparisons; do not invent one for unexecuted trials."
+  },
+  "conditions": [
+    {
+      "id": "teleop-reference",
+      "status": "planned",
+      "claim_scope": "human-driven control reference, not learned-policy performance"
+    },
+    {
+      "id": "act-autonomous",
+      "status": "planned",
+      "claim_scope": "ACT, exact checkpoint and training data pinned"
+    },
+    {
+      "id": "smolvla-sync",
+      "status": "planned",
+      "claim_scope": "SmolVLA, synchronous action generation"
+    },
+    {
+      "id": "smolvla-async",
+      "status": "planned",
+      "claim_scope": "Same SmolVLA checkpoint with asynchronous inference and recorded chunk settings"
+    }
+  ],
+  "evaluation_design": {
+    "matched_trials_per_condition_minimum": 20,
+    "note": "20 is an operational minimum for a first comparative report, not proof of statistical significance or generalization.",
+    "balancing": "Match object placements, camera geometry, environmental conditions and task resets; counterbalance run order and predefine random seed.",
+    "analysis": [
+      "Raw successes and denominators including safety aborts",
+      "Wilson 95% interval or appropriately bounded interval for task success",
+      "p50/p95 and outliers for latency where measured",
+      "Per-category failure count and representative reproducible traces",
+      "Confidence limits and task/embodiment scope"
+    ],
+    "no_training_evaluation_leakage": true,
+    "include_operator_aborts_in_reporting": true
+  },
+  "timing_schema": {
+    "timebase": "monotonic nanoseconds within each machine; log UTC anchor separately; record inter-machine clock alignment when remote",
+    "timestamps": [
+      "observation_capture_ns",
+      "observation_available_ns",
+      "preprocess_start_ns",
+      "inference_start_ns",
+      "inference_end_ns",
+      "action_decode_end_ns",
+      "command_dispatch_ns",
+      "feedback_observed_ns"
+    ],
+    "derived_metrics": [
+      "capture_to_inference_ms",
+      "model_compute_ms",
+      "inference_to_dispatch_ms",
+      "capture_to_dispatch_ms",
+      "dispatch_to_feedback_ms",
+      "frame_age_at_action_ms",
+      "action_queue_empty_events",
+      "dropped_frames",
+      "command_rate_hz"
+    ],
+    "caveat": "Do not infer actuator-onset, real-time scheduling or motor-bus latency from dispatch timestamps alone."
+  },
+  "trial_columns": [
+    "protocol_version",
+    "run_id",
+    "condition_id",
+    "trial_id",
+    "timestamp_utc",
+    "task_id",
+    "dataset_revision",
+    "policy_checkpoint",
+    "lerobot_commit",
+    "robot_config_hash",
+    "calibration_hash",
+    "camera_config_hash",
+    "object_start_region",
+    "randomization_seed",
+    "success",
+    "abort",
+    "failure_code",
+    "duration_s",
+    "capture_to_dispatch_ms_p50",
+    "capture_to_dispatch_ms_p95",
+    "frame_age_at_action_ms_p95",
+    "queue_empty_events",
+    "notes",
+    "artifact_uri",
+    "artifact_sha256"
+  ],
+  "failure_codes": [
+    "GRASP_MISS",
+    "OBJECT_DROP",
+    "OFF_TARGET",
+    "LIMIT_OR_WORKSPACE",
+    "PERCEPTION_OR_OCCLUSION",
+    "ACTION_STALENESS",
+    "CONTROLLER_MISMATCH",
+    "TIMING_OR_DROPPED_FRAMES",
+    "OPERATOR_ABORT",
+    "SAFETY_ABORT",
+    "TIMEOUT",
+    "OTHER"
+  ],
+  "publication_gate": [
+    "Archived raw trial log + checksums and model/dataset revisions",
+    "Robot, camera, calibration, task, success/failure definitions frozen before trials",
+    "Predeclared and reported exclusions, aborted trials and recovery behavior",
+    "Source-linked examples and no invented latency or task-success figures",
+    "Verified reproducibility boundaries; no inference from one robot/task to universal performance",
+    "Explicit safety boundary: semantics and policy output do not authorize actuation"
+  ],
+  "related_public_urls": [
+    "https://openrgd.org/research/so101-embodiment-lab",
+    "https://openrgd.org/lerobot/so101-evaluation",
+    "https://openrgd.org/lerobot/so101-inference-latency"
+  ]
+}

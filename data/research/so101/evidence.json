@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0.0",
+  "subject": "OpenRGD SO-101 Embodiment Lab",
+  "updated_at": "2026-10-16",
+  "publication_state": "operator_reported_baseline_no_public_raw_artifact",
+  "normative": false,
+  "scope": "LeRobot SO-101 leader/follower laboratory; not a normative OpenRGD conformance or physical-safety certification.",
+  "interpretation": "Operator-confirmed observations from prior work sessions are reported as such, not independently audited measurements. No public raw dataset, checksum, calibration bundle or execution trace has been attached.",
+  "source_categories": {
+    "operator_report": "Recorded work-session/operator confirmation; not an independently reviewed or downloadable artifact.",
+    "canonical_example": "Canonical OpenRGD Agent Contracts SO-101 causal-flow example; a candidate schema example, not execution evidence.",
+    "external_reference": "LeRobot/Hugging Face documentation describing upstream capabilities, not evidence of OpenRGD testing."
+  },
+  "platform": {
+    "platform": "SO-101 follower arm + SO-101 leader arm",
+    "follower_role": "robot",
+    "leader_role": "teleoperator",
+    "follower_id": "openrgd_follower",
+    "leader_id": "openrgd_leader",
+    "servos_reported_total": 12,
+    "calibration_state": "operator_reported_persisted",
+    "public_calibration_sha256": null,
+    "public_hardware_trace_uri": null,
+    "lerobot_revision": null,
+    "rgd_lerobot_revision": null,
+    "camera_config_for_smoke_test": "no_video",
+    "physical_runtime_signoff": "not_established"
+  },
+  "observations": [
+    {
+      "id": "SO101-OP-20260830-COMMISSIONING",
+      "date": "2026-08-30",
+      "kind": "commissioning",
+      "evidence_level": "operator_confirmed",
+      "conclusion": "The SO-101 leader and follower were configured/calibrated; operator reported that the black leader moved the white follower.",
+      "reported_values": {
+        "configured_servos": 12,
+        "calibration_ids": [
+          "openrgd_leader",
+          "openrgd_follower"
+        ]
+      },
+      "raw_artifact_public": false,
+      "raw_artifact_uri": null,
+      "raw_artifact_sha256": null,
+      "caveat": "Calibration file contents and motor bus state were not re-audited in this publication."
+    },
+    {
+      "id": "SO101-OP-20260830-DATASET-SMOKE",
+      "date": "2026-08-30",
+      "kind": "dataset_smoke",
+      "evidence_level": "operator_confirmed",
+      "conclusion": "A local non-video smoke recording was reported as episode 0, 448 samples, followed by a clean stop.",
+      "reported_values": {
+        "episodes": 1,
+        "samples": 448,
+        "recording_window_seconds": 15,
+        "video_recorded": false,
+        "local_dataset_id": "openrgd/so101-smoke"
+      },
+      "raw_artifact_public": false,
+      "raw_artifact_uri": null,
+      "raw_artifact_sha256": null,
+      "caveat": "The dataset is not linked as a public Hub repository. A small recording is not a training set or a task-success benchmark; effective sample timing has not been independently recomputed."
+    },
+    {
+      "id": "SO101-OP-20260830-REPLAY",
+      "date": "2026-08-30",
+      "kind": "replay",
+      "evidence_level": "operator_confirmed",
+      "conclusion": "A replay of the local smoke episode was reported to have executed correctly.",
+      "reported_values": {
+        "source_episode": 0,
+        "source_dataset_id": "openrgd/so101-smoke"
+      },
+      "raw_artifact_public": false,
+      "raw_artifact_uri": null,
+      "raw_artifact_sha256": null,
+      "caveat": "No replay timestamps, encoder trace or quantitative trajectory error are publicly archived."
+    },
+    {
+      "id": "SO101-OP-20260916-TELEOP",
+      "date": "2026-09-16",
+      "kind": "teleoperation_retest",
+      "evidence_level": "operator_confirmed",
+      "conclusion": "Leader/follower teleoperation was again confirmed working after troubleshooting.",
+      "reported_values": {
+        "human_report": "funziona perfettamente"
+      },
+      "raw_artifact_public": false,
+      "raw_artifact_uri": null,
+      "raw_artifact_sha256": null,
+      "caveat": "This is an operator assessment of teleoperation, not a measured tracking or latency result."
+    }
+  ],
+  "research_backlog": [
+    {
+      "id": "SO101-X100",
+      "title": "Repeatable teleoperation and replay baseline",
+      "status": "needs_archived_raw_evidence",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X101",
+      "title": "Camera-synchronized LeRobotDataset v3 data card",
+      "status": "protocol_ready_not_measured",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X102",
+      "title": "End-to-end action/observation latency",
+      "status": "protocol_ready_not_measured",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X103",
+      "title": "ACT vs SmolVLA paired real-robot evaluation",
+      "status": "protocol_ready_not_measured",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X104",
+      "title": "Synchronous vs asynchronous inference and action staleness",
+      "status": "protocol_ready_not_measured",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X105",
+      "title": "Perturbation/recovery and failure taxonomy",
+      "status": "protocol_ready_not_measured",
+      "verified_result": null
+    },
+    {
+      "id": "SO101-X106",
+      "title": "LeRobot output to OpenRGD ActionIntent mapping",
+      "status": "contract_delta_pending",
+      "verified_result": null
+    }
+  ],
+  "reference_sources": [
+    {
+      "label": "Canonical SO-101 causal-flow example (not a test log)",
+      "url": "https://github.com/OpenRGD/openrgd/blob/main/contracts/agent/v0.1.0/examples/so101-causal-flow.json"
+    },
+    {
+      "label": "LeRobot SO-101",
+      "url": "https://huggingface.co/docs/lerobot/so101"
+    },
+    {
+      "label": "LeRobot real-world robot workflow",
+      "url": "https://huggingface.co/docs/lerobot/il_robots"
+    },
+    {
+      "label": "LeRobotDataset v3",
+      "url": "https://huggingface.co/docs/lerobot/lerobot-dataset-v3"
+    }
+  ]
+}
