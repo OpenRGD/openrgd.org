@@ -1,5 +1,12 @@
 const rows = [
   {
+    format: 'Xacro',
+    href: '/xacro',
+    responsibility: 'Parametric generation of URDF XML',
+    strength: 'Macros, properties, includes, arguments and conditional generation for reusable ROS robot descriptions.',
+    boundary: 'A preprocessing source language; downstream tools generally consume the expanded URDF rather than Xacro semantics.',
+  },
+  {
     format: 'URDF',
     href: '/urdf',
     responsibility: 'Robot model structure',

@@ -5,8 +5,8 @@ import FormatComparison from '@/components/format-comparison'
 
 const citationRecord: CitationRecordData = {
   maturity: 'REFERENCE EXPLAINER',
-  lastVerified: '22 Sep 2026',
-  lastVerifiedIso: '2026-09-22',
+  lastVerified: '16 Oct 2026',
+  lastVerifiedIso: '2026-10-16',
   sourceVersion: 'ROS 2 Rolling URDF documentation + OpenRGD Import Guide',
   evidenceBoundary: 'Reference explainer; OpenRGD imports only source-supported URDF evidence and does not infer identity, safety, cognition or hardware authorization.',
   pageUrl: 'https://openrgd.org/urdf',
@@ -33,11 +33,14 @@ export default function UrdfPage() {
         { label: 'OpenRGD — Import Guide', href: 'https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md' },
       ]}
       related={[
-        { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare URDF with USD, SDF and RGD by responsibility.' },
+        { href: '/robot-description-formats', title: 'Robot Description Formats', copy: 'Compare URDF with Xacro, USD, SDF, MJCF and RGD by responsibility.' },
+        { href: '/xacro', title: 'Xacro', copy: 'Understand the macro and preprocessing layer that commonly generates URDF.' },
+        { href: '/urdf-limitations', title: 'URDF Limitations', copy: 'See where portable URDF core stops and extensions begin.' },
         { href: '/urdf-vs-sdf', title: 'URDF vs SDF', copy: 'Robot-model structure versus simulation-oriented model and world description.' },
         { href: '/urdf-vs-usd', title: 'URDF vs USD', copy: 'Robot-model structure versus scalable scene composition.' },
         { href: '/urdf-vs-mjcf', title: 'URDF vs MJCF', copy: 'Portable robot modeling versus MuJoCo-native dynamics.' },
         { href: '/interoperability', title: 'Interoperability', copy: 'Where URDF fits in a layered robotics stack.' },
+        { href: '/robot-description-inspector', title: 'Robot Description Inspector', copy: 'Inspect source evidence and extension signals locally.' },
       ]}
     >
       <ConceptSection kicker="CORE MODEL" title="Links and joints define the robot tree.">

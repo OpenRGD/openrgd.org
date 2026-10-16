@@ -7,8 +7,8 @@ import FormatComparison from '@/components/format-comparison'
 
 const citationRecord: CitationRecordData = {
   maturity: 'REFERENCE COMPARISON HUB',
-  lastVerified: '22 Sep 2026',
-  lastVerifiedIso: '2026-09-22',
+  lastVerified: '16 Oct 2026',
+  lastVerifiedIso: '2026-10-16',
   sourceVersion: 'Current ROS / OpenUSD / SDFormat / MuJoCo references + OpenRGD 0.2.0',
   evidenceBoundary: 'Responsibility map, not a ranking. The formats solve different layers and conversion can be lossy.',
   pageUrl: 'https://openrgd.org/robot-description-formats',
@@ -25,7 +25,7 @@ const provenanceSources = [
 
 export const metadata: Metadata = referenceMetadata({
   title: 'Robot Description Formats',
-  description: 'Compare URDF, OpenUSD, SDFormat, MJCF and RGD by responsibility: robot structure, scene composition, simulation, dynamic-system modeling and semantic embodiment.',
+  description: 'Compare Xacro, URDF, OpenUSD, SDFormat, MJCF and RGD by responsibility: robot structure, scene composition, simulation, dynamic-system modeling and semantic embodiment.',
   canonicalPath: '/robot-description-formats',
   record: citationRecord,
 })
@@ -38,7 +38,7 @@ export default function RobotDescriptionFormatsPage() {
         <p className="kicker">ROBOT DESCRIPTION FORMATS</p>
         <h1>Structure, scenes, simulation and semantic embodiment are different jobs.</h1>
         <p>
-          URDF, USD, SDFormat, MJCF and RGD overlap in useful ways, but they are not interchangeable.
+          Xacro, URDF, USD, SDFormat, MJCF and RGD overlap in useful ways, but they are not interchangeable.
           The important question is not “which format wins?” — it is “which layer owns which responsibility?”
         </p>
       </section>
@@ -65,6 +65,7 @@ export default function RobotDescriptionFormatsPage() {
         </div>
         <div className="content-card-grid">
           {[
+            ['Xacro', 'Parametric source generation for reusable ROS robot descriptions.', '/xacro'],
             ['URDF', 'Excellent for robot kinematic structure and common ROS robot-model workflows.', '/urdf'],
             ['USD', 'Strong for scalable scenegraphs, composition and rich scene/physics data.', '/usd'],
             ['SDF', 'Strong for simulation-oriented robots, models, sensors and whole environments.', '/sdf'],
@@ -91,6 +92,10 @@ export default function RobotDescriptionFormatsPage() {
             ['/urdf-vs-usd', 'URDF vs USD', 'Robot model vs composable scenegraph.'],
             ['/urdf-vs-mjcf', 'URDF vs MJCF', 'Portable robot structure vs MuJoCo-native modeling.'],
             ['/urdf-vs-rgd', 'URDF vs RGD', 'Robot structure vs semantic embodiment.'],
+            ['/urdf-limitations', 'URDF limitations', 'Where portable URDF stops and extensions or target-native formats begin.'],
+            ['/urdf-to-mjcf', 'URDF → MJCF', 'MuJoCo loading, serialization and target-specific review.'],
+            ['/urdf-to-usd', 'URDF → USD', 'Isaac Sim importer choices and OpenUSD asset structure.'],
+            ['/urdf-to-sdf', 'URDF → SDF', 'Gazebo/libsdformat conversion and extension behavior.'],
             ['/usd-vs-rgd', 'USD vs RGD', 'Scene composition vs semantic embodiment.'],
             ['/sdf-vs-rgd', 'SDF vs RGD', 'Simulation description vs semantic embodiment.'],
           ].map(([href, title, copy]) => (
@@ -104,6 +109,18 @@ export default function RobotDescriptionFormatsPage() {
         </div>
       </section>
 
+
+      <section className="shell content-section">
+        <div className="content-section-head">
+          <p className="kicker">CONVERSION & INSPECTION</p>
+          <h2>Interoperability should expose what changes.</h2>
+        </div>
+        <div className="content-card-grid">
+          <a className="content-card" href="/robot-description-conversion-losses"><h3>Conversion loss matrix</h3><p>Track source structure, target inference, unsupported semantics and provenance loss.</p></a>
+          <a className="content-card" href="/robot-description-inspector"><h3>Robot Description Inspector</h3><p>Inspect URDF, Xacro, MJCF, SDF and USDA locally before conversion.</p></a>
+          <a className="content-card" href="/ros2-control-urdf"><h3>ros2_control + URDF</h3><p>Separate hardware-interface declarations from runtime plugin authority.</p></a>
+        </div>
+      </section>
 
       <section className="shell content-section semantic-bridge">
         <div className="content-section-head">
