@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Stat = { label: string; value: string | number }
 type Finding = { level: 'evidence' | 'review' | 'boundary'; title: string; copy: string }
@@ -132,7 +132,8 @@ function inspect(text:string):Report {
 
 export default function RobotDescriptionInspector() {
   const [source,setSource]=useState(sampleUrdf)
-  const report=useMemo(()=>inspect(source),[source])
+  const [report,setReport]=useState<Report>({format:'—',title:'Preparing local inspector…',stats:[],findings:[],errors:[]})
+  useEffect(()=>{ setReport(inspect(source)) },[source])
   const onFile=async(file:File|undefined)=>{if(file)setSource(await file.text())}
   const download=()=>{
     const blob=new Blob([JSON.stringify({generated_at:new Date().toISOString(),report},null,2)],{type:'application/json'})
