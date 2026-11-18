@@ -30,6 +30,8 @@ export async function GET() {
     '- Developer documentation: ' + base + '/docs',
     '- Research: ' + base + '/research',
     '- Research Thesis Register: ' + base + '/research/theses',
+    '- Question-first research methodology: ' + base + '/research/methodology',
+    '- Research question/experiment program JSON: ' + base + '/research/methodology/program.json',
     '- Research Thesis Registry JSON: ' + base + '/research/theses/registry.json',
     '- Autonomous cognition without actuator authority: ' + base + '/research/theses/autonomous-cognition-without-actuator-authority',
     '- History vs memory: ' + base + '/research/theses/history-versus-memory',

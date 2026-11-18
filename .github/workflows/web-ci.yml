@@ -32,5 +32,8 @@ jobs:
       - name: Validate research theses and evidence gates
         run: npm run validate:theses
 
+      - name: Validate research program and registration safety
+        run: npm run validate:research
+
       - name: Build
         run: npm run build

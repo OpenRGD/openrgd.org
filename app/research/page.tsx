@@ -10,6 +10,7 @@ export const metadata = standardMetadata({
 })
 
 const foundational = [
+  ['/research/methodology','Research Methodology','RESEARCH FOUNDATION','research','Question-first protocols, experimental controls, pre-registration and provenance for five planned studies.'],
   ['/research/theses','Research Thesis Register','RESEARCH','research','19 falsifiable theses; five evidence-bounded dossiers on Cognition, Life, memory, calibration and voice latency.'],
   ['/physical-ai','Physical AI','RESEARCH','research','Perception, reasoning, simulation, control and safety when actions become physical.'],
   ['/physical-ai-stack','Physical AI Stack','AUTHORITY','research','A vendor-neutral map from data and simulation through models, embodiment, safety and hardware.'],
@@ -83,6 +84,7 @@ export default function ResearchPage() {
           <a className="content-card" href="/interoperability"><h3>Interoperability</h3><p>Explicit ownership across descriptions, semantic context, middleware and runtimes.</p></a>
           <a className="content-card" href="/blog"><h3>Engineering Notes</h3><p>Development updates, research notes and specification changes.</p></a>
           <a className="content-card" href="/research/theses"><h3>Thesis Register</h3><p>Hypotheses, counter-hypotheses, falsification and what our code or physical experiments actually demonstrate.</p></a>
+          <a className="content-card" href="/research/methodology"><h3>Research Methodology</h3><p>Five research questions and evidence protocols: from study design to repeatable data and independently checkable results.</p></a>
         </div>
       </section>
 

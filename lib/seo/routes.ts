@@ -21,6 +21,7 @@ export const indexableStaticRoutes = [
   '/organizations',
   '/research',
   '/research/theses',
+  '/research/methodology',
   '/research/theses/autonomous-cognition-without-actuator-authority',
   '/research/theses/history-versus-memory',
   '/research/theses/life-continuity-beyond-runtime',

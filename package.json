@@ -8,7 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "validate:so101": "node scripts/validate-so101-evidence.mjs",
-    "validate:theses": "node scripts/validate-thesis-register.mjs"
+    "validate:theses": "node scripts/validate-thesis-register.mjs",
+    "validate:research": "node scripts/validate-research-program.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0",

@@ -101,6 +101,7 @@ export default function ThesisRegisterPage() {
           physical studies and evidence chain. An engineering hypothesis is not promoted to observed truth by writing a publication.
         </p>
         <div className="content-actions">
+          <a className="button ghost" href="/research/methodology">Research methodology & study designs →</a>
           <a className="button primary" href="/research/theses/registry.json">Machine-readable registry (JSON) →</a>
           <a className="button ghost" href="/research">Research index →</a>
           <a className="button ghost" href="/cite">Citation guide →</a>
