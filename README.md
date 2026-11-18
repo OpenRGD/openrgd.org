@@ -45,3 +45,11 @@ The frontend uses a dark, research-grade, specification-first identity:
 The OpenRGD standard and toolchain live in:
 
 https://github.com/OpenRGD/openrgd
+
+## License
+
+Original OpenRGD website source code, design implementation and original editorial content in this repository are licensed under the [MIT License](LICENSE).
+
+The MIT license **does not override** the copyright or license of third-party references, libraries, linked resources, datasets, photographs, models, or other materials not owned by OpenRGD. Consult their original licenses and attribution terms.
+
+The public website repository does **not** grant access to or permission to redistribute private Italia Robotica configurations, shared Supabase project data, API credentials or personal data. Runtime secrets are provisioned outside Git.
