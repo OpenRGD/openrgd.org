@@ -29,5 +29,8 @@ jobs:
       - name: Validate SO-101 evidence boundaries
         run: npm run validate:so101
 
+      - name: Validate research theses and evidence gates
+        run: npm run validate:theses
+
       - name: Build
         run: npm run build
