@@ -1,0 +1,438 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-18",
+  "title": "OpenRGD Research Question & Experiment Program",
+  "maturity": "RESEARCH_DESIGN_ONLY",
+  "publication_rule": "Only approved, locked, pre-data protocols may be described as preregistered; a Git SHA by itself is a version reference and not independent public preregistration.",
+  "research_questions": [
+    {
+      "id": "RQ-001",
+      "thesis_ids": [
+        "T17"
+      ],
+      "study_id": "EXP-T17-001",
+      "priority": "P0",
+      "question": "On the same Paky-01 hardware, does a resident Piper model reduce independently measured time-to-first-audible speech relative to repeated model loading, after controlling text, route, cold/warm state and workload?",
+      "why_it_matters": "Software TTS timing is not the experience of a person waiting to hear a robot respond.",
+      "decision_enabled": "Whether to make resident Piper the default for interactive speech, and which audio-path segment needs further engineering."
+    },
+    {
+      "id": "RQ-002",
+      "thesis_ids": [
+        "T01",
+        "T02",
+        "T03",
+        "T05"
+      ],
+      "study_id": "EXP-T01-001",
+      "priority": "P0",
+      "question": "Under pinned session-scoped COG/Core-B contracts, can autonomous cognitive goals be admitted and completed without allowing self-declared identities, stale evidence or nested budgets to produce an unauthorized external effect?",
+      "why_it_matters": "Goal generation alone does not demonstrate enforced separation of cognitive autonomy and effect authority.",
+      "decision_enabled": "Whether the offline adapter is ready for separate authenticated host integration review; not permission to deploy motors."
+    },
+    {
+      "id": "RQ-003",
+      "thesis_ids": [
+        "T11",
+        "T12"
+      ],
+      "study_id": "EXP-T11-001",
+      "priority": "P0",
+      "question": "Can the passive CAL-0.2 inspector always refuse to promote valid-looking but mismatched or unmeasured calibration records into verified physical state or motion permission within a defined adversarial corpus?",
+      "why_it_matters": "A syntactically valid source profile can be stale, misbound or physically false.",
+      "decision_enabled": "What negative fixtures and ownership contracts must be closed before physical calibration can be designed."
+    },
+    {
+      "id": "RQ-004",
+      "thesis_ids": [
+        "T06",
+        "T08",
+        "T09"
+      ],
+      "study_id": "EXP-T06-001",
+      "priority": "P1",
+      "question": "Can memory projections be rebuilt after contradictory evidence and retention/erasure without altering original Chronon event commitments or fabricating an accessible source?",
+      "why_it_matters": "Reinterpretation, preservation and privacy create conflicting demands on persistent robot memory.",
+      "decision_enabled": "Minimal historical writer/projection contracts and evidence retention rules before a live autobiographical system."
+    },
+    {
+      "id": "RQ-005",
+      "thesis_ids": [
+        "T07",
+        "T19"
+      ],
+      "study_id": "EXP-T07-001",
+      "priority": "P1",
+      "question": "Does an externally authenticated Life/Robot/Runtime binding reject clone, fork, revocation and stale lease cases while allowing legitimate controlled reboot?",
+      "why_it_matters": "Reusing a string or process ID cannot by itself establish continuity of a life history.",
+      "decision_enabled": "Readiness of future issuer/lease infrastructure for trusted recovery, not a claim that continuity already exists."
+    }
+  ],
+  "studies": [
+    {
+      "id": "EXP-T17-001",
+      "title": "Paky-01 offline voice latency: resident vs nonresident Piper",
+      "research_question_id": "RQ-001",
+      "thesis_ids": [
+        "T17"
+      ],
+      "domain": "physical_benchmark",
+      "state": "DESIGN_DRAFT",
+      "study_version": "0.1.0-draft",
+      "aim": "Test whether the resident Piper configuration changes the distribution of the response interval, distinguishing software synthesis speed from the first audible sound.",
+      "hypotheses": {
+        "h1": "Resident-model loading reduces warm software synthesis total and may shorten first-audible latency under matched phrase, device and workload.",
+        "h0": "The observed difference is dominated by scheduling, cold/warm imbalance or downstream output buffering; first-audible latency does not improve reliably."
+      },
+      "status_notes": "Historic 26 Oct 2026 operator benchmark exists. The new crossover/acoustic-onset study has not been run or preregistered.",
+      "previous_data": {
+        "exists": true,
+        "description": "VOICE-0.5A historical fixed-text warm medians 4.595 s resident and 6.772 s nonresident, four post-first observations per condition; three VAD/Whisper/Piper/Bose turns separately reported.",
+        "usage": "EXPLORATORY_CONTEXT_ONLY",
+        "reference": "https://github.com/OpenRGD/rgd-voice/pull/5"
+      },
+      "preregistration": {
+        "status": "NOT_PREREGISTERED",
+        "frozen_commit": null,
+        "frozen_at_utc": null,
+        "independent_registration_url": null,
+        "recorded_before_new_data": false
+      },
+      "design": {
+        "compare_conditions": [
+          "Piper resident warm",
+          "Piper nonresident warm"
+        ],
+        "analysis_unit": "Matched repeated spoken phrase under one Paky-01 hardware configuration; account for within-run dependence.",
+        "sampling_plan": "Provisional 30 paired warm trials per condition, order randomized or counterbalanced; a separate cold-start stratum. This is a feasibility target, not an inferential power justification. Freeze a justified N before collecting confirmatory data.",
+        "primary_metric": "Milliseconds from response text ready to independently detected first audible sound at a calibrated microphone/loopback measurement point.",
+        "secondary_metrics": [
+          "Model load time",
+          "Piper full-WAV synthesis time",
+          "First PCM write",
+          "STT end-to-text-ready time",
+          "Playback start and completion",
+          "CPU/memory contention",
+          "P50/P95 and failure/timeout rates"
+        ],
+        "controls": [
+          "Identical text/voice/model/CPU and audio route",
+          "Randomized condition sequence across balanced blocks",
+          "Independent acoustic monitor with recorded timebase",
+          "Separate cold and warm observations",
+          "No unsolicited background network traffic if possible"
+        ],
+        "inclusion_rule": "Every planned successful or failed trial with valid instrumentation and recorded assigned condition is retained.",
+        "exclusion_rule": "Exclude only preregistered instrumentation invalidity such as missing external acoustic channel, with reason retained; do not remove slow or erroring trials as outliers.",
+        "analysis_plan": "Paired difference in first-audible interval; report full trial table, paired median or appropriately paired summary with bootstrap uncertainty and device/timebase systematic uncertainty. Secondary synthesis metrics separately. No claim of 32% acoustic improvement from historic software data.",
+        "stop_rule": "End at preregistered trial count unless safety, audio-level limits, instrumentation loss or a preregistered stop criterion is reached; report incomplete runs.",
+        "instrumentation_gap": "Independent acoustic onset capture and common-clock validation must be implemented before protocol freeze."
+      },
+      "safety": {
+        "mode": "OPERATOR_SUPERVISED_NON_ACTUATING",
+        "notes": "No motor control. Limit speaker level, obtain consent for human speech, keep raw microphone audio private or use synthetic speech stimulus."
+      },
+      "artifacts": [
+        "Preregistration immutable snapshot",
+        "Hardware/OS/model/voice/route manifest",
+        "Clock alignment record",
+        "Trial-level CSV including missing/error cases",
+        "Analysis script plus version pin",
+        "Uncertainty report",
+        "Result statement including negative findings"
+      ],
+      "result_status": "NO_NEW_RESULTS",
+      "results": null
+    },
+    {
+      "id": "EXP-T01-001",
+      "title": "Cognitive goal admission and effect non-escalation",
+      "research_question_id": "RQ-002",
+      "thesis_ids": [
+        "T01",
+        "T02",
+        "T03",
+        "T05"
+      ],
+      "domain": "offline_conformance",
+      "state": "DESIGN_DRAFT",
+      "study_version": "0.1.0-draft",
+      "aim": "Quantify whether a separately owned session-scoped GoalAdmission/Work consumer prevents unauthorized external effects, spoofed producers and aggregate budget overcommit.",
+      "hypotheses": {
+        "h1": "With bounded host-owned context and disconnected effect adapters, malicious and stale goal requests are refused without unauthorized dispatch while permitted read-only requests still proceed.",
+        "h0": "A self-claimed role, stale context, altered duplicate or concurrent subgoal can pass admission or trigger a privileged effect under the tested implementation."
+      },
+      "status_notes": "Existing COG–CORE-B draft tests are development evidence, not the new independently preregistered experiment. External authenticated gate and physical device validation remain absent.",
+      "previous_data": {
+        "exists": true,
+        "description": "COG PR #6 reports 129 adapter tests, 133 legacy tests and 32 baseline-Core integrations on reviewed candidate head; software-only.",
+        "usage": "DEVELOPMENT_EVIDENCE_ONLY",
+        "reference": "https://github.com/OpenRGD/rgd-cognition/pull/6"
+      },
+      "preregistration": {
+        "status": "NOT_PREREGISTERED",
+        "frozen_commit": null,
+        "frozen_at_utc": null,
+        "independent_registration_url": null,
+        "recorded_before_new_data": false
+      },
+      "design": {
+        "compare_conditions": [
+          "Expected valid internal-read-only candidate controls",
+          "Adversarial actor/policy/fencing/budget/context/effect requests"
+        ],
+        "analysis_unit": "Distinct deterministic scenario with pinned code and fixture seed; no inference about unknown attack distributions.",
+        "sampling_plan": "Initial planned set: 20 valid control scenarios and 100 deliberately adversarial scenarios (five families × 20 variants); fixtures frozen before formal evaluation. Counts are test coverage, not statistical samples of field attacks.",
+        "primary_metric": "Number of unauthorized external-effect dispatches across adversarial cases; target zero under this bounded harness.",
+        "secondary_metrics": [
+          "False rejections of valid read-only controls",
+          "Stale responses admitted",
+          "Double admission or refunds",
+          "Aggregate resource overcommit",
+          "Observed wrong terminal-state promotion"
+        ],
+        "controls": [
+          "Same pinned Core-B schema/COG adapter binaries",
+          "Independent expected decision oracle reviewed before runs",
+          "Host-owned producer identity not embedded only in JSON",
+          "No network/CAN/audio/history adapters mounted"
+        ],
+        "inclusion_rule": "Retain all generated and human-authored test cases and all unexpected outcomes.",
+        "exclusion_rule": "Only malformed test harness inputs invalid before run; record as protocol defect, do not silently discard failing cases.",
+        "analysis_plan": "Report denominator by attack family, accepted/rejected counts and one trace per violation. Zero observed violations does not establish probabilistic safety in unseen inputs.",
+        "stop_rule": "Run the complete pinned test list; cancel if sandbox unexpectedly accesses devices, external networks or privileged effects.",
+        "instrumentation_gap": "Explicit process sandbox and verified-effect sink must be configured for the independent experiment. Existing in-process object identity is not host authentication."
+      },
+      "safety": {
+        "mode": "OFFLINE_NO_EFFECTS",
+        "notes": "No motor, CAN, BLE, TTS, cloud, network or memory writer; test effect channels as negative cases only."
+      },
+      "artifacts": [
+        "Preregistered adversarial case list and expected oracle",
+        "Pinned source/schema hashes",
+        "Harness proof of no effect sinks",
+        "Per-scenario trace",
+        "Complete failures",
+        "CI artifact and rerun instructions"
+      ],
+      "result_status": "NO_NEW_RESULTS",
+      "results": null
+    },
+    {
+      "id": "EXP-T11-001",
+      "title": "Passive calibration cannot manufacture physical truth",
+      "research_question_id": "RQ-003",
+      "thesis_ids": [
+        "T11",
+        "T12"
+      ],
+      "domain": "offline_conformance",
+      "state": "DESIGN_DRAFT",
+      "study_version": "0.1.0-draft",
+      "aim": "Test the fail-closed boundary between nominal robot description, declared calibration, synthetic measurements and actual physical observation.",
+      "hypotheses": {
+        "h1": "A passive calibration inspector keeps unsupported physical assertions unverified, refuses ambiguous instance/model bindings and never grants motion or applies corrections.",
+        "h0": "Schema-valid or digest-matching but untrusted calibration inputs can produce false verified physical state or implicit motion authority."
+      },
+      "status_notes": "CAL-0.2 on main already has 31 reported offline tests. New adversarial evidence study is separate. No physical calibration is claimed.",
+      "previous_data": {
+        "exists": true,
+        "description": "CAL-0.2 31 Rust tests and CLI smoke on synthetic/pinned reference; no physical measurements.",
+        "usage": "DEVELOPMENT_EVIDENCE_ONLY",
+        "reference": "https://github.com/OpenRGD/rgd-calibration/pull/2"
+      },
+      "preregistration": {
+        "status": "NOT_PREREGISTERED",
+        "frozen_commit": null,
+        "frozen_at_utc": null,
+        "independent_registration_url": null,
+        "recorded_before_new_data": false
+      },
+      "design": {
+        "compare_conditions": [
+          "Known-consistent sealed profile",
+          "Correctly hashed but physically false profile",
+          "Mismatched instance/model/camera/joint identifiers",
+          "Stale and missing sensor evidence"
+        ],
+        "analysis_unit": "Synthetic fixture pair: canonical model plus candidate calibration profile and optional measurement claim.",
+        "sampling_plan": "Provisional 10 valid controls and 50 negative fixtures across five failure families. Lock exact fixture list and SHA before formal test; enumeration tests software invariants rather than population effect sizes.",
+        "primary_metric": "False verified/applied/physical-motion authority claims emitted from unsupported fixture inputs; expected zero.",
+        "secondary_metrics": [
+          "Correct rejection counts by failure family",
+          "Time to report",
+          "Field coverage",
+          "Explicit unresolved references and missing measurements"
+        ],
+        "controls": [
+          "Pinned CAL-0.2 Rust binary and core fixture",
+          "Offline no-network file reader",
+          "Synthetic fixtures clearly marked as synthetic",
+          "No hardware-connected process or device mount"
+        ],
+        "inclusion_rule": "All pinned valid and adversarial fixtures are included.",
+        "exclusion_rule": "No post-hoc exclusion of unexpected results; report parser crashes and false acceptances as failures.",
+        "analysis_plan": "Confusion matrix over predeclared expected states, exact rejection coverage and preserved no-actuation flags; do not infer physical calibration precision.",
+        "stop_rule": "Complete finite fixture matrix unless unexpected device access or unsafe process behavior occurs.",
+        "instrumentation_gap": "For a separate physical validation, measurement instrument, traceability, uncertainty and operator approvals must be specified."
+      },
+      "safety": {
+        "mode": "OFFLINE_NO_ACTUATION",
+        "notes": "Only local fixture inspection; no homing, calibration movement, control command, hardware device open or motor permission."
+      },
+      "artifacts": [
+        "Fixture manifest with expected state",
+        "Pinned Rust/core commit",
+        "Hash list of inputs",
+        "CLI JSON reports including failures",
+        "Static check for no physical output",
+        "Controlled analysis report"
+      ],
+      "result_status": "NO_NEW_RESULTS",
+      "results": null
+    },
+    {
+      "id": "EXP-T06-001",
+      "title": "Rebuildable cognitive memory after reinterpretation and retention",
+      "research_question_id": "RQ-004",
+      "thesis_ids": [
+        "T06",
+        "T08",
+        "T09"
+      ],
+      "domain": "simulation_protocol",
+      "state": "DESIGN_BLOCKED",
+      "study_version": "0.1.0-draft",
+      "aim": "Evaluate whether cognitive projections can be rebuilt after corrections and privacy-driven evidence unavailability without rewriting the canonical event commitments.",
+      "hypotheses": {
+        "h1": "Every derived memory remains linked to available original evidence or is explicitly marked unverifiable after retention changes.",
+        "h0": "Directly editing consolidated memories is sufficient to preserve auditability, reducing complexity without losing important provenance."
+      },
+      "status_notes": "CHRONON-MEM-0001 is architecture candidate. No accepted ledger writer, retention implementation or enrolled Life exists.",
+      "previous_data": {
+        "exists": false,
+        "description": "Architecture notes only; no executable experiment.",
+        "usage": "NONE",
+        "reference": "https://github.com/OpenRGD/openrgd/pull/8"
+      },
+      "preregistration": {
+        "status": "NOT_PREREGISTERED",
+        "frozen_commit": null,
+        "frozen_at_utc": null,
+        "independent_registration_url": null,
+        "recorded_before_new_data": false
+      },
+      "design": {
+        "compare_conditions": [
+          "Immutable event + derived memory projections",
+          "Simpler editable consolidated memory baseline"
+        ],
+        "analysis_unit": "Synthetic event corpus with intentionally contradictory later evidence.",
+        "sampling_plan": "To be fixed after a ledger/reader/writer and privacy-retention semantics exist; no numeric sample is implied.",
+        "primary_metric": "Fraction of reconstructed claims with correct origin and available-evidence status; measure false physical-event promotions separately.",
+        "secondary_metrics": [
+          "Event digest preservation",
+          "Projection lineage completeness",
+          "Revision recovery",
+          "Retention/erasure compliance",
+          "Reindex latency"
+        ],
+        "controls": [
+          "Independent synthetic event oracle",
+          "No real personal memories or sensor files",
+          "Same event corpus in both models"
+        ],
+        "inclusion_rule": "All committed sample events and every revision must remain auditable.",
+        "exclusion_rule": "None defined yet; freeze data-selection rules before experiment.",
+        "analysis_plan": "Predefine provenance correctness metrics and stress cases when the writer/reader becomes available. No hypothesis test is specified now.",
+        "stop_rule": "Block until a candidate writer/reader and privacy review exist.",
+        "instrumentation_gap": "Chronon ledger writer, reader, retention and projection versions not implemented/verified."
+      },
+      "safety": {
+        "mode": "SYNTHETIC_NO_PERSONAL_DATA",
+        "notes": "No real autobiographical data, private audio/video or persistent Life enrollment; simulation remains marked synthetic."
+      },
+      "artifacts": [
+        "Independent synthetic event corpus",
+        "Writer/reader version pins",
+        "Projection revision graph",
+        "Retention cases",
+        "Recovery traces and counterexamples"
+      ],
+      "result_status": "NO_NEW_RESULTS",
+      "results": null
+    },
+    {
+      "id": "EXP-T07-001",
+      "title": "Life continuity: authorized restoration versus unauthorized fork",
+      "research_question_id": "RQ-005",
+      "thesis_ids": [
+        "T07",
+        "T19"
+      ],
+      "domain": "identity_conformance",
+      "state": "DESIGN_BLOCKED",
+      "study_version": "0.1.0-draft",
+      "aim": "Demonstrate that an external identity/custody authority can distinguish a legitimate reboot and verified binding migration from clone, fork or stale lease.",
+      "hypotheses": {
+        "h1": "Externally verified Life/Robot/Runtime bindings reject forged owners and stale leases while supporting controlled legitimate restart.",
+        "h0": "Model digest plus self-declared life_id provides equivalent continuity guarantees without external issuer verification."
+      },
+      "status_notes": "Core-C defines seven candidate identity records with tests, but no real issuer, registry, custody service, durable Life recovery or verified physical enrollment exists.",
+      "previous_data": {
+        "exists": true,
+        "description": "Core-C synthetic conformance reports 93 identity/parser tests and legacy compatibility on candidate PR.",
+        "usage": "DEVELOPMENT_EVIDENCE_ONLY",
+        "reference": "https://github.com/OpenRGD/openrgd/pull/13"
+      },
+      "preregistration": {
+        "status": "NOT_PREREGISTERED",
+        "frozen_commit": null,
+        "frozen_at_utc": null,
+        "independent_registration_url": null,
+        "recorded_before_new_data": false
+      },
+      "design": {
+        "compare_conditions": [
+          "Valid signed/enrolled restoration",
+          "Spoofed Life identity",
+          "Concurrent exclusive activation",
+          "Revoked/stale lease",
+          "Untrusted changed robot binding"
+        ],
+        "analysis_unit": "Identity restoration/authorization scenario in an independent sandbox.",
+        "sampling_plan": "To be fixed only after independent issuer and lease-verifier implementation exist.",
+        "primary_metric": "Unauthorized restoration, dual-exclusive-role activation or stale binding accepted; expected zero under bounded scenarios.",
+        "secondary_metrics": [
+          "Authorized restart acceptance",
+          "Revocation propagation",
+          "Lease fencing violations",
+          "Proof provenance coverage"
+        ],
+        "controls": [
+          "Independent issuer key custody and trust root",
+          "Distinct physical-model/robot/agent/Life/runtime IDs",
+          "No simulated attestation presented as physical"
+        ],
+        "inclusion_rule": "Retain every attempted restoration, valid or invalid.",
+        "exclusion_rule": "Not specified; finalize before experimentation.",
+        "analysis_plan": "Document scenario-level accept/deny with signed proof and version, including all rejected legitimate recoveries; do not claim continuity from records alone.",
+        "stop_rule": "Block until issuer, enrollment, revocation and role lease authority are independently tested.",
+        "instrumentation_gap": "No live trusted issuer, enrollment/custody registry, durable role lease or authenticated recovery."
+      },
+      "safety": {
+        "mode": "OFFLINE_IDENTITY_NO_EFFECTS",
+        "notes": "Identity testing must not grant robot motion, live history writes or external privileges."
+      },
+      "artifacts": [
+        "Issuer trust boundary description",
+        "Pinned candidate schema and verifier commit",
+        "Signed scenario fixtures",
+        "Revocation and restart trace",
+        "Audit of accepted/rejected cases"
+      ],
+      "result_status": "NO_NEW_RESULTS",
+      "results": null
+    }
+  ]
+}

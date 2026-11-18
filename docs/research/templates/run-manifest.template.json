@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "study_id": "EXP-REPLACE-ME",
+  "research_question_id": "RQ-REPLACE-ME",
+  "protocol_version": "0.1.0",
+  "protocol_lock": {
+    "frozen_commit": null,
+    "registered_at_utc": null,
+    "registration_url": null
+  },
+  "run_id": "RUN-REPLACE-ME",
+  "experiment_type": "OFFLINE_CONFORMANCE",
+  "operator_role": "researcher",
+  "executed_at_utc": null,
+  "hardware": {
+    "robot_instance_alias": null,
+    "model_version": null,
+    "firmware_version": null,
+    "sensor_configuration": null
+  },
+  "software": {
+    "repo_commit": null,
+    "environment_lock_sha256": null,
+    "model_or_policy_sha256": null,
+    "calibration_sha256": null,
+    "dataset_revision": null
+  },
+  "metrology": {
+    "primary_metric": null,
+    "unit": null,
+    "instrument": null,
+    "clock_domain": null,
+    "clock_alignment_uncertainty_ms": null
+  },
+  "artifacts": [],
+  "trials_file": "trials.csv",
+  "excluded_trials": [],
+  "deviations": [],
+  "safety_aborts": [],
+  "privacy_review": {
+    "public_metadata_only": true,
+    "raw_human_data_public": false,
+    "consent_state": "NOT_EVALUATED"
+  },
+  "execution_status": "NOT_EXECUTED",
+  "outcome": {
+    "classification": "NOT_ANALYZED",
+    "summary": null
+  }
+}

@@ -1,0 +1,1 @@
+study_id,protocol_version,run_id,trial_id,condition_id,randomization_seed,start_utc,primary_value,primary_unit,success,abort,failure_code,missing_data,exclusion_reason,source_commit,calibration_sha256,artifact_ref,notes
