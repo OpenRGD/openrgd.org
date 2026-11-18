@@ -1,0 +1,606 @@
+{
+  "schema_version": "1.0.0",
+  "title": "OpenRGD Research Thesis Register",
+  "as_of": "2026-11-18",
+  "owner": "OpenRGD Editorial Research",
+  "maturity": "RESEARCH / NON-NORMATIVE",
+  "governing_principle": "A hypothesis is not a validated claim; tested software is not physical authorization; prior art is recognized.",
+  "taxonomy": [
+    "Cognition & Agency",
+    "Life & Memory",
+    "Physical Evidence",
+    "Embodied Intelligence",
+    "Human–Robot Interaction",
+    "Cross-Cutting"
+  ],
+  "evidence_legend": {
+    "Architecture proposal": "Concept/RFC with no live integration",
+    "Candidate conformance": "Source-pinned candidate schema and software tests; not accepted normative authority",
+    "Offline software": "Validated implementation or synthetic tests, not physical measurement",
+    "Operator-measured": "Lab/operator measurement with stated conditions, limited independent artifact verification"
+  },
+  "source_policy": "Source URLs may refer to draft PR heads or merged snapshots. A passing CI run does not imply physical execution, normative adoption, independent identity authentication or realized autobiographical continuity.",
+  "theses": [
+    {
+      "id": "T01",
+      "slug": "autonomous-cognition-without-actuator-authority",
+      "domain": "Cognition & Agency",
+      "priority": "P0",
+      "title": "Autonomous cognition does not require autonomous actuator authority.",
+      "hypothesis": "A robot can initiate epistemic goals under policy while remaining unable to confer physical, digital or communication permissions on itself.",
+      "counter_hypothesis": "If an agent can propose useful goals, its reasoning system can also safely determine the resulting effects without a separate gate.",
+      "falsification": "A test showing that candidate goals can issue, extend or execute forbidden effects despite a separate gate would refute the claimed isolation.",
+      "current_evidence": "COG–CORE-B candidate adapter has 129 suite cases, 133 legacy tests and 32 baseline-Core integrations reported green on pinned head; no physical execution.",
+      "limitations": "Successful offline CI does not establish independent authenticated effect authority or Paky-01 runtime installation.",
+      "test_design": "Replay a verified IMU cue through proposal → one GoalAdmission → Work, then attempt role spoofing, unauthorized effect escalation, stale context and altered policy. All requests must fail closed without effect dispatch.",
+      "publication_gate": "Publish exact PR/test head, failure fixtures and policy/owner boundaries; do not call it a deployed robot safety system.",
+      "status": "Candidate and source-verified conformance, no physical trial.",
+      "sources": [
+        {
+          "label": "COG–CORE-B PR #6 exact candidate head",
+          "url": "https://github.com/OpenRGD/rgd-cognition/blob/a2526ba414409cc92641dc95bbddd6564317fcc4/docs/COG-CORE-B.md",
+          "kind": "project"
+        },
+        {
+          "label": "Core-B PR #11",
+          "url": "https://github.com/OpenRGD/openrgd/pull/11",
+          "kind": "project"
+        },
+        {
+          "label": "LATTICE governance research",
+          "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1800407/full",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "DOSSIER",
+      "dossier_url": "https://openrgd.org/research/theses/autonomous-cognition-without-actuator-authority"
+    },
+    {
+      "id": "T02",
+      "slug": "admission-versus-effect-authorization",
+      "domain": "Cognition & Agency",
+      "priority": "P1",
+      "title": "Admitting a goal does not authorize its effects.",
+      "hypothesis": "A valid goal admission and Work reservation should be necessary but insufficient for a privileged hardware or digital effect.",
+      "counter_hypothesis": "A correctly formed admission may be safely treated as a reusable authorization grant for any effect implied by its goal.",
+      "falsification": "A valid goal admission that bypasses request-specific effect authentication or policy revalidation falsifies separation.",
+      "current_evidence": "Core-B schema contains separate GoalAdmissionDecision and EffectGateDecision selectors with negative conformance fixtures.",
+      "limitations": "The effect gate and external authority are not connected to any physical robot.",
+      "test_design": "Construct accepted cognitive goals with unauthorized or stale external EffectRequest records; verify fail-closed behavior and no implicit child-goal rights.",
+      "publication_gate": "Require authenticated host/gate and exact request matching, not only schema validation.",
+      "status": "Candidate contract; schema/conformance only.",
+      "sources": [
+        {
+          "label": "Core-B PR #11",
+          "url": "https://github.com/OpenRGD/openrgd/pull/11",
+          "kind": "project"
+        },
+        {
+          "label": "OpenRGD runtime boundary",
+          "url": "https://openrgd.org/architecture/runtime-boundary",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T03",
+      "slug": "aggregate-goal-budgeting",
+      "domain": "Cognition & Agency",
+      "priority": "P1",
+      "title": "Agent autonomy needs aggregate resource accounting across goals.",
+      "hypothesis": "Per-goal quotas alone can be bypassed by overlapping or nested goals unless reservations, consumption and release are accounted at one ownership boundary.",
+      "counter_hypothesis": "Independent goal quotas are sufficient even under concurrency and recursive subgoal generation.",
+      "falsification": "A concurrent admission trace that allows aggregate overcommit or double-refunds while each local budget passes would falsify the proposed allocator.",
+      "current_evidence": "COG–CORE-B PR #6 includes session-local aggregate step/time/slot reservations and adversarial tests.",
+      "limitations": "No distributed budget coordinator, hard real-time preemption or production resource scheduling is proved.",
+      "test_design": "Stress concurrent parent/sibling admissions, idempotent repeats, partial consumption and context revocation with randomized schedules.",
+      "publication_gate": "Publish count of overcommit violations, lossless reservation accounting and exact replay harness.",
+      "status": "Candidate offline adapter.",
+      "sources": [
+        {
+          "label": "COG–CORE-B adapter",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/6",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T04",
+      "slug": "abstention-as-cognitive-skill",
+      "domain": "Cognition & Agency",
+      "priority": "P1",
+      "title": "Abstention, pause and uncertainty handling are positive cognitive capabilities.",
+      "hypothesis": "Useful bounded cognition may produce an explicit abstention or wait-for-evidence outcome when context freshness, consent or resources are unknown.",
+      "counter_hypothesis": "A cognitively competent agent should always produce a concrete course of action even with incomplete context.",
+      "falsification": "An agent that generates privileged or unwarranted conclusions under missing evidence, withheld consent or expired context contradicts the thesis.",
+      "current_evidence": "COG-C1 models bounded IMU-attention cues; unknown/stale freshness and denied consent suppress goal generation in candidate tests.",
+      "limitations": "These are synthetic/offline tests, not human-rated cognitive quality or field autonomy trials.",
+      "test_design": "Evaluate calibrated/uncalibrated and fresh/stale IMU events, simulated refusals, pause-resume and explicit uncertainty outcomes.",
+      "publication_gate": "Publish false-positive, abstention and unsupported-assertion rates under predeclared test conditions.",
+      "status": "Candidate conformance evidence.",
+      "sources": [
+        {
+          "label": "COG-C1 PR #5",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/5",
+          "kind": "project"
+        },
+        {
+          "label": "COG adapter PR #6",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/6",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T05",
+      "slug": "completed-is-not-verified",
+      "domain": "Cognition & Agency",
+      "priority": "P1",
+      "title": "Task completion is not proof that a cognitive conclusion is true.",
+      "hypothesis": "Work lifecycle terminal states should preserve independent outcome quality, provenance and truth verification.",
+      "counter_hypothesis": "A successfully completed reasoning job is sufficient to mark its output as validated evidence.",
+      "falsification": "If an uncertain or simulated result is promoted to verified physical fact solely because Work completed, the result model fails.",
+      "current_evidence": "COG–CORE-B candidate adds bounded outcome/trace refs and tests against swapped contexts and unsupported promotion.",
+      "limitations": "No external observation authority or physical-truth oracle is integrated.",
+      "test_design": "Run successful but false synthetic hypotheses and check that traces retain completed process plus UNVERIFIED content.",
+      "publication_gate": "Publish separate lifecycle and epistemic outcome fields with negative cases.",
+      "status": "Candidate offline trace model.",
+      "sources": [
+        {
+          "label": "COG adapter PR #6",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/6",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T06",
+      "slug": "history-versus-memory",
+      "domain": "Life & Memory",
+      "priority": "P0",
+      "title": "Robot history and robot memory should not be the same mutable object.",
+      "hypothesis": "Append-only or revision-preserved event evidence and separately versioned cognitive projections should allow an agent to reinterpret experiences without rewriting the original record.",
+      "counter_hypothesis": "One consolidated editable memory store can be equally auditable and resilient as a distinct evidence/history/projection architecture.",
+      "falsification": "A reconstructed memory that cannot cite its available source evidence, or whose reinterpretation overwrites the underlying event, falsifies the design goal.",
+      "current_evidence": "CHRONON-MEM-0001/ML-001 defines logical L0–L4 memory layers and unique canonical-history ownership as a non-normative architecture direction.",
+      "limitations": "No live Chronon history writer, full memory reindex, recovery-after-reboot or long-term benchmark is established.",
+      "test_design": "Record original events and corrections; create competing memory projections; simulate retention, reindex, tombstones and reboot while verifying unchanged source commitments and traceable lineage.",
+      "publication_gate": "Publish schema, transformation/retrieval logs, privacy retention decisions and negative tests; keep hypothetical memory distinct from physical history.",
+      "status": "Design/RFC, not an operational autobiographical system.",
+      "sources": [
+        {
+          "label": "Core/COG memory and oneiric handoff PR #8",
+          "url": "https://github.com/OpenRGD/openrgd/pull/8",
+          "kind": "project"
+        },
+        {
+          "label": "Time and Memory on OpenRGD",
+          "url": "https://openrgd.org/architecture/time-memory",
+          "kind": "project"
+        },
+        {
+          "label": "Reconsolidating episodic–semantic memory (2026)",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0950705126019192",
+          "kind": "prior-art"
+        },
+        {
+          "label": "W3C PROV-O",
+          "url": "https://www.w3.org/TR/prov-o/",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "DOSSIER",
+      "dossier_url": "https://openrgd.org/research/theses/history-versus-memory"
+    },
+    {
+      "id": "T07",
+      "slug": "life-continuity-beyond-runtime",
+      "domain": "Life & Memory",
+      "priority": "P0",
+      "title": "Life identity should survive changes in model and runtime without inventing continuity.",
+      "hypothesis": "A Life/Agent/Robot/Runtime distinction, backed by external enrollment and verified binding transitions, should make restoration and migration distinguishable from reboot and fork.",
+      "counter_hypothesis": "A robot's process identifier, model identifier or a self-declared life_id is sufficient to establish persistent agent identity.",
+      "falsification": "An unverified recreated process being accepted as the same historical Life, or a stale/forged role lease gaining ownership, would defeat the identity architecture.",
+      "current_evidence": "Core-C PR #13 provides seven strict candidate identity record types and 93 identity/parser tests on pinned candidate head.",
+      "limitations": "Tests validate records and synthetic cross-record scenarios; no real enrollment, issuer authentication, custody or runtime recovery has been verified.",
+      "test_design": "Exercise new runtime, reboot, alternate model, same-instance restore, conflicting binding, fork, stale lease and revocation with independent trust authority.",
+      "publication_gate": "Require external verifier, enrolled physical instance, durable proof/registry and successful fail-closed recovery tests.",
+      "status": "Candidate ABI; identity infrastructure absent.",
+      "sources": [
+        {
+          "label": "Core-C candidate PR #13",
+          "url": "https://github.com/OpenRGD/openrgd/pull/13",
+          "kind": "project"
+        },
+        {
+          "label": "Core-C identity handoff",
+          "url": "https://github.com/OpenRGD/openrgd/blob/fa5e8ff713a28b69b7d39b2c18e8c9e0f6c72ee0/contracts/identity/v0.1.0/COG_EXT_MEM_HANDOFF.md",
+          "kind": "project"
+        },
+        {
+          "label": "W3C PROV-O",
+          "url": "https://www.w3.org/TR/prov-o/",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "DOSSIER",
+      "dossier_url": "https://openrgd.org/research/theses/life-continuity-beyond-runtime"
+    },
+    {
+      "id": "T08",
+      "slug": "reinterpretation-without-rewriting",
+      "domain": "Life & Memory",
+      "priority": "P1",
+      "title": "An experience can change meaning without changing its original record.",
+      "hypothesis": "Oneiric or retrospective reappraisal should append versioned assessments that remain explicitly synthetic, uncertain or derived.",
+      "counter_hypothesis": "Correcting the primary stored event in place is sufficient and more efficient than distinct revisions.",
+      "falsification": "A simulated step reclassified as a verified physical event, or a lost earlier interpretation, refutes the required provenance semantics.",
+      "current_evidence": "COG–CORE-B prototype includes an opt-in synthetic ONEIRIC review with finite budgets and bounded revision chain.",
+      "limitations": "There is no authenticated historical writer or real dream/memory persistence.",
+      "test_design": "Reappraise deliberately ambiguous events, inject contradictory evidence and verify immutable original events with bounded complete revision genealogy.",
+      "publication_gate": "Publish signed/hashed lineage only after a real writer exists; synthetic narrative remains labeled synthetic.",
+      "status": "Candidate synthetic replay.",
+      "sources": [
+        {
+          "label": "COG PR #6",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/6",
+          "kind": "project"
+        },
+        {
+          "label": "Core/COG handoff PR #8",
+          "url": "https://github.com/OpenRGD/openrgd/pull/8",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T09",
+      "slug": "robotic-bitemporal-evidence",
+      "domain": "Life & Memory",
+      "priority": "P1",
+      "title": "Robotic events need source time and knowledge/verification time as distinct claims.",
+      "hypothesis": "Event, receipt, alignment and later verification timestamps should preserve separate clock domains and uncertainty rather than fabricating a single universal timestamp.",
+      "counter_hypothesis": "A single trusted-looking timestamp is sufficient for robot-event provenance across unsynchronized producers.",
+      "falsification": "If a legacy unaligned timestamp is retroactively published as a newly measured synchronized anchor, the temporal contract fails.",
+      "current_evidence": "COG candidate tests bound TTL/creation buckets and refuse freshness renewal; Chronograf remains a distinct authority in architecture.",
+      "limitations": "No authenticated common time authority or cross-host live synchronization measurement is claimed.",
+      "test_design": "Inject clock drift, unaligned sources, delayed inference and resumed sessions; verify safe deferral/expiry without retro-attestation.",
+      "publication_gate": "Publish clock domain metadata and measured alignment error; do not infer wall time from untrusted source bytes.",
+      "status": "Temporal contract proposal.",
+      "sources": [
+        {
+          "label": "Core/COG handoff PR #8",
+          "url": "https://github.com/OpenRGD/openrgd/pull/8",
+          "kind": "project"
+        },
+        {
+          "label": "COG PR #6",
+          "url": "https://github.com/OpenRGD/rgd-cognition/pull/6",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T10",
+      "slug": "observation-versus-interpretation",
+      "domain": "Physical Evidence",
+      "priority": "P1",
+      "title": "Sensor observation should not be overwritten by its interpretation.",
+      "hypothesis": "Acquisition provenance and derived detector/estimator claims should remain distinguishable, retaining source payload references and algorithm/calibration versions.",
+      "counter_hypothesis": "A perception classification can replace the original sensor evidence as a canonical record without impairing later reinterpretation.",
+      "falsification": "If a model update silently changes the recorded observation, or a detection without calibration becomes certified depth, the boundary fails.",
+      "current_evidence": "Reality Ingress main is an acquisition/provenance bootstrap; historical Fedora v0.4 implementation is not yet imported and audited in that repository.",
+      "limitations": "No published audited end-to-end camera/YOLO/perception trace is established.",
+      "test_design": "Record a bounded camera event, preserve raw-frame digest, derive versioned detections with known model/calibration, then re-run with changed model.",
+      "publication_gate": "Publish sanitized input/derived trace and original/derived hashes; avoid raw private video.",
+      "status": "Architecture bootstrap; physical traces pending.",
+      "sources": [
+        {
+          "label": "Reality Ingress boundary",
+          "url": "https://github.com/OpenRGD/rgd-reality-ingress/blob/main/README.md",
+          "kind": "project"
+        },
+        {
+          "label": "W3C PROV-O",
+          "url": "https://www.w3.org/TR/prov-o/",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T11",
+      "slug": "calibration-file-versus-physical-truth",
+      "domain": "Physical Evidence",
+      "priority": "P0",
+      "title": "A valid calibration record is not proof that a physical robot is calibrated.",
+      "hypothesis": "Nominal description, saved calibration claims, measured values and motor readiness should be distinct states; passive validation must not authorize homing or motion.",
+      "counter_hypothesis": "Schema-valid calibration files and matching hashes are sufficient to certify current physical calibration and control readiness.",
+      "falsification": "If the passive module reports actual position, verified physical correction or motion permission without trusted measurements, its boundary fails.",
+      "current_evidence": "CAL-0.2 is merged on main with 31 Rust tests and offline reference inspection; CAL-0.3 optical workflow has synthetic tests only.",
+      "limitations": "No active calibration, authenticated measurement chain, stereo metrology acceptance or motor-control permission is established.",
+      "test_design": "Adversarially change instance/model hashes, orphan actuator IDs and calibration references; then perform separately supervised real measurement with uncertainty if permitted.",
+      "publication_gate": "Require calibration-report digest, traceable measurements with uncertainty, hardware binding and independent acceptance; keep preview unapplied.",
+      "status": "Read-only Rust module tested; physical acceptance pending.",
+      "sources": [
+        {
+          "label": "CAL-0.2 merged source",
+          "url": "https://github.com/OpenRGD/rgd-calibration/tree/81700401e2fa6d370a86b6c1f5a48802bc5f1fc7",
+          "kind": "project"
+        },
+        {
+          "label": "CAL-0.2 documentation",
+          "url": "https://github.com/OpenRGD/rgd-calibration/blob/main/docs/PASSIVE_CALIBRATION.md",
+          "kind": "project"
+        },
+        {
+          "label": "CAL-0.3 stereo candidate PR #4",
+          "url": "https://github.com/OpenRGD/rgd-calibration/pull/4",
+          "kind": "project"
+        },
+        {
+          "label": "JCGM International Vocabulary of Metrology (VIM)",
+          "url": "https://www.bipm.org/en/committees/jc/jcgm/publications",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "DOSSIER",
+      "dossier_url": "https://openrgd.org/research/theses/calibration-file-versus-physical-truth"
+    },
+    {
+      "id": "T12",
+      "slug": "content-integrity-versus-truth",
+      "domain": "Physical Evidence",
+      "priority": "P1",
+      "title": "Content integrity is not authorship, correctness or physical truth.",
+      "hypothesis": "A model/profile/source hash should prove only byte or declared canonical content identity; it must not silently grant author, device or safety attestations.",
+      "counter_hypothesis": "A valid digest is enough to trust the content's origin, correctness and real-world correspondence.",
+      "falsification": "A parser accepting a forged identity or physical test solely because its bytes hash correctly falsifies the trust boundary.",
+      "current_evidence": "Canonical source-root hashing and CAL read-only reports explicitly separate content identity and externally verified binding.",
+      "limitations": "An external issuer, trust root and physical attestation system are not yet deployed.",
+      "test_design": "Create validly hashed but false model/physical claims and check rejection or unverified classification across all consumers.",
+      "publication_gate": "Publish source integrity test fixtures and independently verified bindings before stronger provenance claims.",
+      "status": "Canonical integrity and software tests, no issuer proof.",
+      "sources": [
+        {
+          "label": "Core integrity documentation",
+          "url": "https://github.com/OpenRGD/openrgd/blob/main/GUIDE_IMPORT.md",
+          "kind": "project"
+        },
+        {
+          "label": "Calibration passive audit",
+          "url": "https://github.com/OpenRGD/rgd-calibration/blob/main/docs/CORE_AUDIT.md",
+          "kind": "project"
+        },
+        {
+          "label": "W3C PROV-O",
+          "url": "https://www.w3.org/TR/prov-o/",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T13",
+      "slug": "situated-robot-capabilities",
+      "domain": "Physical Evidence",
+      "priority": "P1",
+      "title": "Robot capability is contextual rather than a universal Boolean.",
+      "hypothesis": "Capability claims should bind configuration, task prerequisites, environmental context and independent verification level.",
+      "counter_hypothesis": "A static manufacturer 'supports grasping' flag is sufficient to determine task feasibility and operational success across contexts.",
+      "falsification": "A capability reported available despite missing gripper, faulty camera or changed payload demonstrates a faulty capability gate.",
+      "current_evidence": "OpenRGD Agency schemas and candidate somatic contracts model prerequisites, capabilities and plans at mixed maturity.",
+      "limitations": "No general accepted capability ontology or exhaustive real-robot test matrix exists.",
+      "test_design": "Test same nominal skill across variants, sensor loss, object mass, calibration drift and safety constraints with expected accept/deny.",
+      "publication_gate": "Publish evidence-linked capability states and exact task conditions; avoid vendor claim to lab-tested promotion.",
+      "status": "Mixed candidate schema + research.",
+      "sources": [
+        {
+          "label": "OpenRGD capability model",
+          "url": "https://openrgd.org/robot-capability-model",
+          "kind": "project"
+        },
+        {
+          "label": "Canonical Agent Contracts",
+          "url": "https://github.com/OpenRGD/openrgd/tree/main/contracts/agent/v0.1.0",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T14",
+      "slug": "vla-proposal-versus-motor-command",
+      "domain": "Embodied Intelligence",
+      "priority": "P1",
+      "title": "A VLA prediction should not be final motor authority.",
+      "hypothesis": "Model outputs require embodiment-specific action decoding, capability grounding and separately authorized runtime control.",
+      "counter_hypothesis": "A high-performing VLA checkpoint safely supplies direct actuator targets without independent safety or identity checks.",
+      "falsification": "A malformed/stale/out-of-range policy output that is executed on real hardware despite an independent gate disproves the intended isolation.",
+      "current_evidence": "OpenRGD has candidate ActionIntent/CapabilityPlan boundaries and a real SO-101 native teleop/dataset smoke report.",
+      "limitations": "No OpenRGD measured ACT/SmolVLA autonomous rollout or verified end-to-end gate deployment.",
+      "test_design": "Compare policies in controlled offline replay and supervised robot trials with identical guard configurations; log reject and physical outcomes.",
+      "publication_gate": "Pin model, data, calibration, task, operator safety and refusal traces.",
+      "status": "Contract candidate; experiment not performed.",
+      "sources": [
+        {
+          "label": "VLA ActionIntent boundary",
+          "url": "https://openrgd.org/blog/vla-actionintent-runtime-boundary",
+          "kind": "project"
+        },
+        {
+          "label": "SO-101 evidence register",
+          "url": "https://openrgd.org/research/so101-embodiment-lab/evidence.json",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T15",
+      "slug": "interchangeable-world-models",
+      "domain": "Embodied Intelligence",
+      "priority": "P2",
+      "title": "World-model providers should be replaceable without changing agent identity or actuator authority.",
+      "hypothesis": "Predictors should be consumed through a bounded hypothesis interface that preserves provenance and confidence independent of backend.",
+      "counter_hypothesis": "Every predictor needs to be integrated directly with execution authority and the robot's identity state.",
+      "falsification": "If switching provider rewrites historical observations or widens physical permissions, the interface separation has failed.",
+      "current_evidence": "Architecture discussion prefers replaceable world providers; existing world_model.jsonc remains selected in canonical source and migration is not approved.",
+      "limitations": "No implemented provider ABI and no measured cross-provider equivalence.",
+      "test_design": "Swap a deterministic simulator and learned predictor behind one versioned adapter; compare representations, uncertainties and rejected actions.",
+      "publication_gate": "Approve migration/hashing first; publish provider-neutral contract and counterexamples.",
+      "status": "Architecture proposal only.",
+      "sources": [
+        {
+          "label": "Current world models research",
+          "url": "https://openrgd.org/research/world-models",
+          "kind": "project"
+        },
+        {
+          "label": "Canonical structure",
+          "url": "https://github.com/OpenRGD/openrgd/blob/main/STRUCTURE.md",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T16",
+      "slug": "world-model-decision-utility",
+      "domain": "Embodied Intelligence",
+      "priority": "P2",
+      "title": "The value of a world model should be assessed by improved physical decisions.",
+      "hypothesis": "Better predictive metrics alone do not guarantee higher success, safety or energy efficiency in embodied tasks.",
+      "counter_hypothesis": "Improved image/video prediction necessarily improves task-level robot performance.",
+      "falsification": "A predictor scoring better on pixels but causing worse task outcomes under matched latency/compute budgets challenges the premise that predictive score is sufficient.",
+      "current_evidence": "OpenRGD has a research concept for speculative asynchronous prediction; no paired robot evaluation exists.",
+      "limitations": "No trained predictor or closed-loop result with/without world model.",
+      "test_design": "Run matched SO-101 task policies with predictor disabled, deterministic provider and learned provider; measure task success and added latency under fixed budgets.",
+      "publication_gate": "Publish paired trials, sample size, model versions and negative results; no broad generalization from one task.",
+      "status": "Experimental design not implemented.",
+      "sources": [
+        {
+          "label": "World Models research",
+          "url": "https://openrgd.org/research/world-models",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T17",
+      "slug": "embodied-voice-latency",
+      "domain": "Human–Robot Interaction",
+      "priority": "P0",
+      "title": "Embodied conversational latency is not equal to TTS inference time.",
+      "hypothesis": "An audible end-to-end voice-loop benchmark must distinguish VAD, STT, cognition, model load, TTS synthesis, output buffering, Bluetooth and perceived first audio.",
+      "counter_hypothesis": "Improving model synthesis time alone fully determines how quickly a human hears the robot reply.",
+      "falsification": "An optimized TTS engine with no consistent improvement in measured first audible response falsifies the stronger end-to-end improvement claim.",
+      "current_evidence": "VOICE-0.5A merged; Paky-01 operator tests show warm fixed-text medians 4.595 s resident vs 6.772 s no-cache; three local VAD/STT/Piper/Bose turns completed.",
+      "limitations": "Small trial; no measured microphone-to-first-audible-sample latency, acoustic onset or cross-device controlled benchmark. First cold resident request was slower.",
+      "test_design": "Repeat identical input under randomized cache/no-cache, log VAD/STT/LLM/TTS/PCM/ALSA/Bluetooth/acoustic clocks; compare median/p95 with independent acoustic onset.",
+      "publication_gate": "Publish original raw software timings, exact voice/model and hardware revision, samples, variance, cold-start and audio-onset uncertainty.",
+      "status": "Operator-measured physical CPU benchmark and three-turn regression.",
+      "sources": [
+        {
+          "label": "VOICE-0.5A merged PR #5",
+          "url": "https://github.com/OpenRGD/rgd-voice/pull/5",
+          "kind": "project"
+        },
+        {
+          "label": "VOICE main merged 0.5A",
+          "url": "https://github.com/OpenRGD/rgd-voice/tree/22fe6384f6fd24ad46b8135de38d5f002611efef",
+          "kind": "project"
+        },
+        {
+          "label": "Edge Piper synthesis IEEE 2026",
+          "url": "https://ieeexplore.ieee.org/abstract/document/11768087",
+          "kind": "prior-art"
+        }
+      ],
+      "publication": "DOSSIER",
+      "dossier_url": "https://openrgd.org/research/theses/embodied-voice-latency"
+    },
+    {
+      "id": "T18",
+      "slug": "expression-without-claimed-emotion",
+      "domain": "Human–Robot Interaction",
+      "priority": "P2",
+      "title": "Expressive robot output does not prove subjective emotion.",
+      "hypothesis": "Visual and voice state feedback may communicate functional lifecycle or affective display cues without asserting inner emotional experience.",
+      "counter_hypothesis": "A hardware-visible emotional display inherently implies genuine robot emotional states.",
+      "falsification": "If a labeled expression is treated as a truthful first-person emotional experience without evidence, the interface contract misrepresents its semantics.",
+      "current_evidence": "RGB BLE Visual Feedback was physically tested; candidate Visual Studio expression plans are offline/synthetic and independent from live hardware control.",
+      "limitations": "No conscious-affect measurement, real cognitive producer integration or verified dynamic-eye hardware trace.",
+      "test_design": "Map explicit task lifecycle and bounded synthetic affect cues into a preview; verify output labels remain display intents and do not write autobiographical claims.",
+      "publication_gate": "Publish only functional state tests and user-interpretation study with consent; no consciousness assertion.",
+      "status": "Operational RGB feedback plus candidate expressions.",
+      "sources": [
+        {
+          "label": "Visual Feedback main",
+          "url": "https://github.com/OpenRGD/rgd-visual-feedback",
+          "kind": "project"
+        },
+        {
+          "label": "Visual expression proposal PR #4",
+          "url": "https://github.com/OpenRGD/rgd-visual-feedback/pull/4",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    },
+    {
+      "id": "T19",
+      "slug": "evidence-bounded-autonomy",
+      "domain": "Cross-Cutting",
+      "priority": "P1",
+      "title": "Reliable embodied autonomy requires separating observation, belief, proposal, capability and authorization.",
+      "hypothesis": "A complete trace should preserve different authorities for sensing, interpretation, goal admission, task capability, effect approval, physical observation and historical memory.",
+      "counter_hypothesis": "One large intelligent model can safely supply all these as a single self-certified stream with equivalent accountability.",
+      "falsification": "Any consumer that upgrades a hypothesis to evidence or a proposal to physical authorization solely from self-declared fields disproves the desired architecture.",
+      "current_evidence": "OpenRGD modules separately implement some layers and candidate contracts; there is no demonstrated end-to-end trust chain across all owners.",
+      "limitations": "No completed real-robot test covering sensors through cognitive admission and independently authorized effects.",
+      "test_design": "Build a sanitized cross-repository trace with explicit authority owner per stage, reject spoofed sources, expired clocks, stale calibrations and forbidden effects.",
+      "publication_gate": "Publish contract matrix, proof/authority source and physical acceptance only when a full chain is actually tested.",
+      "status": "Program thesis; not yet end-to-end verified.",
+      "sources": [
+        {
+          "label": "Core-B Goal/Effect candidate",
+          "url": "https://github.com/OpenRGD/openrgd/pull/11",
+          "kind": "project"
+        },
+        {
+          "label": "Core-C Identity candidate",
+          "url": "https://github.com/OpenRGD/openrgd/pull/13",
+          "kind": "project"
+        },
+        {
+          "label": "Reality Ingress architecture",
+          "url": "https://github.com/OpenRGD/rgd-reality-ingress",
+          "kind": "project"
+        }
+      ],
+      "publication": "REGISTER_ONLY",
+      "dossier_url": null
+    }
+  ]
+}
